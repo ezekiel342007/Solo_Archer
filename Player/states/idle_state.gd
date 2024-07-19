@@ -3,6 +3,7 @@ extends NodeState
 @export var character_body_2d: CharacterBody2D
 @export var animated_sprite_2d: AnimatedSprite2D
 
+
 func enter() -> void:
 	animated_sprite_2d.play("idle")
 
@@ -14,7 +15,15 @@ func on_process(_delta: float) -> void:
 func on_physics_process(_delta: float) -> void:
 	# Transitioning states
 
-	pass
+	# Horizontal move state
+	if GameInputEvent.horizontal_movement_input():
+		transition.emit("HorizontalMoveState")
+
+	#Vertical move state
+	if GameInputEvent.vertical_movement_input():
+		transition.emit("VerticalMoveState")
+
+	
 
 
 func exit() -> void:

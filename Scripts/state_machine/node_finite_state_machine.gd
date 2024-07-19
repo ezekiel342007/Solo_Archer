@@ -12,7 +12,7 @@ func _ready() -> void:
 	for child in self.get_children():
 		# Adds children to node_states dictionary
 		if child is NodeState:
-			node_states[child.name] = child
+			node_states[child.name.to_lower()] = child
 			child.transition.connect(transition_to)
 	
 	# If we were assigned an initial state enter that state and make it the cuurent state
@@ -25,6 +25,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if current_node_state:
 		current_node_state.on_process(delta)
+
+	print("Current State: ", current_node_state_name)
 
 
 func _physics_process(delta: float) -> void:
