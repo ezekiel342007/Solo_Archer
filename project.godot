@@ -42,6 +42,14 @@ shoot={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="GROUND"
+2d_physics/layer_2="PLAYER"
+2d_physics/layer_3="ARROW"
+2d_physics/layer_4="ENEMY"
+2d_physics/layer_5="OBSTACLE"
+
 [rendering]
 
 renderer/rendering_method="mobile"

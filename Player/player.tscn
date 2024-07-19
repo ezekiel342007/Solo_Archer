@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cxkugss8ju2qd"]
+[gd_scene load_steps=21 format=3 uid="uid://cxkugss8ju2qd"]
 
 [ext_resource type="Texture2D" uid="uid://duqyq25ym0ttg" path="res://Player/assets/Archer_Blue_(NoArms).png" id="1_lo4e6"]
 [ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="2_oa88m"]
@@ -106,7 +106,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4h53"]
 radius = 24.5967
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wybrv"]
+radius = 26.0
+
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(30, -33)
@@ -119,6 +123,17 @@ frame_progress = 0.467533
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(29, -25)
 shape = SubResource("CircleShape2D_c4h53")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(29, -25)
+shape = SubResource("CircleShape2D_wybrv")
+debug_color = Color(0.962702, 0.17318, 0.227936, 0.42)
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("2_oa88m")
@@ -138,5 +153,3 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 script = ExtResource("5_46re5")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
-
-[node name="Camera2D" type="Camera2D" parent="."]

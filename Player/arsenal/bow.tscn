@@ -1,0 +1,108 @@
+[gd_scene load_steps=13 format=3 uid="uid://cwhxfenrsuj6q"]
+
+[ext_resource type="Texture2D" uid="uid://l8w88vtmekbr" path="res://Player/assets/Archer_Bow_Blue.png" id="1_fb018"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmc4n"]
+size = Vector2(13, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hygb8"]
+atlas = ExtResource("1_fb018")
+region = Rect2(0, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoxnr"]
+atlas = ExtResource("1_fb018")
+region = Rect2(192, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkomn"]
+atlas = ExtResource("1_fb018")
+region = Rect2(384, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lm7pu"]
+atlas = ExtResource("1_fb018")
+region = Rect2(576, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l2gl"]
+atlas = ExtResource("1_fb018")
+region = Rect2(768, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apdss"]
+atlas = ExtResource("1_fb018")
+region = Rect2(1344, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2csj"]
+atlas = ExtResource("1_fb018")
+region = Rect2(960, 256, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkdik"]
+atlas = ExtResource("1_fb018")
+region = Rect2(1152, 256, 192, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jv6ot"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hygb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aoxnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkomn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lm7pu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l2gl")
+}],
+"loop": false,
+"name": &"aim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apdss")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2csj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkdik")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eov5p"]
+radius = 111.158
+
+[node name="Bow" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(23, -21)
+shape = SubResource("RectangleShape2D_dmc4n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jv6ot")
+animation = &"aim"
+frame = 4
+frame_progress = 1.0
+
+[node name="MalleeArea2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MalleeArea2D"]
+visible = false
+shape = SubResource("CircleShape2D_eov5p")
+
+[node name="ReleaseMarker2D" type="Marker2D" parent="."]
+position = Vector2(43, -22)
