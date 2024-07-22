@@ -1,19 +1,9 @@
-extends Area2D
+extends CharacterBody2D
 
-@export var speed: int = 500
-@export var arrow_range: int = 1500
-
-var travelled_distance: int = 0
+@onready var sprite = $"Sprite2D"
+@export var speed: int = 400
 
 
-func _physics_process(delta: float):
-	position.x += speed * delta
-	travelled_distance += int(speed * delta)
-	
-	if travelled_distance > arrow_range:
-		queue_free()
-	
-
-
-func _on_body_entered(_body):
-	queue_free()
+func _ready() -> void:
+	# Make the arrow face the direction its being shot at
+	sprite.rotation = get_angle_to(get_global_mouse_position())

@@ -6,10 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nsx8"]
 size = Vector2(63, 5)
 
-[node name="Arrow" type="Area2D"]
+[node name="Arrow" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_3mk3k")
+speed = 1200
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_sq1ok")
@@ -17,5 +18,3 @@ texture = ExtResource("1_sq1ok")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_3nsx8")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
