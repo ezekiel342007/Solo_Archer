@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://cxkugss8ju2qd"]
+[gd_scene load_steps=22 format=3 uid="uid://cxkugss8ju2qd"]
 
 [ext_resource type="Texture2D" uid="uid://duqyq25ym0ttg" path="res://Player/assets/Archer_Blue_(NoArms).png" id="1_lo4e6"]
 [ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="2_oa88m"]
 [ext_resource type="Script" path="res://Player/states/idle_state.gd" id="3_75ut0"]
 [ext_resource type="Script" path="res://Player/states/horizontal_move_state.gd" id="4_qufdj"]
 [ext_resource type="Script" path="res://Player/states/vertical_move_state.gd" id="5_46re5"]
+[ext_resource type="PackedScene" uid="uid://cwhxfenrsuj6q" path="res://Player/arsenal/bow/bow.tscn" id="6_010rw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wewbr"]
 atlas = ExtResource("1_lo4e6")
@@ -113,7 +114,7 @@ radius = 26.0
 collision_layer = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(30, -33)
+position = Vector2(1, -8)
 sprite_frames = SubResource("SpriteFrames_ey8ve")
 animation = &"move"
 autoplay = "idle"
@@ -121,10 +122,10 @@ frame = 2
 frame_progress = 0.467533
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(29, -25)
 shape = SubResource("CircleShape2D_c4h53")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(-29, 25)
 collision_layer = 2
 collision_mask = 8
 
@@ -153,3 +154,5 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 script = ExtResource("5_46re5")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="Bow" parent="." instance=ExtResource("6_010rw")]

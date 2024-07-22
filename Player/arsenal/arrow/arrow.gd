@@ -5,5 +5,8 @@ extends CharacterBody2D
 
 
 func _ready() -> void:
-	# Make the arrow face the direction its being shot at
 	sprite.rotation = get_angle_to(get_global_mouse_position())
+
+
+func _physics_process(delta: float):
+	var collision_info = move_and_collide(velocity.normalized() * delta * speed)
