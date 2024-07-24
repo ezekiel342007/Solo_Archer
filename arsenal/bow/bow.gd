@@ -3,7 +3,7 @@ extends Area2D
 @onready var mallee_area_2d = $MalleeArea2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var release_marker_2d = $AnimatedSprite2D/ReleaseMarker2D
-var arrow = preload("res://Player/arsenal/arrow/arrow.tscn")
+var arrow = preload("res://arsenal/arrow/arrow.tscn")
 
 func _ready() -> void:
 	animated_sprite_2d.play("aim")

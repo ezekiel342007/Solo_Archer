@@ -16,12 +16,8 @@ func on_physics_process(_delta: float) -> void:
 	# Transitioning states
 
 	# Horizontal move state
-	if GameInputEvent.horizontal_movement_input():
-		transition.emit("HorizontalMoveState")
-
-	#Vertical move state
-	if GameInputEvent.vertical_movement_input():
-		transition.emit("VerticalMoveState")
+	if GameInputEvent.horizontal_movement_input() or GameInputEvent.vertical_movement_input():
+		transition.emit("MoveState")
 
 	
 

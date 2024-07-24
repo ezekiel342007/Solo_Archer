@@ -8,7 +8,7 @@ static func horizontal_movement_input() -> float:
 
 
 static func vertical_movement_input() -> float:
-	var direction: float = Input.get_axis("move_backward", "move_forward")
+	var direction: float = Input.get_axis("move_forward", "move_backward")
 	return direction
 
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://cwhxfenrsuj6q"]
 
-[ext_resource type="Script" path="res://Player/arsenal/bow/bow.gd" id="1_2f7ls"]
-[ext_resource type="Texture2D" uid="uid://l8w88vtmekbr" path="res://Player/assets/Archer_Bow_Blue.png" id="2_wlgt4"]
+[ext_resource type="Script" path="res://arsenal/bow/bow.gd" id="1_2f7ls"]
+[ext_resource type="Texture2D" uid="uid://l8w88vtmekbr" path="res://arsenal/bow/Archer_Bow_Blue.png" id="2_wlgt4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dmc4n"]
 size = Vector2(13, 54)

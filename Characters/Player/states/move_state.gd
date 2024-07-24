@@ -10,23 +10,21 @@ func enter() -> void:
 
 
 func on_physics_process(_delta: float) -> void:
-	var direction: float = GameInputEvent.vertical_movement_input()
+	var direction_x: float = GameInputEvent.horizontal_movement_input()
+	var direction_y: float = GameInputEvent.vertical_movement_input()
 
-	if direction:
-		character_body_2d.velocity.y = direction * speed
+	if direction_x or direction_y:
+		character_body_2d.velocity.x = direction_x * speed
+		character_body_2d.velocity.y = direction_y * speed
 
 	character_body_2d.move_and_slide()
 
 	# Transitioning states
 
 	# Idle state
-	if direction == 0:
+	if direction_x == 0 and direction_y == 0:
 		transition.emit("IdleState")
-
-	if GameInputEvent.horizontal_movement_input():
-		transition.emit("HorizontalMovementState")
 
 
 func exit() -> void:
 	animated_sprite_2d.stop()
-

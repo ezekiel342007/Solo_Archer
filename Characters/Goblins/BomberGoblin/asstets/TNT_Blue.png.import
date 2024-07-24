@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crt2puqiwntrm"
-path="res://.godot/imported/Archer_Blue.png-76fdf9267ae1ab70c734e7d6e3a62bf0.ctex"
+uid="uid://b55od4jek8k57"
+path="res://.godot/imported/TNT_Blue.png-5de41cdb98e96f7af0690d199ed1df43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/assets/Archer_Blue.png"
-dest_files=["res://.godot/imported/Archer_Blue.png-76fdf9267ae1ab70c734e7d6e3a62bf0.ctex"]
+source_file="res://Characters/Goblins/BomberGoblin/asstets/TNT_Blue.png"
+dest_files=["res://.godot/imported/TNT_Blue.png-5de41cdb98e96f7af0690d199ed1df43.ctex"]
 
 [params]
 
