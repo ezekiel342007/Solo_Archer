@@ -5,20 +5,6 @@
 
 [node name="TestLevel" type="Node2D"]
 
-[node name="Goblin" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("2_s40sj")]
-position = Vector2(487, 379)
-patrol_points = NodePath("PatrolPoints")
-
-[node name="PatrolPoints" type="Node" parent="Goblin"]
-
-[node name="Marker2D" type="Marker2D" parent="Goblin/PatrolPoints"]
-position = Vector2(570, 406)
-
-[node name="Marker2D2" type="Marker2D" parent="Goblin/PatrolPoints"]
-position = Vector2(390, 405)
-
-[node name="Marker2D3" type="Marker2D" parent="Goblin/PatrolPoints"]
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(171, 521)
 texture = ExtResource("2_btph5")
@@ -54,3 +40,21 @@ texture = ExtResource("2_btph5")
 [node name="Sprite2D9" type="Sprite2D" parent="."]
 position = Vector2(739, 260)
 texture = ExtResource("2_btph5")
+
+[node name="Goblin" parent="." node_paths=PackedStringArray("patrol_points") instance=ExtResource("2_s40sj")]
+position = Vector2(487, 379)
+patrol_points = NodePath("PatrolPoints")
+
+[node name="PatrolPoints" type="Node" parent="Goblin"]
+
+[node name="Marker2D" type="Marker2D" parent="Goblin/PatrolPoints"]
+position = Vector2(570, 406)
+
+[node name="Marker2D2" type="Marker2D" parent="Goblin/PatrolPoints"]
+position = Vector2(390, 405)
+
+[node name="Marker2D3" type="Marker2D" parent="Goblin/PatrolPoints"]
+position = Vector2(612, 236)
+
+[node name="Marker2D4" type="Marker2D" parent="Goblin/PatrolPoints"]
+position = Vector2(380, 208)
