@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 # Indicates how long the player stays in the idle state before transtitioning to the move state
 @onready var idle_timer: Timer = %IdleTimer
-@onready var player_detector: Area2D = $"PlayerDetect"
+@onready var player_detector: Area2D = %PlayerDetect
 
 var flip: bool
 var direction: Vector2

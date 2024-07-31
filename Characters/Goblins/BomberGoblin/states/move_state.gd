@@ -4,6 +4,7 @@ extends NodeState
 @export var animated_sprite_2d: AnimatedSprite2D
 
 @onready var speed: float = $"../../".speed
+@onready var release_point = $"../../ReleasePoint"
 @onready var direction: Vector2 = $"../../".direction
 @onready var patrol_points: Node = $"../../".patrol_points
 
