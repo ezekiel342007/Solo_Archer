@@ -1,5 +1,5 @@
-class_name NodeState
 extends Node
+class_name NodeState
 
 signal transition
 

@@ -54,6 +54,7 @@ shoot={
 2d_physics/layer_3="ARROW"
 2d_physics/layer_4="ENEMY"
 2d_physics/layer_5="OBSTACLE"
+2d_physics/layer_6="PATROLPOINT"
 
 [rendering]
 

@@ -3,7 +3,9 @@ extends Area2D
 @onready var mallee_area_2d = $MalleeArea2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var release_marker_2d = $AnimatedSprite2D/ReleaseMarker2D
+
 var arrow = preload("res://arsenal/arrow/arrow.tscn")
+
 
 func _ready() -> void:
 	animated_sprite_2d.play("aim")
@@ -15,7 +17,6 @@ func _physics_process(_delta: float) -> void:
 	if GameInputEvent.shoot_intput():
 		shoot()
 		animated_sprite_2d.play("aim")
-
 
 
 func rotate_to_target(target: Vector2, _delta: float):

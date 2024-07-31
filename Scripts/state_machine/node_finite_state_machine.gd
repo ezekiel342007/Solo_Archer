@@ -1,7 +1,8 @@
-class_name NodeFiniteStateMachine
 extends Node
+class_name NodeFiniteStateMachine
 
 @export var initial_node_state: NodeState
+
 var node_states: Dictionary = {}
 var current_node_state: NodeState
 var current_node_state_name: String
@@ -20,14 +21,11 @@ func _ready() -> void:
 		initial_node_state.enter()
 		current_node_state = initial_node_state
 		current_node_state_name = current_node_state.name
-	print("State machine initialized")
 
 
 func _process(delta: float) -> void:
 	if current_node_state:
 		current_node_state.on_process(delta)
-
-	# print("Current State: ", current_node_state_name)
 
 
 func _physics_process(delta: float) -> void:
