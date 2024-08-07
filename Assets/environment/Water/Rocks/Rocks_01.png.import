@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l8w88vtmekbr"
-path="res://.godot/imported/Archer_Bow_Blue.png-74749f6d21cbabd9f1d7218a80f4f58b.ctex"
+uid="uid://s8m56ov43u51"
+path="res://.godot/imported/Rocks_01.png-d5a1c7d50460e7aee8082c518ac0919c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arsenal/bow/Archer_Bow_Blue.png"
-dest_files=["res://.godot/imported/Archer_Bow_Blue.png-74749f6d21cbabd9f1d7218a80f4f58b.ctex"]
+source_file="res://Assets/environment/Water/Rocks/Rocks_01.png"
+dest_files=["res://.godot/imported/Rocks_01.png-d5a1c7d50460e7aee8082c518ac0919c.ctex"]
 
 [params]
 

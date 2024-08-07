@@ -9,4 +9,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float):
-	var collision_info = move_and_collide(velocity.normalized() * delta * speed)
+	var _collision_info = move_and_collide(velocity.normalized() * delta * speed)
+
+
+func _on_target_detect_body_entered(_body):
+	queue_free()

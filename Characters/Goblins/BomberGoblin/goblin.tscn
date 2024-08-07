@@ -163,12 +163,12 @@ radius = 23.0
 radius = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4f2k"]
-size = Vector2(451, 20)
+size = Vector2(353.5, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l33dj"]
 radius = 50.0
 
-[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("state_machine") groups=["Patroller"]]
+[node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("state_machine") groups=["Enemy", "Patroller"]]
 collision_layer = 8
 collision_mask = 23
 script = ExtResource("1_ilqxl")
@@ -220,6 +220,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
+position = Vector2(-0.25, 0)
 shape = SubResource("RectangleShape2D_g4f2k")
 debug_color = Color(0, 0.647677, 0.204275, 0.42)
 
@@ -236,7 +237,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="ReleasePoint" type="Marker2D" parent="."]
-position = Vector2(48, -7)
+position = Vector2(67, -7)
 
 [connection signal="timeout" from="StateMachine/AttackState/AttackTimer" to="StateMachine/AttackState" method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]

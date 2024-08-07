@@ -1,30 +1,30 @@
 [gd_scene load_steps=12 format=3 uid="uid://bv0kahgigffrt"]
 
-[ext_resource type="Texture2D" uid="uid://dg6gru753nmvu" path="res://arsenal/dynamite/Dynamite.png" id="1_7mw14"]
-[ext_resource type="Script" path="res://arsenal/dynamite/dynamite.gd" id="1_b2pha"]
+[ext_resource type="Script" path="res://Assets/arsenal/dynamite/dynamite.gd" id="1_tfe7u"]
+[ext_resource type="Texture2D" uid="uid://dg6gru753nmvu" path="res://Assets/arsenal/dynamite/Dynamite.png" id="2_ihapw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nevg1"]
-atlas = ExtResource("1_7mw14")
+atlas = ExtResource("2_ihapw")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g0l3p"]
-atlas = ExtResource("1_7mw14")
+atlas = ExtResource("2_ihapw")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0pemn"]
-atlas = ExtResource("1_7mw14")
+atlas = ExtResource("2_ihapw")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vuvp4"]
-atlas = ExtResource("1_7mw14")
+atlas = ExtResource("2_ihapw")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5j68"]
-atlas = ExtResource("1_7mw14")
+atlas = ExtResource("2_ihapw")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olhmv"]
-atlas = ExtResource("1_7mw14")
+atlas = ExtResource("2_ihapw")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ql2pg"]
@@ -56,13 +56,14 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5r7o2"]
 height = 38.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_orv2q"]
-radius = 190.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gcrx4"]
+radius = 15.0
+height = 51.0
 
 [node name="Dynamite" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 18
-script = ExtResource("1_b2pha")
+script = ExtResource("1_tfe7u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ql2pg")
@@ -72,7 +73,12 @@ frame_progress = 0.440912
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_5r7o2")
 
-[node name="DamageArea2D" type="Area2D" parent="."]
+[node name="Trigger" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 22
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D"]
-shape = SubResource("CircleShape2D_orv2q")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+shape = SubResource("CapsuleShape2D_gcrx4")
+debug_color = Color(0.308553, 0.61859, 0.299098, 0.42)
+
+[connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]

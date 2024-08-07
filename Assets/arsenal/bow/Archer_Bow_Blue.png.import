@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg6gru753nmvu"
-path="res://.godot/imported/Dynamite.png-0aca00e3af9888bdd2c069685e14d703.ctex"
+uid="uid://l8w88vtmekbr"
+path="res://.godot/imported/Archer_Bow_Blue.png-e03c4d1ad5310c1f80e9ef4f419afb5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arsenal/dynamite/Dynamite.png"
-dest_files=["res://.godot/imported/Dynamite.png-0aca00e3af9888bdd2c069685e14d703.ctex"]
+source_file="res://Assets/arsenal/bow/Archer_Bow_Blue.png"
+dest_files=["res://.godot/imported/Archer_Bow_Blue.png-e03c4d1ad5310c1f80e9ef4f419afb5f.ctex"]
 
 [params]
 
