@@ -1,0 +1,179 @@
+[gd_scene load_steps=23 format=3 uid="uid://bdyam1g8b3uep"]
+
+[ext_resource type="Texture2D" uid="uid://c2x4y4gh3vrb8" path="res://Characters/Goblins/TNTGoblin/Assets/Barrel_Blue.png" id="1_usw30"]
+[ext_resource type="Script" path="res://Characters/Goblins/TNTGoblin/tnt_goblin.gd" id="1_yeko1"]
+[ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="3_23ee4"]
+[ext_resource type="Script" path="res://Characters/Goblins/TNTGoblin/states/state_machine_controller.gd" id="3_b4rg2"]
+[ext_resource type="Script" path="res://Characters/Goblins/TNTGoblin/states/chase_state.gd" id="5_q2y2m"]
+[ext_resource type="Script" path="res://Characters/Goblins/TNTGoblin/states/detonate_state.gd" id="6_vyvk1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bc05"]
+atlas = ExtResource("1_usw30")
+region = Rect2(256, 640, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukbdl"]
+atlas = ExtResource("1_usw30")
+region = Rect2(128, 640, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hek2"]
+atlas = ExtResource("1_usw30")
+region = Rect2(0, 640, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bss81"]
+atlas = ExtResource("1_usw30")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcflp"]
+atlas = ExtResource("1_usw30")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcj1u"]
+atlas = ExtResource("1_usw30")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e67lw"]
+atlas = ExtResource("1_usw30")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h504"]
+atlas = ExtResource("1_usw30")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycxg2"]
+atlas = ExtResource("1_usw30")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doosg"]
+atlas = ExtResource("1_usw30")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_al5ue"]
+atlas = ExtResource("1_usw30")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcb8c"]
+atlas = ExtResource("1_usw30")
+region = Rect2(640, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd8l7"]
+atlas = ExtResource("1_usw30")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_elbog"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bc05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukbdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hek2")
+}],
+"loop": false,
+"name": &"detonate",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bss81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcflp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcj1u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e67lw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h504")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycxg2")
+}],
+"loop": true,
+"name": &"move",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doosg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al5ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcb8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd8l7")
+}],
+"loop": true,
+"name": &"scout",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dgy2d"]
+radius = 23.0
+height = 54.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i8p67"]
+radius = 35.9026
+
+[node name="TNTGoblin" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 23
+script = ExtResource("1_yeko1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_elbog")
+animation = &"detonate"
+autoplay = "idle"
+frame = 2
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dgy2d")
+
+[node name="DetonationRegion" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetonationRegion"]
+shape = SubResource("CircleShape2D_i8p67")
+debug_color = Color(0.911333, 0, 0.140509, 0.42)
+
+[node name="StateMachineController" type="Node" parent="." node_paths=PackedStringArray("state_machine")]
+script = ExtResource("3_b4rg2")
+state_machine = NodePath("../StateMachine")
+
+[node name="ScoutTimer" type="Timer" parent="StateMachineController"]
+
+[node name="IdleTimer" type="Timer" parent="StateMachineController"]
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("3_23ee4")
+initial_node_state = NodePath("ChaseState")
+
+[node name="ChaseState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+script = ExtResource("5_q2y2m")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="DetonateState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+script = ExtResource("6_vyvk1")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[connection signal="body_entered" from="DetonationRegion" to="StateMachineController" method="_on_detonation_region_body_entered"]
+[connection signal="timeout" from="StateMachineController/ScoutTimer" to="StateMachineController" method="_on_scout_timer_timeout"]
+[connection signal="timeout" from="StateMachineController/IdleTimer" to="StateMachineController" method="_on_idle_timer_timeout"]

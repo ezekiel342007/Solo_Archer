@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d13oa2ujg5u7j"]
+[gd_scene load_steps=15 format=3 uid="uid://d13oa2ujg5u7j"]
 
 [ext_resource type="PackedScene" uid="uid://dc0w0dannprwp" path="res://Characters/Goblins/BomberGoblin/goblin.tscn" id="2_s40sj"]
 [ext_resource type="PackedScene" uid="uid://y5xsw7mcp4t7" path="res://Assets/arsenal/parol_points/patrol_points.tscn" id="3_iuvnc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b8ivx2mfsca33" path="res://Assets/environment/tilemaps/Bridge_All.png" id="5_t0xr8"]
 [ext_resource type="Texture2D" uid="uid://7tuvsnnnn77" path="res://Assets/environment/tilemaps/Shadows.png" id="6_tqqlf"]
 [ext_resource type="Texture2D" uid="uid://cy3eufkkj7qeo" path="res://Assets/environment/tilemaps/Tilemap_Elevation.png" id="7_losh8"]
+[ext_resource type="PackedScene" uid="uid://bdyam1g8b3uep" path="res://Characters/Goblins/TNTGoblin/tnt_goblin.tscn" id="8_50kfm"]
 [ext_resource type="Texture2D" uid="uid://brlu12r17bith" path="res://Assets/environment/tilemaps/Tilemap_Flat.png" id="8_ocdov"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y68hr"]
@@ -3779,8 +3780,9 @@ position = Vector2(614, 414)
 [node name="PatrolPoint3" parent="Goblin/PatrolPoints" instance=ExtResource("3_iuvnc")]
 position = Vector2(360, 388)
 
-[node name="Player" parent="." instance=ExtResource("4_0q44p")]
-position = Vector2(155, 312)
+[node name="Player" parent="." node_paths=PackedStringArray("enemy_node") instance=ExtResource("4_0q44p")]
+position = Vector2(74, 429)
+enemy_node = NodePath("../Enemies")
 
 [node name="Trees" type="Node" parent="."]
 
@@ -3798,3 +3800,8 @@ position = Vector2(523, 109)
 
 [node name="Tree5" parent="Trees" instance=ExtResource("5_j0qub")]
 position = Vector2(120, 136)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="TNTGoblin" parent="Enemies" instance=ExtResource("8_50kfm")]
+position = Vector2(441, 435)

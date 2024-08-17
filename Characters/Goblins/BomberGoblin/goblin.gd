@@ -11,7 +11,7 @@ extends CharacterBody2D
 var flip: bool
 var direction: Vector2
 
-	
+
 # Detects a player and transition to the attack state
 func _on_player_detect_body_entered(body: CharacterBody2D):
 	# if the body is the player
