@@ -15,6 +15,10 @@ run/main_scene="res://Level/test_level.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PlayerManagement="*res://Scripts/player_management.gd"
+
 [display]
 
 window/size/viewport_width=768

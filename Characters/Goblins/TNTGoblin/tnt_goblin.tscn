@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://c2x4y4gh3vrb8" path="res://Characters/Goblins/TNTGoblin/Assets/Barrel_Blue.png" id="1_usw30"]
 [ext_resource type="Script" path="res://Characters/Goblins/TNTGoblin/tnt_goblin.gd" id="1_yeko1"]
-[ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="3_23ee4"]
-[ext_resource type="Script" path="res://Characters/Goblins/TNTGoblin/states/state_machine_controller.gd" id="3_b4rg2"]
+[ext_resource type="Script" path="res://Characters/Goblins/TNTGoblin/states/state_machine_controller.gd" id="3_cxil3"]
+[ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="4_68bdj"]
 [ext_resource type="Script" path="res://Characters/Goblins/TNTGoblin/states/chase_state.gd" id="5_q2y2m"]
 [ext_resource type="Script" path="res://Characters/Goblins/TNTGoblin/states/detonate_state.gd" id="6_vyvk1"]
 
@@ -153,7 +153,7 @@ shape = SubResource("CircleShape2D_i8p67")
 debug_color = Color(0.911333, 0, 0.140509, 0.42)
 
 [node name="StateMachineController" type="Node" parent="." node_paths=PackedStringArray("state_machine")]
-script = ExtResource("3_b4rg2")
+script = ExtResource("3_cxil3")
 state_machine = NodePath("../StateMachine")
 
 [node name="ScoutTimer" type="Timer" parent="StateMachineController"]
@@ -161,7 +161,7 @@ state_machine = NodePath("../StateMachine")
 [node name="IdleTimer" type="Timer" parent="StateMachineController"]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
-script = ExtResource("3_23ee4")
+script = ExtResource("4_68bdj")
 initial_node_state = NodePath("ChaseState")
 
 [node name="ChaseState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]

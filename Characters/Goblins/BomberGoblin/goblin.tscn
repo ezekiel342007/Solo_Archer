@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b55od4jek8k57" path="res://Characters/Goblins/BomberGoblin/asstets/TNT_Blue.png" id="1_bpome"]
 [ext_resource type="Script" path="res://Characters/Goblins/BomberGoblin/goblin.gd" id="1_ilqxl"]
-[ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="2_wps71"]
+[ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="3_y10g8"]
 [ext_resource type="Script" path="res://Characters/Goblins/BomberGoblin/states/move_state.gd" id="5_h8tml"]
 [ext_resource type="Script" path="res://Characters/Goblins/BomberGoblin/states/attack_state.gd" id="5_me2o5"]
 [ext_resource type="Script" path="res://Characters/Goblins/BomberGoblin/states/idle_state.gd" id="6_jwrfc"]
@@ -192,7 +192,7 @@ shape = SubResource("CircleShape2D_kld18")
 debug_color = Color(0.977497, 0.128722, 0.194641, 0.42)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
-script = ExtResource("2_wps71")
+script = ExtResource("3_y10g8")
 initial_node_state = NodePath("IdleState")
 
 [node name="MoveState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]

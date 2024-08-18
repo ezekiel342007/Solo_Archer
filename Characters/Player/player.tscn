@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://duqyq25ym0ttg" path="res://Characters/Player/assets/Archer_Blue_(NoArms).png" id="1_lo4e6"]
 [ext_resource type="Script" path="res://Characters/Player/player.gd" id="1_uwir1"]
-[ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="2_oa88m"]
 [ext_resource type="Script" path="res://Characters/Player/states/idle_state.gd" id="3_75ut0"]
+[ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="3_pbne3"]
 [ext_resource type="Script" path="res://Characters/Player/states/move_state.gd" id="4_qufdj"]
 [ext_resource type="PackedScene" uid="uid://cwhxfenrsuj6q" path="res://Assets/arsenal/bow/bow.tscn" id="6_010rw"]
 
@@ -139,7 +139,7 @@ debug_color = Color(0.962702, 0.17318, 0.227936, 0.42)
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
-script = ExtResource("2_oa88m")
+script = ExtResource("3_pbne3")
 initial_node_state = NodePath("IdleState")
 
 [node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]

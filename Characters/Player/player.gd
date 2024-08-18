@@ -11,5 +11,4 @@ func _ready():
 	
 
 func on_has_exploded(damage: int) -> void:
-	health -= damage
-	print("taken damage")
+	PlayerManagement.health -= damage
