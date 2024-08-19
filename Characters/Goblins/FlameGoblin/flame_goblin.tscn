@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://djtjldiq2ke8s"]
+[gd_scene load_steps=50 format=3 uid="uid://djtjldiq2ke8s"]
 
 [ext_resource type="Texture2D" uid="uid://c8qoasu5bsum4" path="res://Characters/Goblins/FlameGoblin/assets/Torch_Blue.png" id="1_bhwwc"]
 [ext_resource type="Script" path="res://Characters/Goblins/FlameGoblin/flame_goblin.gd" id="1_qujdm"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Characters/Goblins/FlameGoblin/states/up_attack_state.gd" id="5_2oc3s"]
 [ext_resource type="Script" path="res://Characters/Goblins/FlameGoblin/states/down_attack_state.gd" id="6_7fxrs"]
 [ext_resource type="Script" path="res://Characters/Goblins/FlameGoblin/states/straight_attack_state.gd" id="7_javim"]
+[ext_resource type="Script" path="res://Characters/Goblins/FlameGoblin/states/patrol_state.gd" id="10_ed787"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dkovj"]
 radius = 18.0
@@ -275,6 +276,9 @@ size = Vector2(136, 58)
 [sub_resource type="CircleShape2D" id="CircleShape2D_5qc6c"]
 radius = 78.1025
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2iig1"]
+radius = 298.107
+
 [node name="FlameGoblin" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 22
@@ -287,7 +291,6 @@ shape = SubResource("CapsuleShape2D_dkovj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_uulb2")
 animation = &"attack_up"
-frame_progress = 0.307559
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 0
@@ -330,8 +333,9 @@ debug_color = Color(0.776639, 0.13853, 1, 0.42)
 [node name="StateMachineController" type="Node" parent="."]
 script = ExtResource("2_yp00r")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("2_r5b3c")
+initial_node_state = NodePath("IdleState")
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("3_ifnav")
@@ -348,10 +352,18 @@ script = ExtResource("6_7fxrs")
 [node name="StraightAttackState" type="Node" parent="StateMachine"]
 script = ExtResource("7_javim")
 
-[node name="PlayerDetection" type="Area2D" parent="."]
+[node name="PatrolState" type="Node" parent="StateMachine"]
+script = ExtResource("10_ed787")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource("CircleShape2D_5qc6c")
 debug_color = Color(0.787137, 0.431229, 0.0199746, 0.42)
+
+[node name="PlayerFinder" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerFinder"]
+shape = SubResource("CircleShape2D_2iig1")

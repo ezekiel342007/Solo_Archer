@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0u13myh78ykc"]
+
+[ext_resource type="Texture2D" uid="uid://bskqqamko10l4" path="res://Assets/environment/Houses/House_Blue.png" id="1_lr0cv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sob6r"]
+size = Vector2(90, 26)
+
+[node name="GoodHouse" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lr0cv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-1, 58)
+shape = SubResource("RectangleShape2D_sob6r")
