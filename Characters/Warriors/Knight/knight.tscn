@@ -1,6 +1,7 @@
-[gd_scene load_steps=61 format=3 uid="uid://ypjavl7tjt1"]
+[gd_scene load_steps=62 format=3 uid="uid://ypjavl7tjt1"]
 
 [ext_resource type="Texture2D" uid="uid://bl0bkj2ve14dw" path="res://Characters/Warriors/Knight/assets/Warrior_Blue.png" id="1_ejr1d"]
+[ext_resource type="Script" path="res://Characters/Warriors/Knight/states/state_machine_controller.gd" id="2_bjyc6"]
 [ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="2_k86x5"]
 [ext_resource type="Script" path="res://Characters/Warriors/Knight/states/idle_state.gd" id="3_bjfij"]
 [ext_resource type="Script" path="res://Characters/Warriors/Knight/states/move_state.gd" id="4_61ltl"]
@@ -428,22 +429,23 @@ position = Vector2(-7, -42)
 shape = SubResource("RectangleShape2D_hg7sx")
 debug_color = Color(0.855683, 0.000764894, 0.886327, 0.42)
 
+[node name="StateMachineController" type="Node" parent="."]
+script = ExtResource("2_bjyc6")
+
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_k86x5")
 
-[node name="idle" type="Node" parent="StateMachine"]
+[node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("3_bjfij")
 
-[node name="move" type="Node" parent="StateMachine"]
+[node name="MoveState" type="Node" parent="StateMachine"]
 script = ExtResource("4_61ltl")
 
-[node name="straight_attack" type="Node" parent="StateMachine"]
+[node name="StraightAttackState" type="Node" parent="StateMachine"]
 script = ExtResource("5_glyd2")
 
-[node name="up_attack" type="Node" parent="StateMachine"]
+[node name="UpAttackState" type="Node" parent="StateMachine"]
 script = ExtResource("6_1jhx0")
 
-[node name="down_attack" type="Node" parent="StateMachine"]
+[node name="DownAttackState" type="Node" parent="StateMachine"]
 script = ExtResource("7_yc6as")
-
-[node name="StateMachineController" type="Node" parent="."]
