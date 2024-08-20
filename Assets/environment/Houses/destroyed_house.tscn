@@ -3,15 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://dlifwn71oxdeu" path="res://Assets/environment/Houses/House_Destroyed.png" id="1_1gib8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_65gi2"]
-size = Vector2(78, 20)
+size = Vector2(79, 64)
 
 [node name="DestroyedHouse" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -52)
 texture = ExtResource("1_1gib8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-z_index = 1
-position = Vector2(-1, 0)
+position = Vector2(-1.5, -18)
 shape = SubResource("RectangleShape2D_65gi2")

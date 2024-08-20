@@ -3,17 +3,19 @@
 [ext_resource type="Texture2D" uid="uid://bvu6ldgl7ycew" path="res://Assets/environment/Houses/Tower_Construction.png" id="1_cctw2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5u0ph"]
-radius = 12.0
-height = 88.0
+radius = 25.0
+height = 84.0
 
 [node name="UnfinishedTower" type="StaticBody2D"]
 z_index = 1
+collision_layer = 16
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -67)
 texture = ExtResource("1_cctw2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 14)
+position = Vector2(0, 5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5u0ph")
