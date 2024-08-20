@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmn8o07d5wgrv"]
+
+[ext_resource type="Texture2D" uid="uid://b83ghqro4yuvk" path="res://Assets/environment/Houses/Tower_Blue.png" id="1_nxqdd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c2s1g"]
+radius = 27.0
+height = 96.0
+
+[node name="GoodTower" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nxqdd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, 73)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_c2s1g")
