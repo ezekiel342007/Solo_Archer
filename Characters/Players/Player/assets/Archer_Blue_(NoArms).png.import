@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://duqyq25ym0ttg"
-path="res://.godot/imported/Archer_Blue_(NoArms).png-004927c01e75caba3eed6306625056b7.ctex"
+path="res://.godot/imported/Archer_Blue_(NoArms).png-2698707b88195dbdf82bcc04aea0f486.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Characters/Player/assets/Archer_Blue_(NoArms).png"
-dest_files=["res://.godot/imported/Archer_Blue_(NoArms).png-004927c01e75caba3eed6306625056b7.ctex"]
+source_file="res://Characters/Players/Player/assets/Archer_Blue_(NoArms).png"
+dest_files=["res://.godot/imported/Archer_Blue_(NoArms).png-2698707b88195dbdf82bcc04aea0f486.ctex"]
 
 [params]
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=3 uid="uid://cxkugss8ju2qd"]
 
-[ext_resource type="Texture2D" uid="uid://duqyq25ym0ttg" path="res://Characters/Player/assets/Archer_Blue_(NoArms).png" id="1_lo4e6"]
-[ext_resource type="Script" path="res://Characters/Player/player.gd" id="1_uwir1"]
-[ext_resource type="Script" path="res://Characters/Player/states/idle_state.gd" id="3_75ut0"]
+[ext_resource type="Texture2D" uid="uid://duqyq25ym0ttg" path="res://Characters/Players/Player/assets/Archer_Blue_(NoArms).png" id="1_lo4e6"]
+[ext_resource type="Script" path="res://Characters/Players/Player/player.gd" id="1_uwir1"]
+[ext_resource type="Script" path="res://Characters/Players/Player/states/idle_state.gd" id="3_75ut0"]
 [ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="3_pbne3"]
-[ext_resource type="Script" path="res://Characters/Player/states/move_state.gd" id="4_qufdj"]
+[ext_resource type="Script" path="res://Characters/Players/Player/states/move_state.gd" id="4_qufdj"]
 [ext_resource type="PackedScene" uid="uid://cwhxfenrsuj6q" path="res://Assets/arsenal/bow/bow.tscn" id="6_010rw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wewbr"]
@@ -111,7 +111,7 @@ height = 62.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_wybrv"]
 radius = 26.0
 
-[node name="Player" type="CharacterBody2D" groups=["explodable"]]
+[node name="Player1" type="CharacterBody2D" groups=["explodable"]]
 collision_layer = 2
 collision_mask = 25
 script = ExtResource("1_uwir1")

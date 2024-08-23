@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dc0w0dannprwp" path="res://Characters/Goblins/BomberGoblin/goblin.tscn" id="2_s40sj"]
 [ext_resource type="PackedScene" uid="uid://y5xsw7mcp4t7" path="res://Assets/arsenal/parol_points/patrol_points.tscn" id="3_iuvnc"]
-[ext_resource type="PackedScene" uid="uid://cxkugss8ju2qd" path="res://Characters/Player/player.tscn" id="4_0q44p"]
+[ext_resource type="PackedScene" uid="uid://cxkugss8ju2qd" path="res://Characters/Players/Player/player.tscn" id="4_0q44p"]
 [ext_resource type="PackedScene" uid="uid://bj16pn2nb7mbm" path="res://Assets/environment/tree/tree.tscn" id="5_j0qub"]
 [ext_resource type="Texture2D" uid="uid://b8ivx2mfsca33" path="res://Assets/environment/tilemaps/Bridge_All.png" id="5_t0xr8"]
 [ext_resource type="Texture2D" uid="uid://7tuvsnnnn77" path="res://Assets/environment/tilemaps/Shadows.png" id="6_tqqlf"]
