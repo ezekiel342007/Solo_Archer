@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Characters/Players/Player/states/idle_state.gd" id="3_75ut0"]
 [ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="3_pbne3"]
 [ext_resource type="Script" path="res://Characters/Players/Player/states/move_state.gd" id="4_qufdj"]
-[ext_resource type="PackedScene" uid="uid://cwhxfenrsuj6q" path="res://Assets/arsenal/bow/bow.tscn" id="6_010rw"]
+[ext_resource type="PackedScene" uid="uid://djn4cm7ad4vuk" path="res://Assets/arsenal/bow/test_bow.tscn" id="6_ec28u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wewbr"]
 atlas = ExtResource("1_lo4e6")
@@ -111,7 +111,7 @@ height = 62.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_wybrv"]
 radius = 26.0
 
-[node name="Player1" type="CharacterBody2D" groups=["explodable"]]
+[node name="Player" type="CharacterBody2D" groups=["explodable"]]
 collision_layer = 2
 collision_mask = 25
 script = ExtResource("1_uwir1")
@@ -119,10 +119,8 @@ script = ExtResource("1_uwir1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -8)
 sprite_frames = SubResource("SpriteFrames_ey8ve")
-animation = &"move"
+animation = &"idle"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.467533
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
@@ -154,4 +152,4 @@ script = ExtResource("4_qufdj")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="Bow" parent="." instance=ExtResource("6_010rw")]
+[node name="TestBow" parent="." instance=ExtResource("6_ec28u")]

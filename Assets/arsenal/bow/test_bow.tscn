@@ -1,37 +1,37 @@
-[gd_scene load_steps=13 format=3 uid="uid://cwhxfenrsuj6q"]
+[gd_scene load_steps=12 format=3 uid="uid://djn4cm7ad4vuk"]
 
-[ext_resource type="Script" path="res://Assets/arsenal/bow/bow.gd" id="1_2f7ls"]
-[ext_resource type="Texture2D" uid="uid://l8w88vtmekbr" path="res://Assets/arsenal/bow/Archer_Bow_Blue.png" id="2_wlgt4"]
+[ext_resource type="Script" path="res://Assets/arsenal/bow/test_bow.gd" id="1_1so8f"]
+[ext_resource type="Texture2D" uid="uid://l8w88vtmekbr" path="res://Assets/arsenal/bow/Archer_Bow_Blue.png" id="2_1qab4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dmc4n"]
 size = Vector2(13, 54)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hygb8"]
-atlas = ExtResource("2_wlgt4")
+atlas = ExtResource("2_1qab4")
 region = Rect2(0, 256, 192, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aoxnr"]
-atlas = ExtResource("2_wlgt4")
+atlas = ExtResource("2_1qab4")
 region = Rect2(192, 256, 192, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkomn"]
-atlas = ExtResource("2_wlgt4")
+atlas = ExtResource("2_1qab4")
 region = Rect2(384, 256, 192, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lm7pu"]
-atlas = ExtResource("2_wlgt4")
+atlas = ExtResource("2_1qab4")
 region = Rect2(576, 256, 192, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8l2gl"]
-atlas = ExtResource("2_wlgt4")
+atlas = ExtResource("2_1qab4")
 region = Rect2(768, 256, 192, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e2csj"]
-atlas = ExtResource("2_wlgt4")
+atlas = ExtResource("2_1qab4")
 region = Rect2(960, 256, 192, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vkdik"]
-atlas = ExtResource("2_wlgt4")
+atlas = ExtResource("2_1qab4")
 region = Rect2(1152, 256, 192, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jv6ot"]
@@ -68,31 +68,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_eov5p"]
-radius = 111.158
-
-[node name="Bow" type="Area2D"]
+[node name="TestBow" type="Area2D"]
 collision_layer = 4
 collision_mask = 8
-script = ExtResource("1_2f7ls")
+script = ExtResource("1_1so8f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(61, -1)
 shape = SubResource("RectangleShape2D_dmc4n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(38, 22)
+position = Vector2(38, 21)
 sprite_frames = SubResource("SpriteFrames_jv6ot")
 animation = &"shoot"
 
 [node name="ReleaseMarker2D" type="Marker2D" parent="AnimatedSprite2D"]
 position = Vector2(42, -22)
-
-[node name="MalleeArea2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MalleeArea2D"]
-shape = SubResource("CircleShape2D_eov5p")
 
 [node name="PivotPoint" type="Marker2D" parent="."]
