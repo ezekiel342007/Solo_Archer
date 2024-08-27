@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnminwgnb2q02"]
+
+[ext_resource type="Texture2D" uid="uid://cc6e8qdshgujl" path="res://Assets/UI/Carved_9Slides.png" id="1_aafil"]
+[ext_resource type="FontFile" uid="uid://b2l5jmu8eknaw" path="res://Assets/Font/Fool.ttf" id="1_nkks2"]
+
+[sub_resource type="Theme" id="Theme_dqa7b"]
+Button/font_sizes/font_size = 35
+Button/fonts/font = ExtResource("1_nkks2")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.811765, 0.839216, 0.196078, 0.454902)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -382.0
+offset_top = -231.0
+offset_right = 382.0
+offset_bottom = 231.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_dqa7b")
+texture = ExtResource("1_aafil")
+patch_margin_left = 7
+patch_margin_top = 12
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.0
+offset_top = -126.0
+offset_right = 124.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Button2" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "Levels"
+
+[node name="Button3" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "Story Line"
+
+[node name="Button4" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Button5" type="Button" parent="NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "Exit"

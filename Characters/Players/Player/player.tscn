@@ -136,8 +136,6 @@ position = Vector2(29, -25)
 shape = SubResource("CircleShape2D_wybrv")
 debug_color = Color(0.962702, 0.17318, 0.227936, 0.42)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("3_pbne3")
 initial_node_state = NodePath("IdleState")

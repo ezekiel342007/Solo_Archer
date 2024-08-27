@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6lv5edv045br"]
+
+[ext_resource type="Texture2D" uid="uid://cgialatmvp3hm" path="res://Assets/environment/Deco/06.png" id="1_4drt0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_il5o7"]
+radius = 13.0
+height = 36.0
+
+[node name="BorderRock" type="StaticBody2D"]
+z_index = 1
+collision_layer = 16
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4drt0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_il5o7")
