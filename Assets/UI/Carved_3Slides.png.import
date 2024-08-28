@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpl17unqkke52"
-path="res://.godot/imported/Button_Hover_3Slides.png-e09d5c522dc514ab52cc3eb618aafa6d.ctex"
+uid="uid://cdtlc1shid6b6"
+path="res://.godot/imported/Carved_3Slides.png-b2cc3b867b327ce4f399583751d1603f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/buttons/Button_Hover_3Slides.png"
-dest_files=["res://.godot/imported/Button_Hover_3Slides.png-e09d5c522dc514ab52cc3eb618aafa6d.ctex"]
+source_file="res://Assets/UI/Carved_3Slides.png"
+dest_files=["res://.godot/imported/Carved_3Slides.png-b2cc3b867b327ce4f399583751d1603f.ctex"]
 
 [params]
 
