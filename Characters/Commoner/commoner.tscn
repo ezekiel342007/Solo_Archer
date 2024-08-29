@@ -1,8 +1,78 @@
-[gd_scene load_steps=2 format=3 uid="uid://cno71nhia4ng2"]
+[gd_scene load_steps=11 format=3 uid="uid://cno71nhia4ng2"]
+
+[ext_resource type="Texture2D" uid="uid://t5a33cy1oy8v" path="res://Characters/Commoner/assets/Pawn_Blue.png" id="1_5lkpv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cci1r"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0vg4"]
+atlas = ExtResource("1_5lkpv")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0x0un"]
+atlas = ExtResource("1_5lkpv")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxwv7"]
+atlas = ExtResource("1_5lkpv")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gp6x"]
+atlas = ExtResource("1_5lkpv")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lu1k"]
+atlas = ExtResource("1_5lkpv")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0otvh"]
+atlas = ExtResource("1_5lkpv")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tld5a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0vg4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0x0un")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxwv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gp6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lu1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0otvh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gx62f"]
+radius = 85.0
+
 [node name="Commoner" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 26
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cci1r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tld5a")
+autoplay = "default"
+frame_progress = 0.631786
+
+[node name="PlayerDetectionArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea2D"]
+shape = SubResource("CircleShape2D_gx62f")
+debug_color = Color(0.296422, 0.623777, 0.234677, 0.42)
