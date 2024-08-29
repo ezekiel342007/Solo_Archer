@@ -14,7 +14,7 @@ var message_sections: Array[String]
 
 var skip_keys: Dictionary = {
 	"Enter": KEY_ENTER,
-	"A": KEY_A,
+	"S": KEY_S,
 	"F": KEY_F,
 	"E": KEY_E,
 	"D": KEY_D
@@ -23,17 +23,18 @@ var skip_keys: Dictionary = {
 var level_messages: Dictionary = {
 	"Greeting": {
 		"Hey there": "Enter",
-		"Welcome to Solo Archer and stuff": "Enter",
-		"First, Let's start with the basics": "Enter",
+		"Welcome to Myusyu village": "Enter",
+		"Sorry no time to explain, let's start with the basics": "Enter",
 	},
 	"Movements": {
 		"Use the \"E\" key to move forward": "E",
 		"Use the \"D\" key to move backward": "D",
 		"Use the \"F\" key to move to your right": "F",
-		"Use the \"A\" key to move to your left": "A",
+		"Use the \"S\" key to move to your left": "S",
 	},
 	"Instruction": {
-		"Go to the man the arrow is pointing to": ""
+		"You truly learn fast, just like I he...": "Enter",
+		"I mean, go to the man the arrow is pointing to quickly!": ""
 	}
 }
 
@@ -53,14 +54,14 @@ func enter() -> void:
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
-		if game_screen.narration_text != "Go to the man the arrow is pointing to":
+		if game_screen.narration_text != "I mean, go to the man the arrow is pointing to quickly!":
 			if event.keycode == skip_keys["Enter"] and regular_skip and i < current_section_keys.size():
 				i += 1
 
 			if event.keycode == skip_keys["E"] and !regular_skip and i < current_section_keys.size() and game_screen.key_direction == "E":
 				i += 1
 
-			if event.keycode == skip_keys["A"] and !regular_skip and i < current_section_keys.size() and game_screen.key_direction == "A":
+			if event.keycode == skip_keys["S"] and !regular_skip and i < current_section_keys.size() and game_screen.key_direction == "S":
 				i += 1
 
 			if event.keycode == skip_keys["D"] and !regular_skip and i < current_section_keys.size() and game_screen.key_direction == "D":
