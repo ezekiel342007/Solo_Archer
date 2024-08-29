@@ -42,12 +42,6 @@ static func shoot_diagonal_up_right_input() -> bool:
 	return shoot_diagonal_up_right_pressed
 
 
-# static func shoot_diagonal_up_right_test_input() -> bool:
-# 	if Input.is_action_pressed("shoot_up"):
-# 		pass
-# 	return true
-
-
 static func shoot_diagonal_up_left_input() -> bool:
 	var shoot_diagonal_up_left_pressed: bool = Input.is_action_pressed("shoot_up") and Input.is_action_just_pressed("shoot_left")
 	return shoot_diagonal_up_left_pressed

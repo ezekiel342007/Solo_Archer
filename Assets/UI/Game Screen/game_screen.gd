@@ -17,7 +17,10 @@ func _ready():
 
 func _physics_process(_delta) -> void:
 	narration_label.text = narration_text
-	key_directions_label.text = "Press " + key_direction
+	if key_direction != "":
+		key_directions_label.text = "Press " + key_direction
+	else:
+		key_directions_label.text = ""
 
 	if !narrating:
 		narration_banner.visible = false
