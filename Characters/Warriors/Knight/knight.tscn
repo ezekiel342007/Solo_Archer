@@ -388,6 +388,8 @@ size = Vector2(122, 56.5)
 size = Vector2(130, 50)
 
 [node name="Knight" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
