@@ -5,10 +5,11 @@ extends Sprite2D
 var target_position: Vector2
 
 func _ready() -> void:
-	target_position = target_node.global_position
+	if target_node:
+		target_position = target_node.global_position
 
 func _physics_process(_delta: float) -> void:
-	point_at(target_node.global_position)
+	point_at(target_position)
 
 
 func point_at(target: Vector2) -> void:

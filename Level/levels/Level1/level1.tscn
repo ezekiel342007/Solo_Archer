@@ -580,6 +580,7 @@ limit_bottom = 2368
 editor_draw_limits = true
 
 [node name="GameScreen" parent="Player/Camera2D2" instance=ExtResource("7_6apo4")]
+unique_name_in_owner = true
 
 [node name="Enemies" type="Node" parent="."]
 

@@ -1,12 +1,11 @@
 extends CanvasLayer
 
-var narration_text: String
-var key_direction: String
-
-@onready var narration_banner = $"MarginContainer/NarrationBanner"
 @onready var narration_label: Label = %NarrationLabel
 @onready var key_directions_label: Label = %KeyDirectionsLabel
-
+@onready var narration_banner = $"MarginContainer/NarrationBanner"
+ 	
+var narration_text: String
+var key_direction: String
 var narrating: bool = false
 
 
@@ -24,3 +23,6 @@ func _physics_process(_delta) -> void:
 
 	if !narrating:
 		narration_banner.visible = false
+
+
+
