@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bj16pn2nb7mbm" path="res://Assets/environment/tree/tree.tscn" id="7_a80oa"]
 [ext_resource type="PackedScene" uid="uid://bdyam1g8b3uep" path="res://Characters/Goblins/TNTGoblin/tnt_goblin.tscn" id="8_1ryto"]
 [ext_resource type="PackedScene" uid="uid://cxkugss8ju2qd" path="res://Characters/Players/Player/player.tscn" id="9_q4i8g"]
-[ext_resource type="PackedScene" uid="uid://brwgg7tc0awf7" path="res://Assets/UI/pointer.tscn" id="10_j45ov"]
+[ext_resource type="PackedScene" uid="uid://brwgg7tc0awf7" path="res://Assets/UI/compass.tscn" id="10_j45ov"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y68hr"]
 texture = ExtResource("1_kesoq")
