@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d13oa2ujg5u7j"]
+[gd_scene load_steps=16 format=3 uid="uid://d13oa2ujg5u7j"]
 
 [ext_resource type="Texture2D" uid="uid://b8ivx2mfsca33" path="res://Assets/environment/tilemaps/Bridge_All.png" id="1_kesoq"]
 [ext_resource type="Texture2D" uid="uid://7tuvsnnnn77" path="res://Assets/environment/tilemaps/Shadows.png" id="2_etysv"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bj16pn2nb7mbm" path="res://Assets/environment/tree/tree.tscn" id="7_a80oa"]
 [ext_resource type="PackedScene" uid="uid://bdyam1g8b3uep" path="res://Characters/Goblins/TNTGoblin/tnt_goblin.tscn" id="8_1ryto"]
 [ext_resource type="PackedScene" uid="uid://cxkugss8ju2qd" path="res://Characters/Players/Player/player.tscn" id="9_q4i8g"]
+[ext_resource type="PackedScene" uid="uid://brwgg7tc0awf7" path="res://Assets/UI/pointer.tscn" id="10_j45ov"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y68hr"]
 texture = ExtResource("1_kesoq")
@@ -3772,10 +3773,13 @@ patrol_points = NodePath("PatrolPoints")
 [node name="PatrolPoints" type="Node" parent="Goblin"]
 
 [node name="PatrolPoint" parent="Goblin/PatrolPoints" instance=ExtResource("6_675b1")]
-position = Vector2(515, 590)
+position = Vector2(232, 296)
 
 [node name="PatrolPoint2" parent="Goblin/PatrolPoints" instance=ExtResource("6_675b1")]
 position = Vector2(741, 595)
+
+[node name="PatrolPoint3" parent="Goblin/PatrolPoints" instance=ExtResource("6_675b1")]
+position = Vector2(312, 560)
 
 [node name="Trees" type="Node" parent="."]
 
@@ -3800,3 +3804,7 @@ position = Vector2(120, 136)
 
 [node name="Player" parent="." node_paths=PackedStringArray("enemy_node") instance=ExtResource("9_q4i8g")]
 enemy_node = NodePath("../Enemies")
+
+[node name="Pointer" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("10_j45ov")]
+position = Vector2(544, 392)
+target_node = NodePath("../Goblin")

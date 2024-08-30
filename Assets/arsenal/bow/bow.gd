@@ -8,7 +8,7 @@ var mouse_control: bool = true
 var target_direction: Vector2
 var stp_time: int
 var stt_time: int
-var key_delay: int = 500
+var key_delay: int = 700
 var combo: bool = false
 
 

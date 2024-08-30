@@ -805,3 +805,6 @@ script = ExtResource("15_tlehr")
 
 [node name="Phase3" type="Node" parent="Phases"]
 script = ExtResource("16_tigf1")
+
+[node name="CommonerSpawnPosition" type="Marker2D" parent="."]
+position = Vector2(976, 504)
