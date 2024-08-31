@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d13oa2ujg5u7j"]
+[gd_scene load_steps=17 format=3 uid="uid://d13oa2ujg5u7j"]
 
 [ext_resource type="Texture2D" uid="uid://b8ivx2mfsca33" path="res://Assets/environment/tilemaps/Bridge_All.png" id="1_kesoq"]
 [ext_resource type="Texture2D" uid="uid://7tuvsnnnn77" path="res://Assets/environment/tilemaps/Shadows.png" id="2_etysv"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bdyam1g8b3uep" path="res://Characters/Goblins/TNTGoblin/tnt_goblin.tscn" id="8_1ryto"]
 [ext_resource type="PackedScene" uid="uid://cxkugss8ju2qd" path="res://Characters/Players/Player/player.tscn" id="9_q4i8g"]
 [ext_resource type="PackedScene" uid="uid://brwgg7tc0awf7" path="res://Assets/UI/Compass/compass.tscn" id="10_j45ov"]
+[ext_resource type="PackedScene" uid="uid://b3wxe8g3tw3lv" path="res://Assets/UI/TargetHighlighter/target_highlighter.tscn" id="11_crcx1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y68hr"]
 texture = ExtResource("1_kesoq")
@@ -3805,6 +3806,10 @@ position = Vector2(120, 136)
 [node name="Player" parent="." node_paths=PackedStringArray("enemy_node") instance=ExtResource("9_q4i8g")]
 enemy_node = NodePath("../Enemies")
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
 [node name="Pointer" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("10_j45ov")]
 position = Vector2(544, 392)
 target_node = NodePath("../Goblin")
+
+[node name="TargetHighlighter" parent="." instance=ExtResource("11_crcx1")]

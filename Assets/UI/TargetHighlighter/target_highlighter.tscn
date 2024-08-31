@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3wxe8g3tw3lv"]
+
+[ext_resource type="Texture2D" uid="uid://5r5ovsvofrd7" path="res://Assets/UI/TargetHighlighter/02.png" id="1_uxdla"]
+[ext_resource type="Script" path="res://Assets/UI/TargetHighlighter/target_highlighter.gd" id="2_dug78"]
+
+[node name="TargetHighlighter" type="Sprite2D"]
+z_index = 1
+position = Vector2(2, 0)
+scale = Vector2(1.89438, 1.75917)
+texture = ExtResource("1_uxdla")
+script = ExtResource("2_dug78")
