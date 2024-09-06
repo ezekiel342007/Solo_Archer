@@ -3,7 +3,6 @@ extends NodeState
 @export var enemy_node: Node
 
 @onready var game_screen = $"../../Player/Camera2D2/GameScreen"
-@onready var bomber_goblins = preload("res://Characters/Goblins/BomberGoblin/goblin.tscn")
 
 var i: int = 0
 var j: int = 0
@@ -23,7 +22,7 @@ var skip_keys: Dictionary = {
 var level_messages: Dictionary = {
 	"Greeting": {
 		"Hey there": "Enter",
-		"Welcome to Myusyu village": "Enter",
+		"You're right on time": "Enter",
 		"Sorry no time to explain, let's start with the basics": "Enter",
 	},
 	"Movements": {
@@ -52,7 +51,7 @@ func enter() -> void:
 	game_screen.narrating = true
 
 
-func _input(event):
+func on_input(event):
 	if event is InputEventKey and event.pressed:
 		if game_screen.narration_text != "I mean, go to the man the arrow is pointing to quickly!":
 			if event.keycode == skip_keys["Enter"] and regular_skip and i < current_section_keys.size():
@@ -74,7 +73,6 @@ func _input(event):
 				j += 1	
 				i = 0
 		else:
-			game_screen.narrating = false
 			# Transition to the second phase
 			transition.emit("Phase2")
 
@@ -89,3 +87,7 @@ func on_physics_process(_delta: float) -> void:
 	else:
 		regular_skip = true
 	game_screen.key_direction = current_section[current_section_keys[i]]
+
+
+func exit() -> void:
+	game_screen.narrating = false

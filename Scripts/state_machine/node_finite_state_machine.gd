@@ -27,6 +27,10 @@ func _process(delta: float) -> void:
 	if current_node_state:
 		current_node_state.on_process(delta)
 
+func _input(event) -> void:
+	if current_node_state:
+		current_node_state.on_input(event)
+
 
 func _physics_process(delta: float) -> void:
 	if current_node_state:

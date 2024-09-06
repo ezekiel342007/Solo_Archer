@@ -23,6 +23,8 @@ func _physics_process(_delta) -> void:
 
 	if !narrating:
 		narration_banner.visible = false
+	else:
+		narration_banner.visible = true
 
 
 
