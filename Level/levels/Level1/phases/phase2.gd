@@ -1,8 +1,8 @@
 extends NodeState
 
-@onready var game_screen = %GameScreen
-@onready var player = $"../../Player"
-@onready var commoner_spawn_position = $"../../CommonerSpawnPosition"
+@onready var game_screen: CanvasLayer = %GameScreen
+@onready var player: CharacterBody2D = %Player
+@onready var commoner_spawn_position: Marker2D = $"../../CommonerSpawnPosition"
 @onready var compass = preload("res://Assets/UI/Compass/compass.tscn")
 @onready var surviving_commoner = preload("res://Characters/Commoner/commoner.tscn")
 @onready var target_highlighter = preload("res://Assets/UI/TargetHighlighter/target_highlighter.tscn")

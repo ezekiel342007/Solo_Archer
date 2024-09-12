@@ -2,7 +2,7 @@ extends NodeState
 
 @export var enemy_node: Node
 
-@onready var game_screen = $"../../Player/Camera2D2/GameScreen"
+@onready var game_screen = %GameScreen
 
 var i: int = 0
 var j: int = 0

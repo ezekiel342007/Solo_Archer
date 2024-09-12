@@ -8,6 +8,7 @@ extends NodeState
 @onready var direction: Vector2 = $"../../".direction
 @onready var patrol_points: Node = $"../../".patrol_points
 
+var new_patrol_points_node: Node
 var current_point: Vector2
 var attack: bool = false
 var number_of_points: int
@@ -20,13 +21,19 @@ func enter() -> void:
 		# Assign the number of points
 		number_of_points = patrol_points.get_children().size()
 		# Populate the point positions list
-		for point: Area2D in patrol_points.get_children():
+		for point in patrol_points.get_children():
 			point_positions.append(point.global_position)
-		# Assign the current point
-		current_point = point_positions[current_point_position]
 	else:
-		# Debug error message if are was no patrol points
-		print("No patrol points")
+		new_patrol_points_node = make_patrol_points()
+		# Assign the number of points
+		number_of_points = new_patrol_points_node.get_children().size()
+		# Populate the point positions list
+		for point in new_patrol_points_node.get_children():
+			point_positions.append(point.global_position)
+
+
+	# Assign the current point
+	current_point = point_positions[current_point_position]
 
 	# Flip sprite if neccessary
 	flip_sprite()
@@ -60,6 +67,20 @@ func on_physics_process(delta: float) -> void:
 
 func exit() -> void:
 	animated_sprite_2d.stop()
+
+
+func make_patrol_points() -> Node:
+	var new_patrol_point1: Marker2D = Marker2D.new()
+	var new_patrol_point2: Marker2D = Marker2D.new()
+	var patrol_points_node: Node = Node.new()
+	new_patrol_point1.global_position.y = character_body_2d.global_position.y
+	new_patrol_point2.global_position.y = character_body_2d.global_position.y
+	new_patrol_point1.global_position.x = character_body_2d.global_position.x + 50.5
+	new_patrol_point2.global_position.x = character_body_2d.global_position.x - 50.5
+	patrol_points_node.add_child(new_patrol_point1)
+	patrol_points_node.add_child(new_patrol_point2)
+	return patrol_points_node
+	
 
 
 func flip_sprite() -> void:

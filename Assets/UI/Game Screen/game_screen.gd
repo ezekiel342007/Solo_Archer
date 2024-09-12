@@ -25,6 +25,3 @@ func _physics_process(_delta) -> void:
 		narration_banner.visible = false
 	else:
 		narration_banner.visible = true
-
-
-

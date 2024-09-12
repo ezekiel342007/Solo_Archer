@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export var health: int = 100
 @export var enemy_node: Node
 
+var can_move: bool = true
+
 
 func _ready():
 	for enemy in enemy_node.get_children():

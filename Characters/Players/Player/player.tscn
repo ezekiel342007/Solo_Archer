@@ -101,7 +101,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move",
-"speed": 8.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_85jo6"]
@@ -120,7 +120,6 @@ script = ExtResource("1_uwir1")
 position = Vector2(1, -8)
 sprite_frames = SubResource("SpriteFrames_ey8ve")
 animation = &"idle"
-autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
