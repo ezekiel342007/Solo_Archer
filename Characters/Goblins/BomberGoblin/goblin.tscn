@@ -157,10 +157,11 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kmeov"]
-radius = 23.0
+radius = 28.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_kld18"]
-radius = 24.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u7n1d"]
+radius = 35.0
+height = 96.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4f2k"]
 size = Vector2(353.5, 20)
@@ -170,7 +171,7 @@ radius = 50.0
 
 [node name="Goblin" type="CharacterBody2D" node_paths=PackedStringArray("state_machine") groups=["Enemy", "Patroller"]]
 collision_layer = 8
-collision_mask = 23
+collision_mask = 86
 script = ExtResource("1_ilqxl")
 state_machine = NodePath("StateMachine")
 
@@ -185,10 +186,13 @@ frame_progress = 0.145635
 shape = SubResource("CircleShape2D_kmeov")
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-visible = false
-shape = SubResource("CircleShape2D_kld18")
+position = Vector2(6, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_u7n1d")
 debug_color = Color(0.977497, 0.128722, 0.194641, 0.42)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
@@ -220,7 +224,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
-visible = false
 position = Vector2(-0.25, 0)
 shape = SubResource("RectangleShape2D_g4f2k")
 debug_color = Color(0, 0.647677, 0.204275, 0.42)
@@ -230,7 +233,6 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PointDetectArea2D"]
-visible = false
 shape = SubResource("CircleShape2D_l33dj")
 
 [node name="IdleTimer" type="Timer" parent="."]
@@ -241,6 +243,7 @@ autostart = true
 [node name="ReleasePoint" type="Marker2D" parent="."]
 position = Vector2(67, -7)
 
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="StateMachine/AttackState/AttackTimer" to="StateMachine/AttackState" method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]
 [connection signal="body_exited" from="PlayerDetect" to="." method="_on_player_detect_body_exited"]

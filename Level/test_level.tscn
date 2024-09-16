@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d13oa2ujg5u7j"]
+[gd_scene load_steps=17 format=3 uid="uid://d13oa2ujg5u7j"]
 
 [ext_resource type="Texture2D" uid="uid://b8ivx2mfsca33" path="res://Assets/environment/tilemaps/Bridge_All.png" id="1_kesoq"]
 [ext_resource type="Texture2D" uid="uid://7tuvsnnnn77" path="res://Assets/environment/tilemaps/Shadows.png" id="2_etysv"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dc0w0dannprwp" path="res://Characters/Goblins/BomberGoblin/goblin.tscn" id="5_gt8d6"]
 [ext_resource type="PackedScene" uid="uid://bj16pn2nb7mbm" path="res://Assets/environment/tree/tree.tscn" id="7_a80oa"]
 [ext_resource type="PackedScene" uid="uid://bdyam1g8b3uep" path="res://Characters/Goblins/TNTGoblin/tnt_goblin.tscn" id="8_1ryto"]
+[ext_resource type="PackedScene" uid="uid://5eixthwa0t4g" path="res://Assets/HealthBar/enemy_health_bar.tscn" id="9_17rfd"]
 [ext_resource type="PackedScene" uid="uid://cxkugss8ju2qd" path="res://Characters/Players/Player/player.tscn" id="9_q4i8g"]
 [ext_resource type="PackedScene" uid="uid://brwgg7tc0awf7" path="res://Assets/UI/Compass/compass.tscn" id="10_j45ov"]
+[ext_resource type="PackedScene" uid="uid://ypjavl7tjt1" path="res://Characters/Warriors/Knight/knight.tscn" id="11_8jp3n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y68hr"]
 texture = ExtResource("1_kesoq")
@@ -3769,6 +3771,9 @@ layer_0/tile_data = PackedInt32Array(1835008, 3, 0, 1900544, 3, 1, 1966080, 3, 2
 position = Vector2(639, 558)
 patrol_points = NodePath("../Node")
 
+[node name="HealthBar" parent="Goblin" instance=ExtResource("9_17rfd")]
+max_health = 10
+
 [node name="Trees" type="Node" parent="."]
 
 [node name="Tree" parent="Trees" instance=ExtResource("7_a80oa")]
@@ -3811,3 +3816,7 @@ position = Vector2(520, 8)
 
 [node name="Marker2D3" type="Marker2D" parent="Node"]
 position = Vector2(936, 208)
+
+[node name="Knight" parent="." instance=ExtResource("11_8jp3n")]
+
+[node name="HealthBar" parent="Knight" instance=ExtResource("9_17rfd")]

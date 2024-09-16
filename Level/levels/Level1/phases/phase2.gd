@@ -46,4 +46,5 @@ func highlight_commoner(highlighter: PackedScene) -> void:
 func exit() -> void:
 	get_node("../../TargetHighlighter").queue_free()
 	get_node("../../Player/Compass").queue_free()
+	get_node("../../Commoner/PlayerDetectionArea2D").body_entered.disconnect(initiate_dialogue)
 	commoner_spawn_position.queue_free()

@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var state_machine: NodeFiniteStateMachine
 @export var speed: float = 30.0
 @export var patrol_points: Node
+@export var health: int = 10
 
 # Indicates how long the player stays in the idle state before transtitioning to the move state
 @onready var idle_timer: Timer = %IdleTimer
@@ -12,11 +13,15 @@ var flip: bool
 var direction: Vector2
 
 
+func _physics_process(_delta: float) -> void:
+	if health == 0:
+		death()
+
+
 # Detects a player and transition to the attack state
 func _on_player_detect_body_entered(body: CharacterBody2D):
 	# if the body is the player
 	if body.name == "Player":
-		print("Player detected")
 		state_machine.transition_to("AttackState")
 
 
@@ -42,3 +47,15 @@ func _on_point_detect_area_2d_area_entered(area: Area2D):
 	if area.is_in_group("PatrolPoint"):
 		idle_timer.start()
 		state_machine.transition_to("IdleState")
+
+
+
+func _on_hurt_box_body_entered(body: CharacterBody2D):
+	if body.is_in_group("Arrow"):
+		modulate = Color8(255, 57, 66)
+		health -= 2
+	modulate = Color8(255, 255, 255)
+
+
+func death():
+	queue_free()

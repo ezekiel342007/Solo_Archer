@@ -1,6 +1,7 @@
-[gd_scene load_steps=62 format=3 uid="uid://ypjavl7tjt1"]
+[gd_scene load_steps=63 format=3 uid="uid://ypjavl7tjt1"]
 
 [ext_resource type="Texture2D" uid="uid://bl0bkj2ve14dw" path="res://Characters/Warriors/Knight/assets/Warrior_Blue.png" id="1_ejr1d"]
+[ext_resource type="Script" path="res://Characters/Warriors/Knight/knight.gd" id="1_icsfk"]
 [ext_resource type="Script" path="res://Characters/Warriors/Knight/states/state_machine_controller.gd" id="2_bjyc6"]
 [ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="2_k86x5"]
 [ext_resource type="Script" path="res://Characters/Warriors/Knight/states/idle_state.gd" id="3_bjfij"]
@@ -390,9 +391,9 @@ size = Vector2(130, 50)
 [node name="Knight" type="CharacterBody2D"]
 collision_layer = 64
 collision_mask = 30
+script = ExtResource("1_icsfk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CapsuleShape2D_3df7n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -404,14 +405,12 @@ frame_progress = 0.947544
 [node name="HurtBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-visible = false
 shape = SubResource("CapsuleShape2D_uy5da")
 debug_color = Color(0.965489, 0.180142, 0.122576, 0.42)
 
 [node name="DownAttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DownAttackArea"]
-visible = false
 position = Vector2(14, 36.75)
 shape = SubResource("RectangleShape2D_iix0s")
 debug_color = Color(0.877926, 0.000389667, 0.828806, 0.42)
@@ -419,7 +418,6 @@ debug_color = Color(0.877926, 0.000389667, 0.828806, 0.42)
 [node name="StraightAttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StraightAttackArea"]
-visible = false
 position = Vector2(27, -6)
 shape = SubResource("RectangleShape2D_hg7sx")
 debug_color = Color(0.855683, 0.000764894, 0.886327, 0.42)

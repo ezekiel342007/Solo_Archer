@@ -302,16 +302,15 @@ target_position = Vector2(219, -17)
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 66
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CapsuleShape2D_yqy7k")
 debug_color = Color(0.974541, 0.132064, 0.230467, 0.42)
 
 [node name="DownAttackArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
-collision_mask = 2
+collision_mask = 66
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DownAttackArea"]
 position = Vector2(4, 51)
@@ -319,9 +318,8 @@ shape = SubResource("RectangleShape2D_48mul")
 debug_color = Color(0.780176, 0.245096, 0.889725, 0.42)
 
 [node name="StraightAttackArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
-collision_mask = 2
+collision_mask = 66
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StraightAttackArea"]
 position = Vector2(54.5, -8.5)
@@ -331,7 +329,7 @@ debug_color = Color(0.807648, 0.120478, 0.949809, 0.42)
 [node name="UpAttackArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
-collision_mask = 2
+collision_mask = 66
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpAttackArea"]
 position = Vector2(-16, -36)
@@ -364,16 +362,16 @@ script = ExtResource("7_javim")
 script = ExtResource("10_ed787")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
-collision_mask = 2
+collision_mask = 66
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource("CircleShape2D_5qc6c")
 debug_color = Color(0.787137, 0.431229, 0.0199746, 0.42)
 
 [node name="PlayerFinder" type="Area2D" parent="."]
-visible = false
+collision_layer = 0
+collision_mask = 66
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerFinder"]
 shape = SubResource("CircleShape2D_2iig1")
