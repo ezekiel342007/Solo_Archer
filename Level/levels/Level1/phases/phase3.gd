@@ -70,7 +70,6 @@ func get_conversation_line(index: int) -> void:
 		elif speaker == "Goblin in sight":
 			spawn_goblin()
 			camera.transition_from(goblin_spawn_position.global_position)
-
 		game_screen.narration_text = conversation_line
 		game_screen.key_direction = "Enter or Space key"
 	else:
@@ -92,7 +91,6 @@ func get_directions(index: int) -> void:
 		battle = true
 
 
-
 func spawn_goblin() -> void:
 	var goblin_instance: CharacterBody2D = goblin.instantiate() as CharacterBody2D
 	goblin_instance.global_position = goblin_spawn_position.global_position
@@ -103,4 +101,10 @@ func spawn_goblin() -> void:
 func exit() -> void:
 	player.can_move = true
 	goblin_spawn_position.queue_free()
+	get_node("../..").child_exiting_tree.disconnect(_on_level_1_child_exiting_tree)
 	game_screen.narrating = false
+
+
+func _on_level_1_child_exiting_tree(node):
+	if node.name == "Goblin":
+		transition.emit("Phase4")

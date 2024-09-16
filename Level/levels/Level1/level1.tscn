@@ -821,4 +821,4 @@ focus = NodePath("../Player")
 [node name="GameScreen" parent="Camera2D2" instance=ExtResource("7_6apo4")]
 unique_name_in_owner = true
 
-[connection signal="child_exiting_tree" from="." to="Phases/Phase4" method="_on_level_1_child_exiting_tree"]
+[connection signal="child_exiting_tree" from="." to="Phases/Phase3" method="_on_level_1_child_exiting_tree"]
