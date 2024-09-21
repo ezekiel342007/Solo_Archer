@@ -2,12 +2,14 @@ extends NodeState
 @export var character_body_2d: CharacterBody2D
 @export var animated_sprite_2d: AnimatedSprite2D
 @export var speed: int = 5500
-var player: CharacterBody2D
+
+@onready var level: String = $"../../".level
+var player: Node2D
 
 
 func enter() -> void:
 	animated_sprite_2d.play("move")
-	player = get_tree().get_root().get_node("/root/TestLevel/Player")
+	player = get_tree().get_root().get_node("/root/" + level + "/Player")
 
 
 func on_physics_process(delta: float) -> void:

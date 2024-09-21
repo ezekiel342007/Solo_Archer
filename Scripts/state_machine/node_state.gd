@@ -11,7 +11,7 @@ func enter() -> void:
 func on_process(_delta: float) -> void:
 	pass
 
-func on_input(event) -> void:
+func on_input(_event) -> void:
 	pass
 
 func on_physics_process(_delta: float) -> void:

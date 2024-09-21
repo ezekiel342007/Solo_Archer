@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var health: int = 100
 @export var enemy_node: Node

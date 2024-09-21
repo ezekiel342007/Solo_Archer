@@ -3,6 +3,7 @@ extends NodeState
 @export var enemy_node: Node
 
 @onready var game_screen = %GameScreen
+@onready var level1 = $"../../"
 
 var i: int = 0
 var j: int = 0
@@ -40,6 +41,7 @@ var level_messages: Dictionary = {
 
 
 func enter() -> void:
+	level1.phase1 = true
 	# Saving each section of the message
 	for section in level_messages.keys():
 		message_sections.append(section)
@@ -92,3 +94,4 @@ func on_physics_process(_delta: float) -> void:
 
 func exit() -> void:
 	game_screen.narrating = false
+	level1.phase1 = false

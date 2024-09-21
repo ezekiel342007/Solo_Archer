@@ -6,10 +6,12 @@ extends NodeState
 @onready var compass = preload("res://Assets/UI/Compass/compass.tscn")
 @onready var surviving_commoner = preload("res://Characters/Commoner/commoner.tscn")
 @onready var target_highlighter = preload("res://Assets/UI/TargetHighlighter/target_highlighter.tscn")
+@onready var level1 = $"../.."
 
 var commoner_player_detector: Area2D
 
 func enter() -> void:
+	level1.phase2 = true
 	# Prevent the state from repeating
 	game_screen.narration_text = ""
 	add_survivng_commoner(surviving_commoner)
@@ -44,6 +46,7 @@ func highlight_commoner(highlighter: PackedScene) -> void:
 
 
 func exit() -> void:
+	level1.phase2 = false
 	get_node("../../TargetHighlighter").queue_free()
 	get_node("../../Player/Compass").queue_free()
 	get_node("../../Commoner/PlayerDetectionArea2D").body_entered.disconnect(initiate_dialogue)

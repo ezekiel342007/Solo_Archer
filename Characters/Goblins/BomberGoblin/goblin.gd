@@ -49,11 +49,11 @@ func _on_point_detect_area_2d_area_entered(area: Area2D):
 		state_machine.transition_to("IdleState")
 
 
-
 func _on_hurt_box_body_entered(body: CharacterBody2D):
 	if body.is_in_group("Arrow"):
 		modulate = Color8(255, 57, 66)
 		health -= 2
+	print("health: ", health)
 	modulate = Color8(255, 255, 255)
 
 

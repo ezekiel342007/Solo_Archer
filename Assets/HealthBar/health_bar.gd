@@ -10,3 +10,6 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if get_parent().health != null:
 		value = get_parent().health
+	else:
+		print("no health found")
+	print(value)

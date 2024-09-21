@@ -1,6 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cno71nhia4ng2"]
+[gd_scene load_steps=21 format=3 uid="uid://cno71nhia4ng2"]
 
 [ext_resource type="Texture2D" uid="uid://t5a33cy1oy8v" path="res://Characters/Commoner/assets/Pawn_Blue.png" id="1_5lkpv"]
+[ext_resource type="Script" path="res://Characters/Commoner/commoner.gd" id="1_plq4b"]
+[ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="2_v4kiu"]
+[ext_resource type="Script" path="res://Characters/Commoner/states/idle_state.gd" id="3_n17ja"]
+[ext_resource type="Script" path="res://Characters/Commoner/states/move_state.gd" id="4_xjvpi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cci1r"]
 
@@ -28,6 +32,30 @@ region = Rect2(768, 0, 192, 192)
 atlas = ExtResource("1_5lkpv")
 region = Rect2(960, 0, 192, 192)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg84l"]
+atlas = ExtResource("1_5lkpv")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs8kr"]
+atlas = ExtResource("1_5lkpv")
+region = Rect2(192, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vayk"]
+atlas = ExtResource("1_5lkpv")
+region = Rect2(384, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p23aa"]
+atlas = ExtResource("1_5lkpv")
+region = Rect2(576, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m554"]
+atlas = ExtResource("1_5lkpv")
+region = Rect2(768, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jr0t"]
+atlas = ExtResource("1_5lkpv")
+region = Rect2(960, 192, 192, 192)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_tld5a"]
 animations = [{
 "frames": [{
@@ -50,24 +78,50 @@ animations = [{
 "texture": SubResource("AtlasTexture_0otvh")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg84l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs8kr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vayk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p23aa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m554")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jr0t")
+}],
+"loop": true,
+"name": &"move",
+"speed": 10.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gx62f"]
 radius = 85.0
 
-[node name="Commoner" type="CharacterBody2D"]
+[node name="Commoner" type="CharacterBody2D" node_paths=PackedStringArray("state_machine")]
 collision_layer = 64
 collision_mask = 26
+script = ExtResource("1_plq4b")
+state_machine = NodePath("StateMachine")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cci1r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 11)
 sprite_frames = SubResource("SpriteFrames_tld5a")
-autoplay = "default"
-frame_progress = 0.631786
+animation = &"move"
+frame_progress = 0.308418
 
 [node name="PlayerDetectionArea2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -76,3 +130,43 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea2D"]
 shape = SubResource("CircleShape2D_gx62f")
 debug_color = Color(0.296422, 0.623777, 0.234677, 0.42)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
+script = ExtResource("2_v4kiu")
+initial_node_state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+script = ExtResource("3_n17ja")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="MoveState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
+script = ExtResource("4_xjvpi")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
+
+[node name="ObstacleSensors" type="Node" parent="."]
+
+[node name="ObstacleSensor1" type="RayCast2D" parent="ObstacleSensors"]
+target_position = Vector2(39, 1)
+
+[node name="ObstacleSensor2" type="RayCast2D" parent="ObstacleSensors"]
+target_position = Vector2(30, -30)
+
+[node name="ObstacleSensor3" type="RayCast2D" parent="ObstacleSensors"]
+target_position = Vector2(-30, 30)
+
+[node name="ObstacleSensor4" type="RayCast2D" parent="ObstacleSensors"]
+target_position = Vector2(-30, -30)
+
+[node name="ObstacleSensor5" type="RayCast2D" parent="ObstacleSensors"]
+target_position = Vector2(30, 30)
+
+[node name="ObstacleSensor6" type="RayCast2D" parent="ObstacleSensors"]
+target_position = Vector2(0, -39)
+
+[node name="ObstacleSensor7" type="RayCast2D" parent="ObstacleSensors"]
+target_position = Vector2(-39, 0)
+
+[node name="ObstacleSensor8" type="RayCast2D" parent="ObstacleSensors"]
+target_position = Vector2(0, 39)
