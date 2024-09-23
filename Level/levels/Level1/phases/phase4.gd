@@ -10,11 +10,11 @@ extends NodeState
 @onready var compass = preload("res://Assets/UI/Compass/compass.tscn")
 @onready var tnt_goblin = preload("res://Characters/Goblins/TNTGoblin/tnt_goblin.tscn")
 
-
+var enemy_node: Node
+var enemy_counter: EnemyCounter
 var surviving_commoner: Commoner
 var displaying_message: bool = false
 var should_spawn_goblins: bool = true
-var enemy_node: Node
 
 
 func enter() -> void:
@@ -29,22 +29,28 @@ func enter() -> void:
 func on_physics_process(_delta: float) -> void:
 	if surviving_commoner != null:
 		if !camera.get_viewport_rect().has_point(camera.to_local(surviving_commoner.global_position)):
-			surviving_commoner.flee()
+			surviving_commoner.flee = true
 
 	if (wave_trigger.is_colliding() and wave_trigger.get_collider() is Player) and (should_spawn_goblins == true and level1.phase4):
 		should_spawn_goblins = false
 		if get_node("/root/Level1/Player/Compass") != null:
 			get_node("/root/Level1/Player/Compass").queue_free()
+
 		spawn_goblins()
+
+		if game_screen.margin_container.get_node("HBoxContainer/EnemyCounter") == null:
+			game_screen.margin_container.get_node("HBoxContainer").add_child(EnemyCounter.new("../../../../../Enemies"))
+
+	if game_screen.margin_container.get_node("HBoxContainer").get_children().size() != 0:
+		enemy_counter = game_screen.margin_container.get_node("HBoxContainer").get_child(0)
+		print(enemy_counter.enemy_count)
+		if enemy_counter.enemy_count == 0:
+			surviving_commoner.run_to_player = true
 
 
 func on_input(event):
 	if event is InputEventKey and event.pressed:
 		game_screen.narrating = false
-
-
-func move_surviving_commoner_to_player() -> void:
-	surviving_commoner.velocity = (player.global_position - surviving_commoner.global_position)
 
 
 # Provide direction to mob after player has killed the tutorial goblin

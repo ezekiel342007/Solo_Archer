@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name BomberGoblin
 
 @export var state_machine: NodeFiniteStateMachine
 @export var speed: float = 30.0

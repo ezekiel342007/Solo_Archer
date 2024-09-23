@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhdl31pf8pe6g"]
+
+[ext_resource type="Script" path="res://Assets/Dialogue Scene/dialogue_scene.gd" id="1_sp4kr"]
+[ext_resource type="PackedScene" uid="uid://b6gqtiu4t7ln" path="res://Assets/UI/Game Screen/game_screen.tscn" id="2_43yqp"]
+
+[node name="DialogueScene" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_sp4kr")
+
+[node name="Participants" type="Node" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(384, 324)
+
+[node name="GameScreen" parent="Camera2D" instance=ExtResource("2_43yqp")]

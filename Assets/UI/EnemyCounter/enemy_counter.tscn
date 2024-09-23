@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ih7dpxulgbua"]
+
+[ext_resource type="Script" path="res://Assets/UI/EnemyCounter/enemy_counter.gd" id="1_abvdm"]
+
+[node name="EnemyCountLabel" type="Label"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+script = ExtResource("1_abvdm")

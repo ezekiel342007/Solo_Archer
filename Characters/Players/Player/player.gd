@@ -15,3 +15,4 @@ func _ready():
 
 func on_has_exploded(damage: int) -> void:
 	PlayerManagement.health -= damage
+	print(PlayerManagement.health)

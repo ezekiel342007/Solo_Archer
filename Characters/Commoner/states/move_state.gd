@@ -5,6 +5,7 @@ extends NodeState
 @export var speed: int = 2000
 
 @onready var obstacle_sensor = $"../../ObstacleSensors"
+@onready var commoner = $"../../"
 
 var start_direction: String
 var directions: Dictionary
@@ -25,7 +26,8 @@ func enter() -> void:
 
 
 func on_physics_process(delta: float) -> void:
-	character_body_2d.velocity = directions[start_direction] * speed * delta
+	if commoner.flee:
+		character_body_2d.velocity = directions[start_direction] * speed * delta
 
 	character_body_2d.move_and_slide()
 

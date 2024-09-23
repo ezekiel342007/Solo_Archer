@@ -4,5 +4,5 @@ class_name Commoner
 @export var state_machine: NodeFiniteStateMachine
 
 
-func flee() -> void:
-	state_machine.transition_to("MoveState")
+var flee: bool = false
+var run_to_player: bool = false
