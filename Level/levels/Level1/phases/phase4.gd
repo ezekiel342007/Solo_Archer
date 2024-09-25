@@ -13,23 +13,25 @@ extends NodeState
 var enemy_node: Node
 var enemy_counter: EnemyCounter
 var surviving_commoner: Commoner
+var level_complete: bool = false
 var displaying_message: bool = false
 var should_spawn_goblins: bool = true
 
 
 func enter() -> void:
 	level1.phase4 = true
-	surviving_commoner = $"../../Commoner"
-	enemy_node = $"../../Enemies"
-	game_screen.narrating = true
 	displaying_message = true
+	game_screen.narrating = true
+	enemy_node = $"../../Enemies"
+	surviving_commoner = $"../../Commoner"
+	surviving_commoner.reached_player.connect(end_level)
 	direct_to_mob()
 
 
 func on_physics_process(_delta: float) -> void:
 	if surviving_commoner != null:
 		if !camera.get_viewport_rect().has_point(camera.to_local(surviving_commoner.global_position)):
-			surviving_commoner.flee = true
+			surviving_commoner.flee_scene()
 
 	if (wave_trigger.is_colliding() and wave_trigger.get_collider() is Player) and (should_spawn_goblins == true and level1.phase4):
 		should_spawn_goblins = false
@@ -43,14 +45,16 @@ func on_physics_process(_delta: float) -> void:
 
 	if game_screen.margin_container.get_node("HBoxContainer").get_children().size() != 0:
 		enemy_counter = game_screen.margin_container.get_node("HBoxContainer").get_child(0)
-		print(enemy_counter.enemy_count)
 		if enemy_counter.enemy_count == 0:
-			surviving_commoner.run_to_player = true
+			surviving_commoner.run_to(player.global_position)
 
 
 func on_input(event):
 	if event is InputEventKey and event.pressed:
-		game_screen.narrating = false
+		if level_complete == false:
+			game_screen.narrating = false
+		else:
+			get_tree().change_scene_to_file("res://Assets/Dialogue Scene/dialogue_scene.tscn")
 
 
 # Provide direction to mob after player has killed the tutorial goblin
@@ -70,6 +74,13 @@ func spawn_goblins() -> void:
 			tnt_gobliin_instance.level = "Level1"
 			enemy_node.add_child(tnt_gobliin_instance)
 			await get_tree().create_timer(1.0).timeout
+
+
+func end_level() -> void:
+	if enemy_counter.enemy_count == 0:
+		game_screen.narrating = true
+		game_screen.narration_text = "Level Complete"
+		level_complete = true
 
 
 func exit() -> void:

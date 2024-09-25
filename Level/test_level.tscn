@@ -1524,9 +1524,8 @@ position = Vector2(120, 136)
 [node name="TNTGoblin" parent="Enemies" instance=ExtResource("8_1ryto")]
 position = Vector2(112, 368)
 
-[node name="Player" parent="." node_paths=PackedStringArray("enemy_node") instance=ExtResource("9_q4i8g")]
+[node name="Player" parent="." instance=ExtResource("9_q4i8g")]
 position = Vector2(472, 400)
-enemy_node = NodePath("../Enemies")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 

@@ -36,30 +36,23 @@ func on_physics_process(_delta):
 			player_position = body.position
 
 
-func exit() -> void:
-	attack_timer.stop()
-	animated_sprite_2d.stop()
-
-
 func explode() -> void:
 	var explosion_instance: Area2D = explosion.instantiate() as Area2D
+	explosion_instance.damage = 4
 	explosion_instance.global_position = release_point.global_position
 	get_tree().get_root().add_child(explosion_instance)
 
 
 func position_release_point() -> void:
-
 	# If the player is behind the goblin
 	if player_position.x < character_body_2d.position.x:
 		# Flips the goblin
 		animated_sprite_2d.flip_h = true
 		# Always target the player
 		release_point.global_position = player_position
-
 	# If the player is in front of the goblin
 	elif player_position.x > character_body_2d.position.x:
 		animated_sprite_2d.flip_h = false
-
 		# Always target the player
 		release_point.global_position = player_position
 
@@ -69,3 +62,8 @@ func _on_attack_timer_timeout():
 	position_release_point()
 	await animated_sprite_2d.animation_finished
 	explode()
+
+
+func exit() -> void:
+	attack_timer.stop()
+	animated_sprite_2d.stop()

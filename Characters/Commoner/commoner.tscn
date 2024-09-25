@@ -147,26 +147,34 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="ObstacleSensors" type="Node" parent="."]
 
-[node name="ObstacleSensor1" type="RayCast2D" parent="ObstacleSensors"]
+[node name="ObstacleSensorRight" type="RayCast2D" parent="ObstacleSensors"]
 target_position = Vector2(39, 1)
+collision_mask = 16
 
-[node name="ObstacleSensor2" type="RayCast2D" parent="ObstacleSensors"]
+[node name="ObstacleSensorUpRight" type="RayCast2D" parent="ObstacleSensors"]
 target_position = Vector2(30, -30)
+collision_mask = 16
 
-[node name="ObstacleSensor3" type="RayCast2D" parent="ObstacleSensors"]
+[node name="ObstacleSensorDownLeft" type="RayCast2D" parent="ObstacleSensors"]
 target_position = Vector2(-30, 30)
+collision_mask = 16
 
-[node name="ObstacleSensor4" type="RayCast2D" parent="ObstacleSensors"]
+[node name="ObstacleSensorUpLeft" type="RayCast2D" parent="ObstacleSensors"]
 target_position = Vector2(-30, -30)
+collision_mask = 16
 
-[node name="ObstacleSensor5" type="RayCast2D" parent="ObstacleSensors"]
+[node name="ObstacleSensorDownRight" type="RayCast2D" parent="ObstacleSensors"]
 target_position = Vector2(30, 30)
+collision_mask = 16
 
-[node name="ObstacleSensor6" type="RayCast2D" parent="ObstacleSensors"]
+[node name="ObstacleSensorUp" type="RayCast2D" parent="ObstacleSensors"]
 target_position = Vector2(0, -39)
+collision_mask = 16
 
-[node name="ObstacleSensor7" type="RayCast2D" parent="ObstacleSensors"]
+[node name="ObstacleSensorLeft" type="RayCast2D" parent="ObstacleSensors"]
 target_position = Vector2(-39, 0)
+collision_mask = 16
 
-[node name="ObstacleSensor8" type="RayCast2D" parent="ObstacleSensors"]
+[node name="ObstacleSensorDown" type="RayCast2D" parent="ObstacleSensors"]
 target_position = Vector2(0, 39)
+collision_mask = 16
