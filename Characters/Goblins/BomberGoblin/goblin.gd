@@ -54,7 +54,7 @@ func _on_hurt_box_body_entered(body: CharacterBody2D):
 	if body.is_in_group("Arrow"):
 		modulate = Color8(255, 57, 66)
 		health -= 2
-	print("health: ", health)
+		body.queue_free()
 	modulate = Color8(255, 255, 255)
 
 

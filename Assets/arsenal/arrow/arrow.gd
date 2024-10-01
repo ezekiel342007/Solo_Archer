@@ -14,5 +14,6 @@ func _physics_process(delta: float) -> void:
 	var _collision_info = move_and_collide(velocity.normalized() * delta * speed)
 
 
-func _on_target_detect_body_entered(_body) -> void:
-	queue_free()
+func _on_target_detect_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Obstacle"):
+		queue_free()

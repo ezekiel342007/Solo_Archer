@@ -6,7 +6,7 @@
 radius = 26.0
 height = 92.0
 
-[node name="BottomBorderShrub" type="StaticBody2D"]
+[node name="BottomBorderShrub" type="StaticBody2D" groups=["Obstacle"]]
 z_index = 1
 position = Vector2(0, 3)
 collision_layer = 16

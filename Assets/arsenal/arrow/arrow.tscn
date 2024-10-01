@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nsx8"]
 size = Vector2(63, 5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7sryd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yebhd"]
 size = Vector2(65, 7)
 
 [node name="Arrow" type="CharacterBody2D" groups=["Arrow"]]
@@ -23,14 +23,13 @@ texture = ExtResource("2_sbmh5")
 position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_3nsx8")
 
-[node name="TargetDetect" type="Area2D" parent="."]
-position = Vector2(0, -1)
+[node name="TargetDetectArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 24
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetDetect"]
-position = Vector2(0.5, 1.5)
-shape = SubResource("RectangleShape2D_7sryd")
-debug_color = Color(0.841375, 0.37235, 0.234557, 0.42)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetDetectArea"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_yebhd")
+debug_color = Color(0.729993, 0.473357, 0, 0.42)
 
-[connection signal="body_entered" from="TargetDetect" to="." method="_on_target_detect_body_entered"]
+[connection signal="body_entered" from="TargetDetectArea" to="." method="_on_target_detect_area_body_entered"]

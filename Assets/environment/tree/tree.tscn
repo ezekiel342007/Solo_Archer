@@ -41,7 +41,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_wl4uo"]
 radius = 23.0
 
-[node name="Tree" type="StaticBody2D"]
+[node name="Tree" type="StaticBody2D" groups=["Obstacle"]]
 z_index = 1
 collision_layer = 16
 collision_mask = 8

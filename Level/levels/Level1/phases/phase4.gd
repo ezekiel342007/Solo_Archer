@@ -33,7 +33,8 @@ func enter() -> void:
 
 func on_physics_process(_delta: float) -> void:
 	if surviving_commoner != null:
-		if !camera.get_viewport_rect().has_point(camera.to_local(surviving_commoner.global_position)):
+		if camera.get_viewport_rect().abs().has_point(camera.to_local(surviving_commoner.global_position)):
+			print("is is view")
 			surviving_commoner.flee_scene()
 
 	if (wave_trigger.is_colliding() and wave_trigger.get_collider() is Player) and (should_spawn_goblins == true and level1.phase4):
