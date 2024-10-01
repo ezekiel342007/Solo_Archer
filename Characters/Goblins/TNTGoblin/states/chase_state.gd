@@ -4,6 +4,7 @@ extends NodeState
 @export var speed: int = 5500
 
 @onready var level: String = $"../../".level
+
 var player: Node2D
 
 
@@ -13,12 +14,15 @@ func enter() -> void:
 
 
 func on_physics_process(delta: float) -> void:
-	var direction: Vector2 = character_body_2d.global_position.direction_to(player.global_position)
-	character_body_2d.velocity = direction * speed * delta
-	if player.global_position.x < character_body_2d.global_position.x:
-		animated_sprite_2d.flip_h = true
-	elif player.global_position.x > character_body_2d.global_position.x:
-		animated_sprite_2d.flip_h = false
+	if player != null:
+		var direction: Vector2 = character_body_2d.global_position.direction_to(player.global_position)
+		character_body_2d.velocity = direction * speed * delta
+		if player.global_position.x < character_body_2d.global_position.x:
+			animated_sprite_2d.flip_h = true
+		elif player.global_position.x > character_body_2d.global_position.x:
+			animated_sprite_2d.flip_h = false
+	else:
+		character_body_2d.velocity = Vector2(0.0, 0.0)
 
 	character_body_2d.move_and_slide()
 

@@ -6,8 +6,6 @@
 [ext_resource type="Script" path="res://Characters/Commoner/states/idle_state.gd" id="3_n17ja"]
 [ext_resource type="Script" path="res://Characters/Commoner/states/move_state.gd" id="4_xjvpi"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cci1r"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_h0vg4"]
 atlas = ExtResource("1_5lkpv")
 region = Rect2(0, 0, 192, 192)
@@ -105,6 +103,10 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cci1r"]
+radius = 22.0
+height = 52.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_gx62f"]
 radius = 85.0
 
@@ -114,14 +116,12 @@ collision_mask = 26
 script = ExtResource("1_plq4b")
 state_machine = NodePath("StateMachine")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tld5a")
+animation = &"idle"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_cci1r")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 11)
-sprite_frames = SubResource("SpriteFrames_tld5a")
-animation = &"move"
-frame_progress = 0.308418
 
 [node name="PlayerDetectionArea2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -147,34 +147,42 @@ animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
 [node name="ObstacleSensors" type="Node" parent="."]
 
-[node name="ObstacleSensorRight" type="RayCast2D" parent="ObstacleSensors"]
-target_position = Vector2(39, 1)
-collision_mask = 16
-
-[node name="ObstacleSensorUpRight" type="RayCast2D" parent="ObstacleSensors"]
-target_position = Vector2(30, -30)
-collision_mask = 16
-
-[node name="ObstacleSensorDownLeft" type="RayCast2D" parent="ObstacleSensors"]
-target_position = Vector2(-30, 30)
+[node name="ObstacleSensorDown" type="RayCast2D" parent="ObstacleSensors"]
+position = Vector2(0, 27)
+target_position = Vector2(0, 18)
 collision_mask = 16
 
 [node name="ObstacleSensorUpLeft" type="RayCast2D" parent="ObstacleSensors"]
-target_position = Vector2(-30, -30)
-collision_mask = 16
-
-[node name="ObstacleSensorDownRight" type="RayCast2D" parent="ObstacleSensors"]
-target_position = Vector2(30, 30)
+position = Vector2(-18, -19)
+target_position = Vector2(-10, -8)
 collision_mask = 16
 
 [node name="ObstacleSensorUp" type="RayCast2D" parent="ObstacleSensors"]
-target_position = Vector2(0, -39)
+position = Vector2(0, -27)
+target_position = Vector2(0, -18)
+collision_mask = 16
+
+[node name="ObstacleSensorUpRight" type="RayCast2D" parent="ObstacleSensors"]
+position = Vector2(18, -18)
+target_position = Vector2(10, -8)
+collision_mask = 16
+
+[node name="ObstacleSensorRight" type="RayCast2D" parent="ObstacleSensors"]
+position = Vector2(24, 0)
+target_position = Vector2(18, 0)
+collision_mask = 16
+
+[node name="ObstacleSensorDownLeft" type="RayCast2D" parent="ObstacleSensors"]
+position = Vector2(-19, 19)
+target_position = Vector2(-10, 8)
 collision_mask = 16
 
 [node name="ObstacleSensorLeft" type="RayCast2D" parent="ObstacleSensors"]
-target_position = Vector2(-39, 0)
+position = Vector2(-24, 0)
+target_position = Vector2(-18, 0)
 collision_mask = 16
 
-[node name="ObstacleSensorDown" type="RayCast2D" parent="ObstacleSensors"]
-target_position = Vector2(0, 39)
+[node name="ObstacleSensorDownRight" type="RayCast2D" parent="ObstacleSensors"]
+position = Vector2(19, 18)
+target_position = Vector2(10, 8)
 collision_mask = 16

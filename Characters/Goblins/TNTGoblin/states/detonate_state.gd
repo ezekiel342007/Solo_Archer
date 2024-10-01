@@ -10,7 +10,6 @@ extends NodeState
 
 func enter() -> void:
 	animated_sprite_2d.play("detonate")
-	print(tnt_goblin.cause_of_death)
 	detonate()
 
 
@@ -23,7 +22,6 @@ func detonate() -> void:
 	explosion_instance.global_position = character_body_2d.global_position
 	character_body_2d.queue_free()
 	get_tree().get_root().call_deferred("add_child", explosion_instance)
-	# Emit the "has_exploded" signal of the TNTGoblin (grand parent)
 
 
 func exit() -> void:

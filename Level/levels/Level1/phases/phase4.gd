@@ -9,6 +9,8 @@ extends NodeState
 @onready var tree: StaticBody2D = $"../../Environment/Trees/Tree"
 @onready var compass = preload("res://Assets/UI/Compass/compass.tscn")
 @onready var tnt_goblin = preload("res://Characters/Goblins/TNTGoblin/tnt_goblin.tscn")
+@onready var restart_menu = preload("res://Assets/UI/RestartOptions/restart_menu.tscn")
+@onready var player_health_bar = preload("res://Assets/UI/PlayerHealthBar/player_health_bar.tscn")
 
 var enemy_node: Node
 var enemy_counter: EnemyCounter
@@ -24,6 +26,7 @@ func enter() -> void:
 	game_screen.narrating = true
 	enemy_node = $"../../Enemies"
 	surviving_commoner = $"../../Commoner"
+	PlayerManagement.has_died.connect(player_death)
 	surviving_commoner.reached_player.connect(end_level)
 	direct_to_mob()
 
@@ -39,14 +42,15 @@ func on_physics_process(_delta: float) -> void:
 			get_node("/root/Level1/Player/Compass").queue_free()
 
 		spawn_goblins()
+		player.add_child(player_health_bar.instantiate())
 
-		if game_screen.margin_container.get_node("HBoxContainer/EnemyCounter") == null:
-			game_screen.margin_container.get_node("HBoxContainer").add_child(EnemyCounter.new("../../../../../Enemies"))
+		if game_screen.margin_container.get_node("MarginContainer/EnemyCounter") == null:
+			game_screen.margin_container.get_node("MarginContainer").add_child(EnemyCounter.new("../../../../../Enemies"))
 
-	if game_screen.margin_container.get_node("HBoxContainer").get_children().size() != 0:
-		enemy_counter = game_screen.margin_container.get_node("HBoxContainer").get_child(0)
+	if game_screen.margin_container.get_node("MarginContainer").get_children().size() != 0:
+		enemy_counter = game_screen.margin_container.get_node("MarginContainer").get_child(0)
 		if enemy_counter.enemy_count == 0:
-			surviving_commoner.run_to(player.global_position)
+			surviving_commoner.run_to(player)
 
 
 func on_input(event):
@@ -76,11 +80,18 @@ func spawn_goblins() -> void:
 			await get_tree().create_timer(1.0).timeout
 
 
+func player_death() -> void:
+	player.queue_free()
+	var restart_menu_instance: ColorRect = restart_menu.instantiate() as ColorRect
+	restart_menu_instance.failed_level = "res://Level/levels/Level1/level1.tscn"
+	game_screen.margin_container.add_child(restart_menu_instance)
+
+
 func end_level() -> void:
 	if enemy_counter.enemy_count == 0:
 		game_screen.narrating = true
 		game_screen.narration_text = "Level Complete"
-		level_complete = true
+		# level_complete = true
 
 
 func exit() -> void:

@@ -14,7 +14,7 @@ var transition_target: Vector2
 
 
 func _physics_process(_delta: float) -> void:
-	if focus:
+	if focus != null:
 		if transitioning == false:
 			global_position = focus.global_position
 		else:

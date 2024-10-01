@@ -12,7 +12,7 @@ func flee_scene() -> void:
 	flee = true
 	state_machine.transition_to("MoveState")
 
-func run_to(point: Vector2) -> void:
+func run_to(node: Node2D) -> void:
 	run_to_player = true
-	destination = point
+	destination = node.global_position
 	state_machine.transition_to("MoveState")
