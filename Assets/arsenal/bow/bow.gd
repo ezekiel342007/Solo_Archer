@@ -8,7 +8,7 @@ var mouse_control: bool = true
 var target_direction: Vector2
 var stp_time: int
 var stt_time: int
-var key_delay: int = 700
+var key_delay: int = 2000
 var combo: bool = false
 
 
@@ -117,31 +117,31 @@ func shoot_with_key(key: String) -> void:
 			if !combo:
 				rotation_degrees = 180
 				arrow_instance.velocity.x = -arrow_instance.speed
-				arrow_instance.rotation_degrees = (rotation_degrees / 2)
+				arrow_instance.rotation_degrees = (rotation_degrees)
 		"up":
 			rotation_degrees = -90
 			arrow_instance.velocity.y = -arrow_instance.speed
-			arrow_instance.rotation_degrees = (rotation_degrees / 2)
+			arrow_instance.rotation_degrees = (rotation_degrees)
 		"down":
 			rotation_degrees = 90
 			arrow_instance.velocity.y = arrow_instance.speed
-			arrow_instance.rotation_degrees = (rotation_degrees / 2)
+			arrow_instance.rotation_degrees = (rotation_degrees)
 		"diagonal_up_right":
 			rotation_degrees = -45
 			arrow_instance.velocity = release_marker_2d.position.rotated(to_radians(343)) * arrow_instance.speed
-			arrow_instance.rotation_degrees = (rotation_degrees / 2)
+			arrow_instance.rotation_degrees = (rotation_degrees)
 		"diagonal_up_left":
 			rotation_degrees = -135
 			arrow_instance.velocity = release_marker_2d.position.rotated(to_radians(253)) * arrow_instance.speed
-			arrow_instance.rotation_degrees = (rotation_degrees / 2)
+			arrow_instance.rotation_degrees = (rotation_degrees)
 		"diagonal_down_left":
 			rotation_degrees = 135
 			arrow_instance.velocity = release_marker_2d.position.rotated(to_radians(163)) * arrow_instance.speed
-			arrow_instance.rotation_degrees = (rotation_degrees / 2)
+			arrow_instance.rotation_degrees = (rotation_degrees)
 		"diagonal_down_right":
 			rotation_degrees = 45
 			arrow_instance.velocity = release_marker_2d.position.rotated(to_radians(73)) * arrow_instance.speed
-			arrow_instance.rotation_degrees = (rotation_degrees / 2)
+			arrow_instance.rotation_degrees = (rotation_degrees)
 	
 	arrow_instance.global_position = release_marker_2d.global_position
 	# Make sure the arrows don't face the mouse but the correct direction
