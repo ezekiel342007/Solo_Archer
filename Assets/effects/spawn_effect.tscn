@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://cx7kqymbam1mm"]
+
+[ext_resource type="Texture2D" uid="uid://cw4hm7y1c81mv" path="res://Assets/effects/death/enemy-death-1.png" id="1_lxaf1"]
+[ext_resource type="Texture2D" uid="uid://demxmoo2qys1t" path="res://Assets/effects/death/enemy-death-2.png" id="2_p6ogc"]
+[ext_resource type="Texture2D" uid="uid://cqt63hgsyy8s8" path="res://Assets/effects/death/enemy-death-3.png" id="3_li7pb"]
+[ext_resource type="Texture2D" uid="uid://qitvc2l0olyo" path="res://Assets/effects/death/enemy-death-4.png" id="4_jjno5"]
+[ext_resource type="Script" path="res://Assets/effects/spawn_effect.gd" id="5_bwloh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k7x7i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jjno5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_li7pb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_p6ogc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_lxaf1")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 10.0
+}]
+
+[node name="SpawnEffect" type="AnimatedSprite2D"]
+z_index = 1
+position = Vector2(7.62939e-06, 1.90735e-06)
+scale = Vector2(2.25, 2.03846)
+sprite_frames = SubResource("SpriteFrames_k7x7i")
+animation = &"new_animation"
+autoplay = "new_animation"
+script = ExtResource("5_bwloh")

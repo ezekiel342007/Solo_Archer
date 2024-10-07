@@ -17,7 +17,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [node name="PlayerHealthBar" type="ProgressBar"]
-z_index = 1
+z_index = 2
 offset_left = -128.0
 offset_top = -80.0
 offset_right = 128.0

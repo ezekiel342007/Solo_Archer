@@ -8,8 +8,8 @@ extends Node
 func _on_detonation_region_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		tnt_goblin.cause_of_death = "Player"
-		state_machine.transition_to("DetonateState")
 	if  body.name == "Arrow":
 		tnt_goblin.cause_of_death = "Arrow"
 		body.queue_free()
-		state_machine.transition_to("DetonateState")
+
+	state_machine.transition_to("DetonateState")

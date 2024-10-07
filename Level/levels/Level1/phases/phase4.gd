@@ -10,12 +10,14 @@ extends NodeState
 @onready var compass = preload("res://Assets/UI/Compass/compass.tscn")
 @onready var tnt_goblin = preload("res://Characters/Goblins/TNTGoblin/tnt_goblin.tscn")
 @onready var restart_menu = preload("res://Assets/UI/RestartOptions/restart_menu.tscn")
+@onready var spawn_effect: PackedScene = preload("res://Assets/effects/spawn_effect.tscn")
 @onready var player_health_bar = preload("res://Assets/UI/PlayerHealthBar/player_health_bar.tscn")
 
 var enemy_node: Node
 var enemy_counter: EnemyCounter
 var surviving_commoner: Commoner
 var level_complete: bool = false
+var spawn_effects: Array[Node] = []
 var displaying_message: bool = false
 var should_spawn_goblins: bool = true
 
@@ -74,11 +76,25 @@ func spawn_goblins() -> void:
 	var entry_points: Array[Node] = entry_point.get_children()
 	for i in range(4):
 		for point in entry_points:
-			var tnt_gobliin_instance = tnt_goblin.instantiate()
-			tnt_gobliin_instance.global_position = point.global_position
-			tnt_gobliin_instance.level = "Level1"
-			enemy_node.add_child(tnt_gobliin_instance)
+			make_spawn_effect(point)
 			await get_tree().create_timer(1.0).timeout
+
+
+func make_spawn_effect(point: Node) -> void:
+	var spawn_effect_instance: AnimatedSprite2D = spawn_effect.instantiate()
+	spawn_effect_instance.animation_finished.connect(make_goblin.bind(point, spawn_effect_instance.name))
+	spawn_effect_instance.global_position = point.global_position
+	enemy_node.add_child(spawn_effect_instance)
+
+
+func make_goblin(point: Node, spawn_effect_name: String) -> void:
+	print("making goblin")
+	var tnt_gobliin_instance = tnt_goblin.instantiate()
+	tnt_gobliin_instance.global_position = point.global_position
+	tnt_gobliin_instance.level = "Level1"
+	enemy_node.add_child(tnt_gobliin_instance)
+	var spawn = enemy_node.get_node(spawn_effect_name)
+	spawn.queue_free()
 
 
 func player_death() -> void:
