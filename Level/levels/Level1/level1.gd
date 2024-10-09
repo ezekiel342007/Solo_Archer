@@ -1,4 +1,4 @@
-extends Node2D
+extends BaseLevel
 @onready var player: CharacterBody2D = %Player
 @onready var game_screen: CanvasLayer = %GameScreen
 

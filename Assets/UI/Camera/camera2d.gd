@@ -1,16 +1,20 @@
 extends Camera2D
 
-@export_category("Focus on")
+@export_category("Focus on") 
 @export var focus: CharacterBody2D
 @export_category("Transitioning")
 @export var transition_speed: float = 3.0
 
-@onready var game_screen = %GameScreen
+@onready var game_screen: CanvasLayer = $GameScreen
 
 signal transition_ended
 
-var transitioning: bool = false
 var transition_target: Vector2
+var transitioning: bool = false 
+
+
+func _ready() -> void:
+	unique_name_in_owner = true
 
 
 func _physics_process(_delta: float) -> void:

@@ -11,6 +11,7 @@ var narrating: bool = false
 
 
 func _ready():
+	unique_name_in_owner = true
 	key_directions_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	narration_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 

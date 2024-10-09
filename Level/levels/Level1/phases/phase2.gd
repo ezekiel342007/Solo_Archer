@@ -1,6 +1,5 @@
 extends NodeState
 
-@onready var game_screen: CanvasLayer = %GameScreen
 @onready var player: CharacterBody2D = %Player
 @onready var commoner_spawn_position: Marker2D = $"../../CommonerSpawnPosition"
 @onready var compass = preload("res://Assets/UI/Compass/compass.tscn")
@@ -9,6 +8,7 @@ extends NodeState
 @onready var level1 = $"../.."
 
 var commoner_player_detector: Area2D
+@onready var game_screen: CanvasLayer = %Camera2D.get_node("GameScreen")
 
 func enter() -> void:
 	level1.phase2 = true

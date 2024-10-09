@@ -2,8 +2,8 @@ extends NodeState
 
 @onready var level1 = $"../.."
 @onready var player: CharacterBody2D = %Player
-@onready var camera: Camera2D = $"../../Camera2D2"
-@onready var game_screen: CanvasLayer = %GameScreen
+@onready var camera: Camera2D = %Camera2D
+@onready var game_screen: CanvasLayer = camera.get_node("GameScreen")
 @onready var entry_point: Node = $"../../EntryPoints"
 @onready var wave_trigger: RayCast2D = $"../../WaveTrigger"
 @onready var tree: StaticBody2D = $"../../Environment/Trees/Tree"

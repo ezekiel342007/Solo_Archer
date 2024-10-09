@@ -1,8 +1,8 @@
 extends Dialogue
 
 @onready var player: CharacterBody2D = %Player
-@onready var camera: Camera2D = $"../../Camera2D2"
-@onready var game_screen: CanvasLayer = %GameScreen
+@onready var camera: Camera2D = %Camera2D
+@onready var game_screen = camera.get_node("GameScreen")
 @onready var goblin_spawn_position: Marker2D = $"../../GoblinSpawnPosition"
 @onready var goblin = preload("res://Characters/Goblins/BomberGoblin/goblin.tscn")
 @onready var enemy_health_bar = preload("res://Assets/HealthBar/enemy_health_bar.tscn")

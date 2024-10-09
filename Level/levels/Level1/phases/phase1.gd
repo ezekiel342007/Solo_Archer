@@ -2,8 +2,9 @@ extends NodeState
 
 @export var enemy_node: Node
 
-@onready var game_screen = %GameScreen
+@onready var camera = %Camera2D
 @onready var level1 = $"../../"
+@onready var game_screen: CanvasLayer = camera.get_node("GameScreen")
 
 var i: int = 0
 var j: int = 0
@@ -50,7 +51,6 @@ func enter() -> void:
 		# Get the keys (the messages) of each section
 		current_section = level_messages[message_sections[j]]
 		current_section_keys = current_section.keys()
-
 	game_screen.narrating = true
 
 

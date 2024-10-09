@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://qgps8jk38f02"]
+
+[ext_resource type="Script" path="res://Assets/UI/Pause Menu/pause_menu.gd" id="1_gflb8"]
+[ext_resource type="Texture2D" uid="uid://5fsy7nn1bavi" path="res://Assets/UI/Pause Menu/Banner_Vertical.png" id="1_tjxbj"]
+
+[node name="PauseMenu" type="Control"]
+z_index = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gflb8")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -243.5
+offset_top = -225.5
+offset_right = 243.5
+offset_bottom = 225.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tjxbj")
+patch_margin_left = 7
+patch_margin_right = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -53.0
+offset_right = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 111
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Game Paused"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="SettingsButton" type="Button" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"

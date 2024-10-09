@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxtmgbkivrwv2"]
+
+[ext_resource type="Script" path="res://Assets/UI/Camera/camera2d.gd" id="1_my225"]
+[ext_resource type="PackedScene" uid="uid://b6gqtiu4t7ln" path="res://Assets/UI/Game Screen/game_screen.tscn" id="2_eppt6"]
+
+[node name="Camera2D" type="Camera2D"]
+script = ExtResource("1_my225")
+
+[node name="GameScreen" parent="." instance=ExtResource("2_eppt6")]
