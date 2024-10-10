@@ -10,3 +10,7 @@ func _on_quit_button_pressed() -> void:
 
 func _on_restart_button_pressed() -> void:
 	get_tree().change_scene_to_file(failed_level)
+
+
+# res://Level/levels/Level1/level1.tscn
+# res://Level/levels/Level1/level1.tscn

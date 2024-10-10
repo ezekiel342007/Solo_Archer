@@ -11,7 +11,8 @@ func _on_resume_button_pressed() -> void:
 
 
 func _on_restart_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().paused = false
+	get_tree().change_scene_to_file(paused_level_path)
 
 
 func _on_settings_button_pressed() -> void:

@@ -14,5 +14,5 @@ func _input(event: InputEvent) -> void:
 
 func deploy_pause_menu_instance() -> ColorRect:
 	var pause_menu_instance: ColorRect = pause_menu.instantiate() as ColorRect
-	pause_menu_instance.paused_level_path = get_path()
+	pause_menu_instance.paused_level_path = scene_file_path
 	return pause_menu_instance

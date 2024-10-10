@@ -100,7 +100,7 @@ func make_goblin(point: Node, spawn_effect_name: String) -> void:
 func player_death() -> void:
 	player.queue_free()
 	var restart_menu_instance: ColorRect = restart_menu.instantiate() as ColorRect
-	restart_menu_instance.failed_level = "res://Level/levels/Level1/level1.tscn"
+	restart_menu_instance.failed_level = level1.scene_file_path
 	game_screen.margin_container.add_child(restart_menu_instance)
 
 
