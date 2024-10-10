@@ -17,3 +17,4 @@ script = ExtResource("1_o60fn")
 script = ExtResource("3_ugghr")
 
 [node name="Camera2D" parent="." instance=ExtResource("3_cfvfb")]
+unique_name_in_owner = true

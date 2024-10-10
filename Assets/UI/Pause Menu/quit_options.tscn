@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://6pkkjhieg5kf"]
+
+[ext_resource type="Texture2D" uid="uid://c7sybssshrh5o" path="res://Assets/UI/Pause Menu/Button_Hover_9Slides.png" id="1_22fet"]
+[ext_resource type="Script" path="res://Assets/UI/Pause Menu/quit_options.gd" id="2_ioocp"]
+[ext_resource type="FontFile" uid="uid://b2l5jmu8eknaw" path="res://Assets/Font/Fool.ttf" id="3_8l01s"]
+
+[sub_resource type="Theme" id="Theme_t7wxv"]
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("3_8l01s")
+Label/fonts/font = ExtResource("3_8l01s")
+
+[node name="ColorRect" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ioocp")
+
+[node name="QuitOptions" type="TextureRect" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -96.0
+offset_right = 136.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_22fet")
+
+[node name="MarginContainer" type="MarginContainer" parent="QuitOptions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_t7wxv")
+theme_override_constants/margin_top = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuitOptions/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Label" type="Label" parent="QuitOptions/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Data will not be saved
+ do you wish to continue?"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="QuitOptions/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="QuitOptions/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="YesButton" type="Button" parent="QuitOptions/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="QuitOptions/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "No "
+
+[connection signal="pressed" from="QuitOptions/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="QuitOptions/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]

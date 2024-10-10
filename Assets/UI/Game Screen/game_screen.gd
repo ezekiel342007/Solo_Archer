@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var narration_label: Label = %NarrationLabel
 @onready var key_directions_label: Label = %KeyDirectionsLabel
-@onready var narration_banner = $"MarginContainer/NarrationBanner"
+@onready var narration_banner: Control = $"MarginContainer/NarrationBanner"
 @onready var margin_container: MarginContainer = %MarginContainer
  	
 var narration_text: String

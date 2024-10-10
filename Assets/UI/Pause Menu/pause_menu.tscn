@@ -1,16 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://qgps8jk38f02"]
+[gd_scene load_steps=5 format=3 uid="uid://qgps8jk38f02"]
 
 [ext_resource type="Script" path="res://Assets/UI/Pause Menu/pause_menu.gd" id="1_gflb8"]
 [ext_resource type="Texture2D" uid="uid://5fsy7nn1bavi" path="res://Assets/UI/Pause Menu/Banner_Vertical.png" id="1_tjxbj"]
+[ext_resource type="FontFile" uid="uid://b2l5jmu8eknaw" path="res://Assets/Font/Fool.ttf" id="3_q84gm"]
 
-[node name="PauseMenu" type="Control"]
-z_index = 3
-layout_mode = 3
+[sub_resource type="Theme" id="Theme_n20yy"]
+Button/font_sizes/font_size = 25
+Button/fonts/font = ExtResource("3_q84gm")
+Label/fonts/font = ExtResource("3_q84gm")
+
+[node name="PauseMenu" type="ColorRect"]
+process_mode = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 0.4)
 script = ExtResource("1_gflb8")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
@@ -45,11 +51,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme = SubResource("Theme_n20yy")
+theme_override_constants/separation = 15
 
 [node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 38
 text = "Game Paused"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
@@ -70,3 +77,8 @@ text = "Settings"
 [node name="QuitButton" type="Button" parent="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

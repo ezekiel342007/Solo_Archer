@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cdtlc1shid6b6" path="res://Assets/UI/Carved_3Slides.png" id="2_s7qmc"]
 
 [sub_resource type="Theme" id="Theme_fgnht"]
+Button/fonts/font = ExtResource("2_3tmax")
 Label/colors/font_color = Color(0.39284, 0.324181, 0.273151, 1)
 Label/font_sizes/font_size = 24
 Label/fonts/font = ExtResource("2_3tmax")
