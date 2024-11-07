@@ -1,6 +1,14 @@
 class_name GameInputEvent
 extends Node
 
+static var action_keys: Dictionary = {
+	"Enter or Space": &"ui_accept",
+	"S": &"move_left",
+	"F": &"move_right",
+	"E": &"move_forward",
+	"D": &"move_backward",
+}
+
  
 static func horizontal_movement_input() -> float:
 	var direction: float = Input.get_axis("move_left", "move_right")

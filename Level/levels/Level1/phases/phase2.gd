@@ -8,12 +8,9 @@ extends NodeState
 @onready var level1 = $"../.."
 
 var commoner_player_detector: Area2D
-@onready var game_screen: CanvasLayer = %Camera2D.get_node("GameScreen")
 
 func enter() -> void:
 	level1.phase2 = true
-	# Prevent the state from repeating
-	game_screen.narration_text = ""
 	add_survivng_commoner(surviving_commoner)
 	highlight_commoner(target_highlighter)
 	
@@ -37,6 +34,8 @@ func add_survivng_commoner(commoner_scene: PackedScene) -> void:
 	commoner_scene_instance.global_position = commoner_spawn_position.global_position
 	give_direction_to(commoner_spawn_position.global_position)
 	get_parent().get_parent().add_child(commoner_scene_instance)
+	# Parse commoner object for conversation in phase 3
+	Messages.commoner = commoner_scene_instance
 
 
 func highlight_commoner(highlighter: PackedScene) -> void:

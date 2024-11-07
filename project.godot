@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerManagement="*res://Scripts/player_management.gd"
 LevelManager="*res://Scripts/level_manager.gd"
+Message="*res://Scripts/message.gd"
 
 [display]
 
