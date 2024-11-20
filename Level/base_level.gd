@@ -20,15 +20,15 @@ func deploy_pause_menu_instance() -> ColorRect:
 
 func deploy_narration_banner(
 	messages: Message.Instruction = null,
-	needed_signal: StringName = &"",
-	signal_callable: Callable = Callable(),
+	signals: Dictionary = {},
 	conversation_script: Message.ConversationLine = null
 	) -> NarrationBanner:
-	var narration_banner_instance: Control = preload("res://Assets/UI/NarrationBanner/narration_banner.tscn").instantiate() as Control
+	var narration_banner_instance: NarrationBanner = preload("res://Assets/UI/NarrationBanner/narration_banner.tscn").instantiate() as Control
 	if messages != null:
 		narration_banner_instance.message_for_banner = messages
 	elif conversation_script != null:
 		narration_banner_instance.conversation_script = conversation_script
-	if signal_callable.is_valid() and needed_signal != &"":
-		narration_banner_instance.connect(needed_signal, signal_callable)
+	if !signals.is_empty():
+		for key in signals.keys():
+			narration_banner_instance.connect(key, signals[key])
 	return narration_banner_instance

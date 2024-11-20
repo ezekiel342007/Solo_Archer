@@ -25,6 +25,10 @@ Message="*res://Scripts/message.gd"
 
 window/size/viewport_width=768
 
+[dotnet]
+
+project/assembly_name="Solo Archer"
+
 [input]
 
 move_left={

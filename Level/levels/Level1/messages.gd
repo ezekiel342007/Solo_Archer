@@ -51,208 +51,214 @@ static var phase1_level_messages: Message.Instruction = Message.Instruction.new(
 		)
 	)
 )
-static var phase3_conversation_lines: Message.ConversationLine = make_script(
-		[
-			{
-				"Speaker": "Commoner",
-				"Message": "Wahh!!! Stay away! I don't have anything left!",
-				"Receivers": ["Player"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "what are you even talking about",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "what happened here?",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Commoner",
-				"Message": "wha.. wh.. who are you?",
-				"Receivers": ["Player"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "answer my question and I'll answer yours",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Commoner",
-				"Message": "well... um...",
-				"Receivers": ["Player"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "c'mon say it!",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Commoner",
-				"Message": "Argh! We were invaded okay! tch",
-				"Receivers": ["Player"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "...",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "why was is so hard to say?",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Commoner",
-				"Message": "you really aren't from around here, are you?",
-				"Receivers": ["Player"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "yeah kind of",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Commoner",
-				"Message": "well, we were invaded by goblins and...",
-				"Receivers": ["Player"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "Ha! Ha! Ha! Ha!",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "you mea... Ha! Ha! goblins beat you guy... Ha! Ha!",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Commoner",
-				"Message": "...",
-				"Receivers": ["Player"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "so how come?",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Commoner",
-				"Message": "well this village is currently undergoing independence negotiations with the King",
-				"Receivers": ["Player"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "ooh, I get it",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Commoner",
-				"Message": "...",
-				"Receivers": ["Player"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "so basically, you've been taxed too dry to fund a proper defence,",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "and didn't want to ask help from the one you don't want to have anything to do with",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Commoner",
-				"Message": "and they packed some new weapons",
-				"Receivers": ["Player"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "ever resourceful aren't they?",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Commoner",
-				"Message": "Mhm",
-				"Receivers": ["Player"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "so where's everyone?",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Commoner",
-				"Message": "They fled",
-				"Receivers": ["Player"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "and you?",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Commoner",
-				"Message": "I passed out, I just wanna take some stuff and scram",
-				"Receivers": ["Player"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "what were you planning to do about him?",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "Goblin in sight",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Commoner",
-				"Message": "Ah!!!",
-				"Receivers": ["Player"],
-				"Action_key": "Enter or Space"
-			},
-			{
-				"Speaker": "Player",
-				"Message": "don't worry",
-				"Receivers": ["Commoner"],
-				"Action_key": "Enter or Space"
-			}
-		],
-		phase3_conversation_cast
+static var phase3_conversation_lines1: Message.ConversationLine = make_script(
+	[
+		{
+			"Speaker": "Commoner",
+			"Message": "Wahh!!! Stay away! I don't have anything left!",
+			"Receivers": ["Player"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "what are you even talking about",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "what happened here?",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Commoner",
+			"Message": "wha.. wh.. who are you?",
+			"Receivers": ["Player"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "answer my question and I'll answer yours",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Commoner",
+			"Message": "well... um...",
+			"Receivers": ["Player"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "c'mon say it!",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Commoner",
+			"Message": "Argh! We were invaded okay! tch",
+			"Receivers": ["Player"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "...",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "why was is so hard to say?",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Commoner",
+			"Message": "you really aren't from around here, are you?",
+			"Receivers": ["Player"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "yeah kind of",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Commoner",
+			"Message": "well, we were invaded by goblins and...",
+			"Receivers": ["Player"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "Ha! Ha! Ha! Ha!",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "you mea... Ha! Ha! goblins beat you guy... Ha! Ha!",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Commoner",
+			"Message": "...",
+			"Receivers": ["Player"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "so how come?",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Commoner",
+			"Message": "well this village is currently undergoing independence negotiations with the King",
+			"Receivers": ["Player"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "ooh, I get it",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Commoner",
+			"Message": "...",
+			"Receivers": ["Player"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "so basically, you've been taxed too dry to fund a proper defence,",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "and didn't want to ask help from the one you don't want to have anything to do with",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Commoner",
+			"Message": "and they packed some new weapons",
+			"Receivers": ["Player"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "ever resourceful aren't they?",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Commoner",
+			"Message": "Mhm",
+			"Receivers": ["Player"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "so where's everyone?",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Commoner",
+			"Message": "They fled",
+			"Receivers": ["Player"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "and you?",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Commoner",
+			"Message": "I passed out, I just wanna take some stuff and scram",
+			"Receivers": ["Player"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "what were you planning to do about him?",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "Goblin in sight",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		},
+	],
+	phase3_conversation_cast
+)
+
+static var phase3_conversation_lines2: Message.ConversationLine = make_script(
+	[
+		{
+			"Speaker": "Commoner",
+			"Message": "Ah!!!",
+			"Receivers": ["Player"],
+			"Action_key": "Enter or Space"
+		},
+		{
+			"Speaker": "Player",
+			"Message": "don't worry",
+			"Receivers": ["Commoner"],
+			"Action_key": "Enter or Space"
+		}
+	],
+	phase3_conversation_cast
 )
 
 

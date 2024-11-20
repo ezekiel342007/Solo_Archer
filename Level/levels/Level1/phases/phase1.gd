@@ -2,7 +2,7 @@ extends NodeState
 
 @export var enemy_node: Node
 
-@onready var camera = %Camera2D
+@onready var camera: GameCamera = %Camera2D
 @onready var level1 = $"../../"
 @onready var game_screen: CanvasLayer = %GameScreen
 
@@ -15,8 +15,7 @@ func enter() -> void:
 	game_screen.margin_container.add_child(
 		level1.deploy_narration_banner(
 			Messages.phase1_level_messages,
-			&"have_shown_message",
-			emit_transition
+			{&"have_shown_message": emit_transition}
 		)
 	)
 	

@@ -2,7 +2,7 @@ extends NodeState
 
 @onready var level1 = $"../.."
 @onready var player: CharacterBody2D = %Player
-@onready var camera: Camera2D = %Camera2D
+@onready var camera: GameCamera = %Camera2D
 @onready var game_screen: CanvasLayer = %GameScreen
 @onready var entry_point: Node = $"../../EntryPoints"
 @onready var wave_trigger: RayCast2D = $"../../WaveTrigger"
@@ -18,14 +18,11 @@ var enemy_counter: EnemyCounter
 var surviving_commoner: Commoner
 var level_complete: bool = false
 var spawn_effects: Array[Node] = []
-var displaying_message: bool = false
 var should_spawn_goblins: bool = true
 
 
 func enter() -> void:
 	level1.phase4 = true
-	displaying_message = true
-	game_screen.narrating = true
 	enemy_node = $"../../Enemies"
 	surviving_commoner = $"../../Commoner"
 	PlayerManagement.has_died.connect(player_death)

@@ -1,9 +1,11 @@
 extends Camera2D
+class_name GameCamera
 
 @export_category("Focus on") 
 @export var focus: CharacterBody2D
 @export_category("Transitioning")
 @export var transition_speed: float = 3.0
+
 
 signal transition_ended
 
@@ -28,6 +30,7 @@ func _physics_process(_delta: float) -> void:
 			focus_tween.tween_property(self, "global_position", focus.global_position, 2.5)
 			await focus_tween.finished
 			focus_tween.kill()
+			transition_ended.emit()
 
 		if global_position == focus.global_position:
 			transitioning = false
