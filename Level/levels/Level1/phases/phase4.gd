@@ -1,8 +1,9 @@
 extends NodeState
 
 @onready var level1 = $"../.."
-@onready var player: CharacterBody2D = %Player
+@onready var enemies_node: Node = %Enemies
 @onready var camera: GameCamera = %Camera2D
+@onready var player: CharacterBody2D = %Player
 @onready var game_screen: CanvasLayer = %GameScreen
 @onready var entry_point: Node = $"../../EntryPoints"
 @onready var wave_trigger: RayCast2D = $"../../WaveTrigger"
@@ -22,6 +23,7 @@ var should_spawn_goblins: bool = true
 
 
 func enter() -> void:
+	print("phase4")
 	level1.phase4 = true
 	enemy_node = $"../../Enemies"
 	surviving_commoner = $"../../Commoner"
@@ -44,19 +46,19 @@ func on_physics_process(_delta: float) -> void:
 		spawn_goblins()
 		player.add_child(player_health_bar.instantiate())
 
-		if game_screen.margin_container.get_node("MarginContainer/EnemyCounter") == null:
-			game_screen.margin_container.get_node("MarginContainer").add_child(EnemyCounter.new("../../../../../Enemies"))
+		if game_screen.margin_container.get_node("EnemyCounter") == null:
+			game_screen.margin_container.add_child(EnemyCounter.new(enemies_node))
 
-	if game_screen.margin_container.get_node("MarginContainer").get_children().size() != 0:
-		enemy_counter = game_screen.margin_container.get_node("MarginContainer").get_child(0)
-		if enemy_counter.enemy_count == 0:
-			surviving_commoner.run_to(player)
+		if game_screen.margin_container.get_children().size() != 0:
+			enemy_counter = game_screen.margin_container.get_child(0)
+			if enemy_counter.enemy_count == 0:
+				surviving_commoner.run_to(player)
 
 
 func on_input(event):
 	if event is InputEventKey and event.pressed:
 		if level_complete == false:
-			game_screen.narrating = false
+			pass
 		else:
 			get_tree().change_scene_to_file("res://Assets/Dialogue Scene/dialogue_scene.tscn")
 
@@ -65,7 +67,7 @@ func on_input(event):
 func direct_to_mob() -> void:
 	var compass_instance = compass.instantiate()
 	compass_instance.target_position = tree.global_position
-	game_screen.narration_text = "There are others, follow the arrow"
+	game_screen.margin_container.add_child(level1.deploy_narration_banner(Messages.phase4_instruction))
 	player.add_child(compass_instance)
 
 
@@ -103,10 +105,13 @@ func player_death() -> void:
 
 func end_level() -> void:
 	if enemy_counter.enemy_count == 0:
-		game_screen.narrating = true
-		game_screen.narration_text = "Level Complete"
-		# level_complete = true
+		game_screen.margin_container.add_child(
+			level1.deploy_narration_banner(
+				Message.Instruction.new("Level Complete", "")
+			)
+		)
 
 
 func exit() -> void:
 	level1.phase4 = false
+	queue_free()

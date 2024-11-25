@@ -30,12 +30,10 @@ func _physics_process(_delta: float) -> void:
 			focus_tween.tween_property(self, "global_position", focus.global_position, 2.5)
 			await focus_tween.finished
 			focus_tween.kill()
-			transition_ended.emit()
-
-		if global_position == focus.global_position:
 			transitioning = false
+			transition_ended.emit()
 
 
 func transition_from(target: Vector2) -> void:
-	transitioning = !transitioning
+	transitioning = true
 	transition_target = target

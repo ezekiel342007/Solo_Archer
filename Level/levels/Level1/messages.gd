@@ -277,15 +277,20 @@ static func make_script(script: Array[Dictionary], cast: Dictionary) -> Message.
 
 static var phase3_directions = Message.Instruction.new(
 	"Use the mouse/touchpad to aim your bow and left-click to shoot",
-	"Left mouse button"
+	"Enter or Space"
 ).add_instruction(
 	Message.Instruction.new(
 		"You can also use the \"I\", \"J\", \"K\", \"L\" keys to shoot UP, LEFT, DOWN and RIGHT respectively",
-		"Enter or Space key"
+		"Enter or Space"
 	).add_instruction(
 		Message.Instruction.new(
 			"Go and defeat the goblin",
 			""
 		)
 	)
+)
+
+static var phase4_instruction = Message.Instruction.new(
+	"There are others, follow the arrow",
+	""
 )

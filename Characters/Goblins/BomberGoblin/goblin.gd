@@ -9,6 +9,7 @@ class_name BomberGoblin
 # Indicates how long the player stays in the idle state before transtitioning to the move state
 @onready var idle_timer: Timer = %IdleTimer
 @onready var player_detector: Area2D = %PlayerDetect
+signal has_died
 
 var flip: bool
 var direction: Vector2
@@ -16,6 +17,7 @@ var direction: Vector2
 
 func _physics_process(_delta: float) -> void:
 	if health == 0:
+		has_died.emit()
 		death()
 
 

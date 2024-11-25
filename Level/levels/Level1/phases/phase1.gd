@@ -26,3 +26,4 @@ func emit_transition() -> void:
 
 func exit() -> void:
 	level1.phase1 = false
+	queue_free()

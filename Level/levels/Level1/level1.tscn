@@ -578,6 +578,7 @@ unique_name_in_owner = true
 position = Vector2(1608, 1448)
 
 [node name="Enemies" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="Environment" type="Node" parent="."]
 

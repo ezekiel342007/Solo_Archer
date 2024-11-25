@@ -3,6 +3,7 @@ extends Node
 
 static var action_keys: Dictionary = {
 	"Enter or Space": &"ui_accept",
+	"": &"ui_accept",
 	"S": &"move_left",
 	"F": &"move_right",
 	"E": &"move_forward",
