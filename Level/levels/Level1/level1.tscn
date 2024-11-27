@@ -804,6 +804,11 @@ script = ExtResource("19_mpssy")
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("focus") instance=ExtResource("18_exyw5")]
 unique_name_in_owner = true
+limit_left = -16
+limit_top = 0
+limit_right = 2563
+limit_bottom = 2367
+editor_draw_limits = true
 focus = NodePath("../Player")
 
 [node name="CommonerSpawnPosition" type="Marker2D" parent="."]
