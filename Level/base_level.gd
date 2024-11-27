@@ -23,7 +23,10 @@ func deploy_narration_banner(
 	signals: Dictionary = {},
 	conversation_script: Message.ConversationLine = null
 	) -> NarrationBanner:
-	var narration_banner_instance: NarrationBanner = preload("res://Assets/UI/NarrationBanner/narration_banner.tscn").instantiate() as Control
+
+	var narration_banner_instance: NarrationBanner = preload(
+		"res://Assets/UI/NarrationBanner/narration_banner.tscn"
+	).instantiate() as Control
 	if messages != null:
 		narration_banner_instance.message_for_banner = messages
 	elif conversation_script != null:

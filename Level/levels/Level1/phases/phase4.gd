@@ -28,7 +28,6 @@ func enter() -> void:
 	enemy_node = $"../../Enemies"
 	surviving_commoner = $"../../Commoner"
 	PlayerManagement.has_died.connect(player_death)
-	surviving_commoner.reached_player.connect(end_level)
 	direct_to_mob()
 
 
@@ -46,13 +45,8 @@ func on_physics_process(_delta: float) -> void:
 		spawn_goblins()
 		player.add_child(player_health_bar.instantiate())
 
-		if game_screen.margin_container.get_node("EnemyCounter") == null:
-			game_screen.margin_container.add_child(EnemyCounter.new(enemies_node))
-
-		if game_screen.margin_container.get_children().size() != 0:
-			enemy_counter = game_screen.margin_container.get_child(0)
-			if enemy_counter.enemy_count == 0:
-				surviving_commoner.run_to(player)
+		if game_screen.enemy_counter_container.get_node("EnemyCounter") == null:
+			game_screen.enemy_counter_container.add_child(EnemyCounter.new(enemies_node, func (): transition.emit("Phase5")))
 
 
 func on_input(event):
@@ -87,7 +81,6 @@ func make_spawn_effect(point: Node) -> void:
 
 
 func make_goblin(point: Node, spawn_effect_name: String) -> void:
-	print("making goblin")
 	var tnt_gobliin_instance = tnt_goblin.instantiate()
 	tnt_gobliin_instance.global_position = point.global_position
 	tnt_gobliin_instance.level = "Level1"
@@ -102,14 +95,6 @@ func player_death() -> void:
 	restart_menu_instance.failed_level = level1.scene_file_path
 	game_screen.margin_container.add_child(restart_menu_instance)
 
-
-func end_level() -> void:
-	if enemy_counter.enemy_count == 0:
-		game_screen.margin_container.add_child(
-			level1.deploy_narration_banner(
-				Message.Instruction.new("Level Complete", "")
-			)
-		)
 
 
 func exit() -> void:

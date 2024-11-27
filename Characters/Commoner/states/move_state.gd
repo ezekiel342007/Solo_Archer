@@ -86,9 +86,6 @@ func on_physics_process(delta: float) -> void:
 
 	character_body_2d.move_and_slide()
 
-	if abs(commoner.destination - character_body_2d.global_position) <= Vector2(5, 5):
-		commoner.reached_player.emit()
-
 
 func exit() -> void:
 	animated_sprite_2d.stop()

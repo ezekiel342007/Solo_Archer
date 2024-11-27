@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://fmo5nr65jg26"]
+[gd_scene load_steps=24 format=4 uid="uid://fmo5nr65jg26"]
 
 [ext_resource type="Script" path="res://Level/levels/Level1/level1.gd" id="1_b1h5u"]
 [ext_resource type="Texture2D" uid="uid://brlu12r17bith" path="res://Assets/environment/tilemaps/Tilemap_Flat.png" id="2_ryk0b"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Level/levels/Level1/phases/phase3.gd" id="16_tigf1"]
 [ext_resource type="PackedScene" uid="uid://bxtmgbkivrwv2" path="res://Assets/UI/Camera/camera_2d.tscn" id="18_exyw5"]
 [ext_resource type="Script" path="res://Level/levels/Level1/phases/phase4.gd" id="18_mpvxt"]
+[ext_resource type="Script" path="res://Level/levels/Level1/phases/phase5.gd" id="19_mpssy"]
 [ext_resource type="PackedScene" uid="uid://b6gqtiu4t7ln" path="res://Assets/UI/Game Screen/game_screen.tscn" id="19_onm4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cdmk6"]
@@ -797,6 +798,9 @@ script = ExtResource("16_tigf1")
 
 [node name="Phase4" type="Node" parent="Phases"]
 script = ExtResource("18_mpvxt")
+
+[node name="Phase5" type="Node" parent="Phases"]
+script = ExtResource("19_mpssy")
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("focus") instance=ExtResource("18_exyw5")]
 unique_name_in_owner = true
