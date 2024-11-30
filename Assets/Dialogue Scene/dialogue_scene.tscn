@@ -1,20 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhdl31pf8pe6g"]
+[gd_scene load_steps=5 format=3 uid="uid://bhdl31pf8pe6g"]
 
-[ext_resource type="Script" path="res://Assets/Dialogue Scene/dialogue_scene.gd" id="1_sp4kr"]
-[ext_resource type="PackedScene" uid="uid://b6gqtiu4t7ln" path="res://Assets/UI/Game Screen/game_screen.tscn" id="2_43yqp"]
+[ext_resource type="Script" path="res://Assets/Dialogue Scene/dialogue_scene.gd" id="1_ejv8y"]
+[ext_resource type="PackedScene" uid="uid://b6fxpji7pbhn5" path="res://Assets/UI/NarrationBanner/narration_banner.tscn" id="2_65nwu"]
+[ext_resource type="PackedScene" uid="uid://cxkugss8ju2qd" path="res://Characters/Players/Player/player.tscn" id="3_0acu4"]
+[ext_resource type="PackedScene" uid="uid://cno71nhia4ng2" path="res://Characters/Commoner/commoner.tscn" id="4_qou6c"]
 
-[node name="DialogueScene" type="ColorRect"]
+[node name="Level1DialogueScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ejv8y")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-script = ExtResource("1_sp4kr")
 
-[node name="Participants" type="Node" parent="."]
+[node name="Participants" type="Node" parent="ColorRect"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(384, 324)
+[node name="Player" parent="ColorRect/Participants" instance=ExtResource("3_0acu4")]
+position = Vector2(519, 494)
 
-[node name="GameScreen" parent="Camera2D" instance=ExtResource("2_43yqp")]
+[node name="Commoner" parent="ColorRect/Participants" instance=ExtResource("4_qou6c")]
+position = Vector2(176, 490)
+
+[node name="NarrationBanner" parent="ColorRect" instance=ExtResource("2_65nwu")]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 1

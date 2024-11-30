@@ -576,7 +576,7 @@ tile_set = SubResource("TileSet_56f03")
 
 [node name="Player" parent="." instance=ExtResource("6_1dcli")]
 unique_name_in_owner = true
-position = Vector2(1608, 1448)
+position = Vector2(1462, 1653)
 
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true

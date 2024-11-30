@@ -6,7 +6,6 @@ class_name GameCamera
 @export_category("Transitioning")
 @export var transition_speed: float = 3.0
 
-
 signal transition_ended
 
 var transition_target: Vector2

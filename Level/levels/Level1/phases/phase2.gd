@@ -35,7 +35,7 @@ func add_survivng_commoner(commoner_scene: PackedScene) -> void:
 	give_direction_to(commoner_spawn_position.global_position)
 	get_parent().get_parent().add_child(commoner_scene_instance)
 	# Parse commoner object for conversation in phase 3
-	Messages.commoner = commoner_scene_instance
+	level1.commoner = commoner_scene_instance
 
 
 func highlight_commoner(highlighter: PackedScene) -> void:

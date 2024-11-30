@@ -23,7 +23,6 @@ var should_spawn_goblins: bool = true
 
 
 func enter() -> void:
-	print("phase4")
 	level1.phase4 = true
 	enemy_node = $"../../Enemies"
 	surviving_commoner = $"../../Commoner"
@@ -61,7 +60,7 @@ func on_input(event):
 func direct_to_mob() -> void:
 	var compass_instance = compass.instantiate()
 	compass_instance.target_position = tree.global_position
-	game_screen.margin_container.add_child(level1.deploy_narration_banner(Messages.phase4_instruction))
+	game_screen.margin_container.add_child(level1.deploy_narration_banner(level1.phase4_instruction))
 	player.add_child(compass_instance)
 
 

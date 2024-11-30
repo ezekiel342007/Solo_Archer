@@ -2,10 +2,9 @@ extends NodeState
 
 @export var character_body_2d: CharacterBody2D
 @export var animated_sprite_2d: AnimatedSprite2D
-@export var speed: int = 2000
+@export var speed: int = 70
 
 @onready var obstacle_sensor_node: Node = $"../../ObstacleSensors"
-@onready var commoner_collision_shape: CollisionShape2D = $"../../CollisionShape2D"
 @onready var obstacle_sensor_up: RayCast2D = $"../../ObstacleSensors/ObstacleSensorUp"
 @onready var obstacle_sensor_left: RayCast2D = $"../../ObstacleSensors/ObstacleSensorLeft"
 @onready var obstacle_sensor_down: RayCast2D = $"../../ObstacleSensors/ObstacleSensorDown"
@@ -42,47 +41,47 @@ func on_physics_process(delta: float) -> void:
 	if commoner.flee:
 		character_body_2d.velocity = directions[start_direction] * speed * delta
 		# Navigate through obstacles
-		if obstacle_sensor_up.is_colliding():
-			character_body_2d.velocity = Vector2.DOWN * speed * delta
-		if obstacle_sensor_left.is_colliding():
-			character_body_2d.velocity = Vector2.UP * speed * delta
-		if obstacle_sensor_down.is_colliding():
-			character_body_2d.velocity = Vector2.RIGHT * speed * delta
-		if obstacle_sensor_up_right.is_colliding():
-			character_body_2d.velocity = Vector2.DOWN * speed * delta
-		if obstacle_sensor_right.is_colliding():
-			character_body_2d.velocity = Vector2.DOWN * speed * delta
-			# print(str(obstacle_sensor_up.get_collider()))
-		if obstacle_sensor_up_right.is_colliding():
-			character_body_2d.velocity = Vector2.LEFT * speed * delta
-		if obstacle_sensor_down_left.is_colliding():
-			character_body_2d.velocity = Vector2.RIGHT * speed * delta
-		if obstacle_sensor_down_right.is_colliding():
-			character_body_2d.velocity = Vector2.RIGHT * speed * delta
-
+		# if obstacle_sensor_up.is_colliding():
+		# 	character_body_2d.velocity = Vector2.DOWN * speed * delta
+		# if obstacle_sensor_left.is_colliding():
+		# 	character_body_2d.velocity = Vector2.UP * speed * delta
+		# if obstacle_sensor_down.is_colliding():
+		# 	character_body_2d.velocity = Vector2.RIGHT * speed * delta
+		# if obstacle_sensor_up_right.is_colliding():
+		# 	character_body_2d.velocity = Vector2.DOWN * speed * delta
+		# if obstacle_sensor_right.is_colliding():
+		# 	character_body_2d.velocity = Vector2.DOWN * speed * delta
+		# 	# print(str(obstacle_sensor_up.get_collider()))
+		# if obstacle_sensor_up_right.is_colliding():
+		# 	character_body_2d.velocity = Vector2.LEFT * speed * delta
+		# if obstacle_sensor_down_left.is_colliding():
+		# 	character_body_2d.velocity = Vector2.RIGHT * speed * delta
+		# if obstacle_sensor_down_right.is_colliding():
+		# 	character_body_2d.velocity = Vector2.RIGHT * speed * delta
+		
 		character_body_2d.velocity = directions[start_direction] * speed * delta
 
 	if commoner.run_to_player:
 		# Navigate through obstacles
-		if obstacle_sensor_up.is_colliding():
-			character_body_2d.velocity = Vector2.DOWN * speed * delta
-		elif obstacle_sensor_left.is_colliding():
-			character_body_2d.velocity = Vector2.RIGHT * speed * delta
-		elif obstacle_sensor_down.is_colliding():
-			character_body_2d.velocity = Vector2.UP * speed * delta
-		elif obstacle_sensor_up_right.is_colliding():
-			character_body_2d.velocity = Vector2.LEFT * speed * delta
-		elif obstacle_sensor_up_left.is_colliding():
-			character_body_2d.velocity = Vector2.RIGHT * speed * delta
-		elif obstacle_sensor_up_right.is_colliding():
-			character_body_2d.velocity = Vector2.LEFT * speed * delta
-		elif obstacle_sensor_down_left.is_colliding():
-			character_body_2d.velocity = Vector2.RIGHT * speed * delta
-		elif obstacle_sensor_down_right.is_colliding():
-			character_body_2d.velocity = Vector2.LEFT * speed * delta
-
+		# if obstacle_sensor_up.is_colliding():
+		# 	character_body_2d.velocity = Vector2.DOWN * speed * delta
+		# elif obstacle_sensor_left.is_colliding():
+		# 	character_body_2d.velocity = Vector2.RIGHT * speed * delta
+		# elif obstacle_sensor_down.is_colliding():
+		# 	character_body_2d.velocity = Vector2.UP * speed * delta
+		# elif obstacle_sensor_up_right.is_colliding():
+		# 	character_body_2d.velocity = Vector2.LEFT * speed * delta
+		# elif obstacle_sensor_up_left.is_colliding():
+		# 	character_body_2d.velocity = Vector2.RIGHT * speed * delta
+		# elif obstacle_sensor_up_right.is_colliding():
+		# 	character_body_2d.velocity = Vector2.LEFT * speed * delta
+		# elif obstacle_sensor_down_left.is_colliding():
+		# 	character_body_2d.velocity = Vector2.RIGHT * speed * delta
+		# elif obstacle_sensor_down_right.is_colliding():
+		# 	character_body_2d.velocity = Vector2.LEFT * speed * delta
+		#
 		if commoner.destination:
-			character_body_2d.velocity = (commoner.destination - character_body_2d.global_position) * speed * delta
+			character_body_2d.velocity = (commoner.destination.global_position - character_body_2d.global_position) * speed * delta
 
 	character_body_2d.move_and_slide()
 

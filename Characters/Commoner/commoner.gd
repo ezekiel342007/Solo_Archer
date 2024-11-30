@@ -10,13 +10,15 @@ func _ready() -> void:
 
 var flee: bool = false
 var run_to_player: bool = false
-var destination: Vector2
+var destination: Node2D
 
 func flee_scene() -> void:
 	flee = true
+	run_to_player = false
 	state_machine.transition_to("MoveState")
 
 func run_to(node: Node2D) -> void:
 	run_to_player = true
-	destination = node.global_position
+	flee = false
+	destination = node
 	state_machine.transition_to("MoveState")

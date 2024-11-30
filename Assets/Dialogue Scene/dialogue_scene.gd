@@ -1,16 +1,17 @@
-extends ColorRect
-class_name DialogueScene
+extends NodeState
 
-var characters: Array[CharacterBody2D]
-var dialogue_lines: Array[Dictionary]
-
-@onready var participants: Node = $"/Participants"
-
-func _init(character_locations: Array[CharacterBody2D], dialogue_details: Array[Dictionary]) -> void:
-	characters = character_locations
-	dialogue_lines = dialogue_details
+@onready var participants: Node = $Participants
+@onready var narration_banner: NarrationBanner = %NarrationBanner
+@onready var player: Player = $ColorRect/Participants/Player
+@onready var commoner: Commoner = $ColorRect/Participants/Commoner
+@onready var color_rect: ColorRect = $ColorRect
 
 
-func _ready():
-	for character in characters:
-		participants.add_child(character.new())
+func _ready() -> void:
+	narration_banner.conversation_script = Message.make_script(
+		Messages.level1_dialogue_scene_lines,
+		{"Player": player, "Commoner": commoner}
+	)
+	narration_banner.have_shown_message.connect(
+		func (): get_tree().change_scene_to_file("res://Assets/UI/Main Menu/main_menu.tscn")
+	)

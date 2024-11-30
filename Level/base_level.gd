@@ -1,7 +1,7 @@
 extends Node2D
 class_name BaseLevel
 
-@onready var player: CharacterBody2D = %Player
+@onready var player = %Player
 @onready var game_screen = %GameScreen
 @onready var pause_menu = preload("res://Assets/UI/Pause Menu/pause_menu.tscn")
 
@@ -22,8 +22,7 @@ func deploy_narration_banner(
 	messages: Message.Instruction = null,
 	signals: Dictionary = {},
 	conversation_script: Message.ConversationLine = null
-	) -> NarrationBanner:
-
+) -> NarrationBanner:
 	var narration_banner_instance: NarrationBanner = preload(
 		"res://Assets/UI/NarrationBanner/narration_banner.tscn"
 	).instantiate() as Control

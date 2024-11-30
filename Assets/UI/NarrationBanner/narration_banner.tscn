@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6fxpji7pbhn5"]
+[gd_scene load_steps=5 format=3 uid="uid://b6fxpji7pbhn5"]
 
 [ext_resource type="Script" path="res://Assets/UI/NarrationBanner/narration_banner.gd" id="1_gaf1m"]
 [ext_resource type="Texture2D" uid="uid://cdtlc1shid6b6" path="res://Assets/UI/Carved_3Slides.png" id="2_5oc8e"]
+[ext_resource type="FontFile" uid="uid://b2l5jmu8eknaw" path="res://Assets/Font/Fool.ttf" id="3_msxbt"]
+
+[sub_resource type="Theme" id="Theme_k0bb5"]
+Label/colors/font_color = Color(0.319255, 0.319255, 0.319255, 1)
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("3_msxbt")
 
 [node name="NarrationBanner" type="Control"]
 layout_mode = 3
@@ -40,6 +46,7 @@ offset_right = 134.5
 offset_bottom = 22.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_k0bb5")
 
 [node name="NarrationLabel" type="Label" parent="NinePatchRect2/GridContainer"]
 unique_name_in_owner = true

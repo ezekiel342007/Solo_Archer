@@ -10,16 +10,16 @@ extends NodeState
 
 var i: int = 0
 var is_player: bool
-var surviving_commoner
 var battle: bool = false
 var conversation: bool = true
 var goblin_in_game: CharacterBody2D
+var surviving_commoner: CharacterBody2D
 
 
 func enter() -> void:
+	surviving_commoner = $"../../Commoner"
 	level1.phase3 = true
 	camera.transition_ended.connect(restore)
-
 
 	game_screen.margin_container.add_child(
 		level1.deploy_narration_banner(
@@ -27,10 +27,12 @@ func enter() -> void:
 			{
 				&"see_goblin": func (): spawn_goblin(); camera.transition_from(goblin_spawn_position.global_position); 
 			},
-			Messages.phase3_conversation_lines1
+			Message.make_script(
+				level1.phase3_conversation_lines1,
+				{"Player": player, "Commoner": surviving_commoner}
+			)
 		)
 	)
-	surviving_commoner = $"../../Commoner"
 	player.can_move = false
 
 
@@ -55,7 +57,10 @@ func restore() -> void:
 			level1.deploy_narration_banner(
 				null,
 				{&"have_shown_message": show_goblin_kill_instructions},
-				Messages.phase3_conversation_lines2
+				Message.make_script(
+				level1.phase3_conversation_lines2,
+				{"Player": player, "Commoner": surviving_commoner}
+				)
 			)
 		)
 	camera.transition_ended.disconnect(restore)
@@ -69,7 +74,7 @@ func show_goblin_kill_instructions() -> void:
 	player.can_move = true
 	game_screen.margin_container.add_child(
 		level1.deploy_narration_banner(
-			Messages.phase3_directions,
+			level1.phase3_directions,
 		)
 	)
 

@@ -3,6 +3,7 @@ class_name Messages
 
 static var player: CharacterBody2D = Player.new()
 static var commoner: CharacterBody2D = Commoner.new()
+
 static var phase3_conversation_cast: Dictionary = {
 	"Player": player,
 	"Commoner": commoner
@@ -51,7 +52,7 @@ static var phase1_level_messages: Message.Instruction = Message.Instruction.new(
 		)
 	)
 )
-static var phase3_conversation_lines1: Message.ConversationLine = make_script(
+static var phase3_conversation_lines1: Message.ConversationLine = Message.make_script(
 	[
 		{
 			"Speaker": "Commoner",
@@ -243,7 +244,7 @@ static var phase3_conversation_lines1: Message.ConversationLine = make_script(
 	phase3_conversation_cast
 )
 
-static var phase3_conversation_lines2: Message.ConversationLine = make_script(
+static var phase3_conversation_lines2: Message.ConversationLine = Message.make_script(
 	[
 		{
 			"Speaker": "Commoner",
@@ -261,19 +262,6 @@ static var phase3_conversation_lines2: Message.ConversationLine = make_script(
 	phase3_conversation_cast
 )
 
-
-static func make_script(script: Array[Dictionary], cast: Dictionary) -> Message.ConversationLine:
-	if script.size() < 1:
-		return null
-	else:
-		var new_script = Message.ConversationLine.new(
-			cast[script[0]["Speaker"]],
-			script[0]["Message"],
-			script[0]["Action_key"]
-		).add_line(make_script(script.slice(1, script.size()), cast))
-
-		return new_script
-	
 
 static var phase3_directions = Message.Instruction.new(
 	"Use the mouse/touchpad to aim your bow and left-click to shoot",
@@ -294,3 +282,54 @@ static var phase4_instruction = Message.Instruction.new(
 	"There are others, follow the arrow",
 	""
 )
+
+static var level1_dialogue_scene_lines: Array[Dictionary]= [
+	{
+		"Speaker": "Commoner",
+		"Message": "So where are you heading now, these are dangerous times",
+		"Receivers": ["Player"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "Back to Clifford Hills",
+		"Receivers": ["Commoner"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Commoner",
+		"Message": "so that's where you're from",
+		"Receivers": ["Player"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "whatever",
+		"Receivers": ["Commoner"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "have you heard anything from there?",
+		"Receivers": ["Commoner"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Commoner",
+		"Message": "Only that the advance guard sent to ward of some invading goblins were defeated",
+		"Receivers": ["Player"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Commoner",
+		"Message": "also the goblins that attacked here were so disorganised, I take it that this was just a side quest,",
+		"Receivers": ["Player"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Commoner",
+		"Message": "and the real invasion was actually on Clifford Hills",
+		"Receivers": ["Player"],
+		"Action_key": "Enter or Space"
+	}
+]

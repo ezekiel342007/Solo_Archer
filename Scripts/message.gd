@@ -30,15 +30,35 @@ class ConversationLine:
 
 	func _init(
 			init_speaker: CharacterBody2D,
+			init_receivers: Array[CharacterBody2D],
 			init_message: String,
 			init_needed_action_key: String,
 			init_vital: bool = false
 		) -> void:
 		self.vital = init_vital
 		self.speaker = init_speaker
+		self.receivers = init_receivers
 		self.message = init_message
 		self.needed_action_key = init_needed_action_key
 
 	func add_line(new_line: ConversationLine) -> ConversationLine:
 		self.next_line = new_line
 		return self
+
+
+func make_script(script: Array[Dictionary], cast: Dictionary) -> ConversationLine:
+	if script.size() < 1:
+		return null
+	else:
+		var receivers: Array[CharacterBody2D]
+		for receiver: String in script[0]["Receivers"]:
+			receivers.append(cast[receiver])
+		var new_script = Message.ConversationLine.new(
+			cast[script[0]["Speaker"]],
+			receivers,
+			script[0]["Message"],
+			script[0]["Action_key"]
+		).add_line(make_script(script.slice(1, script.size()), cast))
+
+		return new_script
+	
