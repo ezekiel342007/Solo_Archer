@@ -61,5 +61,8 @@ func _physics_process(_delta: float) -> void:
 			if conversation_script.next_line != null:
 				conversation_script = conversation_script.next_line
 			else:
+				modulate_tween.tween_property(conversation_script.speaker, "modulate", Color8(255, 255, 255), 0.1)
+				for receiver in conversation_script.receivers:
+					modulate_tween.tween_property(receiver, "modulate", Color8(255, 255, 255), 0.1)
 				have_shown_message.emit()
 				queue_free()
