@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://33mc14uq2xgs"]
+[gd_scene load_steps=5 format=3 uid="uid://33mc14uq2xgs"]
 
 [ext_resource type="Script" path="res://Level/base_level.gd" id="1_o60fn"]
+[ext_resource type="PackedScene" uid="uid://b6gqtiu4t7ln" path="res://Assets/UI/Game Screen/game_screen.tscn" id="2_7kjby"]
 [ext_resource type="PackedScene" uid="uid://bxtmgbkivrwv2" path="res://Assets/UI/Camera/camera_2d.tscn" id="3_cfvfb"]
 [ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="3_ugghr"]
 
 [node name="BaseLevel" type="Node2D"]
 script = ExtResource("1_o60fn")
+
+[node name="GameScreen" parent="." instance=ExtResource("2_7kjby")]
+unique_name_in_owner = true
 
 [node name="TileMapLayers" type="Node" parent="."]
 
@@ -18,3 +22,5 @@ script = ExtResource("3_ugghr")
 
 [node name="Camera2D" parent="." instance=ExtResource("3_cfvfb")]
 unique_name_in_owner = true
+
+[node name="Extras" type="Node" parent="."]

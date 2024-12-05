@@ -292,7 +292,7 @@ static var level1_dialogue_scene_lines: Array[Dictionary]= [
 	},
 	{
 		"Speaker": "Player",
-		"Message": "Back to Clifford Hills",
+		"Message": "Back to %s" % GameManagement.village_name,
 		"Receivers": ["Commoner"],
 		"Action_key": "Enter or Space"
 	},
