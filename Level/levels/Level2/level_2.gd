@@ -8,7 +8,7 @@ var phase5: bool = false
 var dialogue_phase: bool = false
 
 
-static var phase_2_player_with_commander := [
+static var phase_1_player_with_commander: Array[Dictionary] = [
 	{
 		"Speaker": "Captain",
 		"Message": "You lost or somethin' brother?",
@@ -90,13 +90,106 @@ static var phase_2_player_with_commander := [
 	{
 		"Speaker": "Knight4",
 		"Message": "Captain!",
-		"Receivers": ["Player", "Knight1", "Captain", "Knight3", "Captain"],
+		"Receivers": ["Player", "Knight1", "Knight2", "Knight3", "Captain"],
 		"Action_key": "Enter or Space"
 	},
 	{
 		"Speaker": "Knight4",
 		"Message": "Don't give me that nonsense!! We are the only ones left",
-		"Receivers": ["Player", "Knight1", "Captain", "Knight3", "Captain"],
+		"Receivers": ["Player", "Knight1", "Knight2", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "Calm down Mike, we still deserted the unit when it was dire",
+		"Receivers": ["Player", "Knight1", "Knight2", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "We are truly deserters",
+		"Receivers": ["Player", "Knight1", "Knight2", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "What!!",
+		"Receivers": ["Knight2", "Knight1", "Captain", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "The goblins were that strong?",
+		"Receivers": ["Knight2", "Knight1", "Captain", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "The goblins were that strong?",
+		"Receivers": ["Knight2", "Knight1", "Captain", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "Then I have to hurry...",
+		"Receivers": ["Knight2", "Knight1", "Captain", "Knight3", "Knight4"],
 		"Action_key": "Enter or Space"
 	}
 ]
+
+static var phase_1_player_with_commander2: Array[Dictionary] = [
+	{
+		"Speaker": "Captain",
+		"Message": "Wait were are you going so fast?",
+		"Receivers": ["Player", "Knight1", "Knight2", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "%" % GameManagement.village_name,
+		"Receivers": ["Captain", "Knight1", "Knight2", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Knight2",
+		"Message": "You don't seem to understand, you're not going anywhere",
+		"Receivers": ["Player", "Knight1", "Captain", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Knight1",
+		"Message": "except empty handed of course",
+		"Receivers": ["Player", "Captain", "Knight2", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "Shut up!!!",
+		"Receivers": ["Player", "Knight", "Knight2", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "What do you mean?",
+		"Receivers": ["Player", "Knight", "Knight2", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "You think you'll change things?",
+		"Receivers": ["Player", "Knight", "Knight2", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "You think you'll change things?",
+		"Receivers": ["Player", "Knight", "Knight2", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "...",
+		"Receivers": ["Captain", "Knight", "Knight2", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	}
+] 

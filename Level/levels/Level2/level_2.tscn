@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://ds0eq8yvx0p4c"]
+[gd_scene load_steps=18 format=4 uid="uid://ds0eq8yvx0p4c"]
 
 [ext_resource type="PackedScene" uid="uid://33mc14uq2xgs" path="res://Level/base_level.tscn" id="1_awe3a"]
 [ext_resource type="Script" path="res://Level/levels/Level2/level_2.gd" id="2_nttqq"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Level/levels/Level2/phases/phase_1.gd" id="7_rwmai"]
 [ext_resource type="Script" path="res://Level/levels/Level2/phases/phase_2.gd" id="8_iocsf"]
 [ext_resource type="Script" path="res://Level/levels/Level2/phases/phase_3.gd" id="9_ilp8h"]
+[ext_resource type="PackedScene" uid="uid://bavmptulcy7br" path="res://Characters/Warriors/KnightCaptain/knight_captain.tscn" id="11_m72wp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5decl"]
 texture = ExtResource("2_qjmif")
@@ -550,6 +551,9 @@ scenes/1/scene = ExtResource("4_lgbun")
 sources/1 = SubResource("TileSetScenesCollectionSource_4v8fm")
 sources/0 = SubResource("TileSetScenesCollectionSource_w6iap")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ppbuo"]
+radius = 143.0
+
 [node name="Level2" instance=ExtResource("1_awe3a")]
 script = ExtResource("2_nttqq")
 
@@ -589,19 +593,26 @@ editor_draw_limits = true
 focus = NodePath("../Player")
 
 [node name="MeetingPoint" type="Marker2D" parent="." index="7"]
-position = Vector2(1281, 1009)
+position = Vector2(1116, 1264)
+metadata/_edit_group_ = true
 
-[node name="Knight" parent="Extras" index="0" instance=ExtResource("5_8oybn")]
-position = Vector2(1123, 970)
+[node name="Area2D" type="Area2D" parent="MeetingPoint" index="0"]
+collision_mask = 2
 
-[node name="Knight2" parent="Extras" index="1" instance=ExtResource("5_8oybn")]
-position = Vector2(1860, 1169)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeetingPoint/Area2D" index="0"]
+shape = SubResource("CircleShape2D_ppbuo")
 
-[node name="Knight3" parent="Extras" index="2" instance=ExtResource("5_8oybn")]
-position = Vector2(1664, 809)
+[node name="Knight2" parent="Extras" index="0" instance=ExtResource("5_8oybn")]
+position = Vector2(1485, 1156)
 
-[node name="Knight4" parent="Extras" index="3" instance=ExtResource("5_8oybn")]
-position = Vector2(1301, 645)
+[node name="Knight3" parent="Extras" index="1" instance=ExtResource("5_8oybn")]
+position = Vector2(1498, 895)
 
-[node name="Knight5" parent="Extras" index="4" instance=ExtResource("5_8oybn")]
-position = Vector2(1358, 1119)
+[node name="Knight4" parent="Extras" index="2" instance=ExtResource("5_8oybn")]
+position = Vector2(1152, 723)
+
+[node name="Knight1" parent="Extras" index="3" instance=ExtResource("5_8oybn")]
+position = Vector2(972, 774)
+
+[node name="Captain" parent="Extras" index="4" instance=ExtResource("11_m72wp")]
+position = Vector2(1226, 1020)
