@@ -1,11 +1,11 @@
 extends BaseLevel
 
-var phase1: bool = false
-var phase2: bool = false
-var phase3: bool = false
-var phase4: bool = false
-var phase5: bool = false
-var dialogue_phase: bool = false
+var phase1: bool = false;
+var phase2: bool = false;
+var phase3: bool = false;
+var phase4: bool = false;
+var phase5: bool = false;
+var dialogue_phase: bool = false;
 
 
 static var phase_1_player_with_commander: Array[Dictionary] = [
@@ -165,31 +165,37 @@ static var phase_2_player_with_commander2: Array[Dictionary] = [
 	{
 		"Speaker": "Captain",
 		"Message": "Shut up!!!",
-		"Receivers": ["Player", "Knight", "Knight2", "Knight3", "Knight4"],
+		"Receivers": ["Player", "Knight1", "Knight2", "Knight3", "Knight4"],
 		"Action_key": "Enter or Space"
 	},
 	{
 		"Speaker": "Captain",
 		"Message": "What do you mean?",
-		"Receivers": ["Player", "Knight", "Knight2", "Knight3", "Knight4"],
+		"Receivers": ["Player", "Knight1", "Knight2", "Knight3", "Knight4"],
 		"Action_key": "Enter or Space"
 	},
 	{
 		"Speaker": "Captain",
 		"Message": "You think you'll change things?",
-		"Receivers": ["Player", "Knight", "Knight2", "Knight3", "Knight4"],
+		"Receivers": ["Player", "Knight1", "Knight2", "Knight3", "Knight4"],
 		"Action_key": "Enter or Space"
 	},
 	{
 		"Speaker": "Captain",
 		"Message": "You think you'll change things?",
-		"Receivers": ["Player", "Knight", "Knight2", "Knight3", "Knight4"],
+		"Receivers": ["Player", "Knight1", "Knight2", "Knight3", "Knight4"],
 		"Action_key": "Enter or Space"
 	},
 	{
 		"Speaker": "Player",
 		"Message": "...",
-		"Receivers": ["Captain", "Knight", "Knight2", "Knight3", "Knight4"],
+		"Receivers": ["Captain", "Knight1", "Knight2", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "Tch",
+		"Receivers": ["Player", "Knight1", "Knight2", "Knight3", "Knight4"],
 		"Action_key": "Enter or Space"
 	}
 ] 

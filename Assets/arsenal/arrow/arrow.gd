@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Arrow
 
 @export var speed: int = 400
 @export var point_at_mouse: bool = true

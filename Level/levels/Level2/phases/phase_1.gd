@@ -10,19 +10,21 @@ extends NodeState
 @onready var meeting_point_area: Area2D = $"../../MeetingPoint/Area2D"
 @onready var compass_scene: PackedScene = preload("res://Assets/UI/Compass/compass.tscn")
 
-var compass_in_world: Marker2D
+var compass_in_world: Marker2D;
 
 
 func enter() -> void:
 	compass_in_world = deploy_compass()
 	meeting_point_area.body_entered.connect(
 		func (node: Node2D): 
+			compass_in_world.queue_free();
+			player.can_move = false;
 			if node.name == "Player":
 				game_screen.margin_container.add_child(
 					level2.deploy_narration_banner(
 						null,
 						{
-							&"have_shown_message": func (): transition.emit("Phase2")
+							&"have_shown_message": func (): player.can_move = true; transition.emit("Phase2")
 						},
 						Message.make_script(
 							level2.phase_1_player_with_commander,
@@ -36,27 +38,26 @@ func enter() -> void:
 							}
 						)
 					)
-				)
+				);
 				move_knights_to_position(
 					extras.get_children(),
 					knight_positions.get_children()
-				)
-	)
+				);
+	);
 
 
 func move_knights_to_position(extras_list: Array[Node], knight_markers: Array[Node]) -> void:
 	for i in range(extras_list.size()):
-		extras_list[i].march_to(knight_markers[i].global_position)
+		extras_list[i].march_to(knight_markers[i].global_position);
 
 
 func deploy_compass() -> Marker2D:
-	var compass_instance: Sprite2D = compass_scene.instantiate() as Sprite2D
-	compass_instance.target_position = meeting_point.global_position
-	player.add_child(compass_instance)
-	return player.get_node("Compass")
+	var compass_instance: Sprite2D = compass_scene.instantiate() as Sprite2D;
+	compass_instance.target_position = meeting_point.global_position;
+	player.add_child(compass_instance);
+	return player.get_node("Compass");
 
 
 func exit() -> void:
-	compass_in_world.queue_free()
-	meeting_point.queue_free()
-	queue_free()
+	meeting_point.queue_free();
+	queue_free();

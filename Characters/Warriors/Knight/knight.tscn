@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://ypjavl7tjt1"]
+[gd_scene load_steps=62 format=3 uid="uid://ypjavl7tjt1"]
 
 [ext_resource type="Texture2D" uid="uid://bl0bkj2ve14dw" path="res://Characters/Warriors/Knight/assets/Warrior_Blue.png" id="1_ejr1d"]
 [ext_resource type="Script" path="res://Characters/Warriors/Knight/knight.gd" id="1_icsfk"]
@@ -387,9 +387,6 @@ size = Vector2(122, 56.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hg7sx"]
 size = Vector2(130, 50)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4enid"]
-radius = 89.0
-
 [node name="Knight" type="CharacterBody2D" node_paths=PackedStringArray("state_machine")]
 collision_layer = 64
 collision_mask = 30
@@ -460,9 +457,4 @@ script = ExtResource("7_yc6as")
 character_body_2d = NodePath("../..")
 animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="DestinationFinder" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DestinationFinder"]
-shape = SubResource("CircleShape2D_4enid")
-
-[connection signal="body_entered" from="DestinationFinder" to="." method="_on_destination_finder_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
