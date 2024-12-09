@@ -592,8 +592,18 @@ limit_bottom = 1728
 editor_draw_limits = true
 focus = NodePath("../Player")
 
-[node name="MeetingPoint" type="Marker2D" parent="." index="7"]
-position = Vector2(1116, 1264)
+[node name="MeetingPoint2" type="Marker2D" parent="." index="7"]
+position = Vector2(1789, 1259)
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="MeetingPoint2" index="0"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeetingPoint2/Area2D" index="0"]
+shape = SubResource("CircleShape2D_ppbuo")
+
+[node name="MeetingPoint" type="Marker2D" parent="." index="8"]
+position = Vector2(1137, 1289)
 metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="MeetingPoint" index="0"]
@@ -602,17 +612,34 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeetingPoint/Area2D" index="0"]
 shape = SubResource("CircleShape2D_ppbuo")
 
-[node name="Knight2" parent="Extras" index="0" instance=ExtResource("5_8oybn")]
-position = Vector2(1485, 1156)
+[node name="Captain" parent="Extras" index="0" instance=ExtResource("11_m72wp")]
+position = Vector2(1234, 1107)
 
-[node name="Knight3" parent="Extras" index="1" instance=ExtResource("5_8oybn")]
-position = Vector2(1498, 895)
+[node name="Knight1" parent="Extras" index="1" instance=ExtResource("5_8oybn")]
+position = Vector2(1321, 1057)
 
-[node name="Knight4" parent="Extras" index="2" instance=ExtResource("5_8oybn")]
-position = Vector2(1152, 723)
+[node name="Knight2" parent="Extras" index="2" instance=ExtResource("5_8oybn")]
+position = Vector2(1333, 1220)
 
-[node name="Knight1" parent="Extras" index="3" instance=ExtResource("5_8oybn")]
-position = Vector2(972, 774)
+[node name="Knight3" parent="Extras" index="3" instance=ExtResource("5_8oybn")]
+position = Vector2(1412, 1325)
 
-[node name="Captain" parent="Extras" index="4" instance=ExtResource("11_m72wp")]
-position = Vector2(1226, 1020)
+[node name="Knight4" parent="Extras" index="4" instance=ExtResource("5_8oybn")]
+position = Vector2(1310, 1321)
+
+[node name="KnightPositions" type="Node" parent="." index="10"]
+
+[node name="Marker2D" type="Marker2D" parent="KnightPositions" index="0"]
+position = Vector2(1086, 1198)
+
+[node name="Marker2D2" type="Marker2D" parent="KnightPositions" index="1"]
+position = Vector2(1228, 1178)
+
+[node name="Marker2D3" type="Marker2D" parent="KnightPositions" index="2"]
+position = Vector2(1218, 1240)
+
+[node name="Marker2D4" type="Marker2D" parent="KnightPositions" index="3"]
+position = Vector2(1035, 1232)
+
+[node name="Marker2D5" type="Marker2D" parent="KnightPositions" index="4"]
+position = Vector2(1151, 1186)

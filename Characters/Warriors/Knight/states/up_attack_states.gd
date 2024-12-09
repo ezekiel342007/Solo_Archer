@@ -4,7 +4,7 @@ extends NodeState
 
 
 func enter() -> void:
-	pass
+	animated_sprite_2d.play("attack_up")
 
 
 func on_process(_delta: float) -> void:
@@ -16,4 +16,4 @@ func on_physics_process(_delta: float) -> void:
 
 
 func exit() -> void:
-	pass
+	animated_sprite_2d.stop()

@@ -6,6 +6,7 @@ extends NodeState
 @onready var camera: GameCamera = %Camera2D
 @onready var game_screen: CanvasLayer = %GameScreen
 @onready var meeting_point: Marker2D = $"../../MeetingPoint"
+@onready var knight_positions: Node = $"../../KnightPositions"
 @onready var meeting_point_area: Area2D = $"../../MeetingPoint/Area2D"
 @onready var compass_scene: PackedScene = preload("res://Assets/UI/Compass/compass.tscn")
 
@@ -13,31 +14,39 @@ var compass_in_world: Marker2D
 
 
 func enter() -> void:
+	compass_in_world = deploy_compass()
 	meeting_point_area.body_entered.connect(
 		func (node: Node2D): 
-			game_screen.margin_container.add_child(level2.deploy_narration_banner(
-				null,
-				{&"have_shown_message": func (): meeting_point.queue_free()},
-				Message.make_script(
-					level2.phase_1_player_with_commander,
-					{
-						"Player": player,
-						"Captain": extras.get_node("Captain"),
-						"Knight1": extras.get_node("Knight1"),
-						"Knight2": extras.get_node("Knight2"),
-						"Knight3": extras.get_node("Knight3"),
-						"Knight4": extras.get_node("Knight4"),
-					}
+			if node.name == "Player":
+				game_screen.margin_container.add_child(
+					level2.deploy_narration_banner(
+						null,
+						{
+							&"have_shown_message": func (): transition.emit("Phase2")
+						},
+						Message.make_script(
+							level2.phase_1_player_with_commander,
+							{
+								"Player": player,
+								"Captain": extras.get_node("Captain"),
+								"Knight1": extras.get_node("Knight1"),
+								"Knight2": extras.get_node("Knight2"),
+								"Knight3": extras.get_node("Knight3"),
+								"Knight4": extras.get_node("Knight4")
+							}
+						)
+					)
 				)
-			)
-		)
+				move_knights_to_position(
+					extras.get_children(),
+					knight_positions.get_children()
+				)
 	)
-	compass_in_world = deploy_compass()
 
 
-func on_physics_process(_delta: float) -> void:
-	if camera.get_viewport_rect().has_point(meeting_point.global_position):
-		transition.emit("Phase2")
+func move_knights_to_position(extras_list: Array[Node], knight_markers: Array[Node]) -> void:
+	for i in range(extras_list.size()):
+		extras_list[i].march_to(knight_markers[i].global_position)
 
 
 func deploy_compass() -> Marker2D:

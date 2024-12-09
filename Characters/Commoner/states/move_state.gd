@@ -4,6 +4,8 @@ extends NodeState
 @export var animated_sprite_2d: AnimatedSprite2D
 @export var speed: int = 70
 
+@onready var commoner = $"../../"
+
 @onready var obstacle_sensor_node: Node = $"../../ObstacleSensors"
 @onready var obstacle_sensor_up: RayCast2D = $"../../ObstacleSensors/ObstacleSensorUp"
 @onready var obstacle_sensor_left: RayCast2D = $"../../ObstacleSensors/ObstacleSensorLeft"
@@ -13,8 +15,6 @@ extends NodeState
 @onready var obstacle_sensor_up_right: RayCast2D = $"../../ObstacleSensors/ObstacleSensorUpRight"
 @onready var obstacle_sensor_down_left: RayCast2D = $"../../ObstacleSensors/ObstacleSensorDownLeft"
 @onready var obstacle_sensor_down_right: RayCast2D = $"../../ObstacleSensors/ObstacleSensorDownRight"
-
-@onready var commoner = $"../../"
 
 var directions: Dictionary
 var start_direction: String

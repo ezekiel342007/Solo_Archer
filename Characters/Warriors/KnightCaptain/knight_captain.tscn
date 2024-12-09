@@ -1,7 +1,6 @@
-[gd_scene load_steps=63 format=3 uid="uid://bavmptulcy7br"]
+[gd_scene load_steps=62 format=3 uid="uid://bavmptulcy7br"]
 
 [ext_resource type="Script" path="res://Characters/Warriors/Knight/knight.gd" id="1_rbheq"]
-[ext_resource type="Script" path="res://Characters/Warriors/Knight/states/state_machine_controller.gd" id="2_ebeog"]
 [ext_resource type="Texture2D" uid="uid://brv8bu55i120p" path="res://Characters/Warriors/KnightCaptain/assets/Warrior_Red.png" id="2_yvmfo"]
 [ext_resource type="Script" path="res://Scripts/state_machine/node_finite_state_machine.gd" id="3_irkpf"]
 [ext_resource type="Script" path="res://Characters/Warriors/Knight/states/idle_state.gd" id="4_ufa5u"]
@@ -403,15 +402,15 @@ size = Vector2(122, 56.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hg7sx"]
 size = Vector2(130, 50)
 
-[node name="KnightCaptain" type="CharacterBody2D"]
+[node name="KnightCaptain" type="CharacterBody2D" node_paths=PackedStringArray("state_machine")]
 collision_layer = 64
 collision_mask = 30
 script = ExtResource("1_rbheq")
+state_machine = NodePath("StateMachine")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2yyth")
 animation = &"idle"
-autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_3df7n")
@@ -444,22 +443,32 @@ shape = SubResource("RectangleShape2D_hg7sx")
 debug_color = Color(0.855683, 0.000764894, 0.886327, 0.42)
 
 [node name="StateMachineController" type="Node" parent="."]
-script = ExtResource("2_ebeog")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_node_state")]
 script = ExtResource("3_irkpf")
+initial_node_state = NodePath("IdleState")
 
-[node name="IdleState" type="Node" parent="StateMachine"]
+[node name="IdleState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("4_ufa5u")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="MoveState" type="Node" parent="StateMachine"]
+[node name="MoveState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("5_n5ppc")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="StraightAttackState" type="Node" parent="StateMachine"]
+[node name="StraightAttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("6_5pdom")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="UpAttackState" type="Node" parent="StateMachine"]
+[node name="UpAttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("7_232lc")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")
 
-[node name="DownAttackState" type="Node" parent="StateMachine"]
+[node name="DownAttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character_body_2d", "animated_sprite_2d")]
 script = ExtResource("8_rykmv")
+character_body_2d = NodePath("../..")
+animated_sprite_2d = NodePath("../../AnimatedSprite2D")

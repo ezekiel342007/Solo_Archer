@@ -137,7 +137,7 @@ static var phase_1_player_with_commander: Array[Dictionary] = [
 	}
 ]
 
-static var phase_1_player_with_commander2: Array[Dictionary] = [
+static var phase_2_player_with_commander2: Array[Dictionary] = [
 	{
 		"Speaker": "Captain",
 		"Message": "Wait were are you going so fast?",
