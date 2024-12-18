@@ -11,6 +11,7 @@ func _ready() -> void:
 	else:
 		rotation_degrees = rotation_degrees
 
+
 func _physics_process(delta: float) -> void:
 	var _collision_info = move_and_collide(velocity.normalized() * delta * speed)
 

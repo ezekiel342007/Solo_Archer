@@ -11,9 +11,9 @@ var compass_in_world: Marker2D
 
 func enter() -> void:
 	compass_in_world = deploy_compass(deploy_marker())
-	get_tree().create_timer(4.0).timeout.connect(
+	get_tree().create_timer(3.0).timeout.connect(
 		func ():
-			player.velocity = Vector2(0.0, 0.0);
+			player.state_machine.transition_to("IdleState");
 			player.can_move = false;
 			game_screen.margin_container.add_child(
 				level2.deploy_narration_banner(

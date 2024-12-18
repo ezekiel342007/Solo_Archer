@@ -199,3 +199,23 @@ static var phase_2_player_with_commander2: Array[Dictionary] = [
 		"Action_key": "Enter or Space"
 	}
 ] 
+
+static var phase_3_instructions: Message.Instruction = Message.make_instructions_list(
+	[
+		{
+			"Message": "Shoot the Knights to slow them down",
+			"Action_key": "Enter or Space",
+			"Vital": false
+		},
+		{
+			"Message": "Survive till the timer goes out",
+			"Action_key": "Enter or Space",
+			"Vital": false
+		},
+		{
+			"Message": "Good Luck!",
+			"Action_key": "Enter or Space",
+			"Vital": false
+		}
+	]
+)

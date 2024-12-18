@@ -1,5 +1,6 @@
 extends Node
 
+
 class Instruction:
 	var message: String
 	var vital: bool = false
@@ -53,7 +54,7 @@ func make_script(script: Array[Dictionary], cast: Dictionary) -> ConversationLin
 		var receivers: Array[CharacterBody2D]
 		for receiver: String in script[0]["Receivers"]:
 			receivers.append(cast[receiver])
-		var new_script = Message.ConversationLine.new(
+		var new_script = ConversationLine.new(
 			cast[script[0]["Speaker"]],
 			receivers,
 			script[0]["Message"],
@@ -62,3 +63,15 @@ func make_script(script: Array[Dictionary], cast: Dictionary) -> ConversationLin
 
 		return new_script
 	
+
+func make_instructions_list(instructions: Array[Dictionary]) -> Instruction:
+	if instructions.size() < 1:
+		return null
+	else:
+		var new_instruction: Instruction = Instruction.new(
+			instructions[0]["Message"],
+			instructions[0]["Action_key"],
+			instructions[0]["Vital"]
+		).add_instruction(make_instructions_list(instructions.slice(1, instructions.size())))
+
+		return new_instruction

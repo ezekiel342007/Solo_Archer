@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://chh7x5r02rfyk"]
+
+[ext_resource type="Script" path="res://Assets/UI/CountDown/CountDown.cs" id="1_dn0en"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcxug"]
+bg_color = Color(0, 0.686275, 0.00784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ge3j"]
+bg_color = Color(0.901961, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dn0en")
+
+[node name="CountDownBar" type="ProgressBar" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -297.0
+offset_right = 297.0
+offset_bottom = 27.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_wcxug")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7ge3j")
+max_value = 30.0
+step = 1.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+autostart = true
