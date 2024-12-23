@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=4 uid="uid://ds0eq8yvx0p4c"]
+[gd_scene load_steps=19 format=4 uid="uid://ds0eq8yvx0p4c"]
 
-[ext_resource type="PackedScene" uid="uid://33mc14uq2xgs" path="res://Level/base_level.tscn" id="1_awe3a"]
+[ext_resource type="PackedScene" uid="uid://33mc14uq2xgs" path="res://Scripts/base_level.tscn" id="1_awe3a"]
 [ext_resource type="Script" path="res://Level/levels/Level2/level_2.gd" id="2_nttqq"]
 [ext_resource type="Texture2D" uid="uid://brlu12r17bith" path="res://Assets/environment/tilemaps/Tilemap_Flat.png" id="2_qjmif"]
 [ext_resource type="PackedScene" uid="uid://c6lv5edv045br" path="res://Assets/environment/rock/border_rock.tscn" id="3_ptnuf"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Level/levels/Level2/phases/phase_2.gd" id="8_iocsf"]
 [ext_resource type="Script" path="res://Level/levels/Level2/phases/phase_3.gd" id="9_ilp8h"]
 [ext_resource type="PackedScene" uid="uid://bavmptulcy7br" path="res://Characters/Warriors/KnightCaptain/knight_captain.tscn" id="11_m72wp"]
+[ext_resource type="PackedScene" uid="uid://cstp1xo41baq" path="res://Assets/destination_marker.tscn" id="12_ysgqu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5decl"]
 texture = ExtResource("2_qjmif")
@@ -612,6 +613,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeetingPoint/Area2D" index="0"]
 shape = SubResource("CircleShape2D_ppbuo")
 
+[node name="Extras" parent="." index="9"]
+unique_name_in_owner = true
+
 [node name="Captain" parent="Extras" index="0" instance=ExtResource("11_m72wp")]
 position = Vector2(1234, 1107)
 
@@ -629,17 +633,17 @@ position = Vector2(1310, 1321)
 
 [node name="KnightPositions" type="Node" parent="." index="10"]
 
-[node name="Marker2D" type="Marker2D" parent="KnightPositions" index="0"]
-position = Vector2(1086, 1198)
+[node name="DestinationMarker" parent="KnightPositions" index="0" instance=ExtResource("12_ysgqu")]
+position = Vector2(1231, 1188)
 
-[node name="Marker2D2" type="Marker2D" parent="KnightPositions" index="1"]
-position = Vector2(1228, 1178)
+[node name="DestinationMarker2" parent="KnightPositions" index="1" instance=ExtResource("12_ysgqu")]
+position = Vector2(1159, 1180)
 
-[node name="Marker2D3" type="Marker2D" parent="KnightPositions" index="2"]
-position = Vector2(1218, 1240)
+[node name="DestinationMarker3" parent="KnightPositions" index="2" instance=ExtResource("12_ysgqu")]
+position = Vector2(1077, 1206)
 
-[node name="Marker2D4" type="Marker2D" parent="KnightPositions" index="3"]
-position = Vector2(1035, 1232)
+[node name="DestinationMarker4" parent="KnightPositions" index="3" instance=ExtResource("12_ysgqu")]
+position = Vector2(1215, 1248)
 
-[node name="Marker2D5" type="Marker2D" parent="KnightPositions" index="4"]
-position = Vector2(1151, 1186)
+[node name="DestinationMarker5" parent="KnightPositions" index="4" instance=ExtResource("12_ysgqu")]
+position = Vector2(1041, 1228)

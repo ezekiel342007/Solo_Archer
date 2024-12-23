@@ -37,32 +37,33 @@ func enter() -> void:
 			move_knights_to_position(
 				extras.get_children(),
 				[
-					Vector2(
-						randf_range(player.global_position.x, player.global_position.x * 1.121),
-						randf_range(player.global_position.y, player.global_position.y * 1.323)
-					),
-					Vector2(
-						randf_range(player.global_position.x, player.global_position.x * 1.123),
-						randf_range(player.global_position.y, player.global_position.y * 1.223)
-					),
-					Vector2(
-						randf_range(player.global_position.x, player.global_position.x * 1.238),
-						randf_range(player.global_position.y, player.global_position.y * 1.132)
-					),
-					Vector2(
-						randf_range(player.global_position.x, player.global_position.x * 1.326),
-						randf_range(player.global_position.y, player.global_position.y * 1.316)
-					),
-					Vector2(
-						randf_range(player.global_position.x, player.global_position.x * 1.323),
-						randf_range(player.global_position.y, player.global_position.y * 1.142)
-					)
+					# Vector2(
+					# 	randf_range(player.global_position.x, player.global_position.x * 1.121),
+					# 	randf_range(player.global_position.y, player.global_position.y * 1.323)
+					# ),
+					# Vector2(
+					# 	randf_range(player.global_position.x, player.global_position.x * 1.123),
+					# 	randf_range(player.global_position.y, player.global_position.y * 1.223)
+					# ),
+					# Vector2(
+					# 	randf_range(player.global_position.x, player.global_position.x * 1.238),
+					# 	randf_range(player.global_position.y, player.global_position.y * 1.132)
+					# ),
+					# Vector2(
+					# 	randf_range(player.global_position.x, player.global_position.x * 1.326),
+					# 	randf_range(player.global_position.y, player.global_position.y * 1.316)
+					# ),
+					# Vector2(
+					# 	randf_range(player.global_position.x, player.global_position.x * 1.323),
+					# 	randf_range(player.global_position.y, player.global_position.y * 1.142)
+					# )
+					player, player, player, player, player
 				]
 			);
 	);
 
 
-func move_knights_to_position(extras_list: Array[Node], location: Array[Vector2]) -> void:
+func move_knights_to_position(extras_list: Array[Node], location: Array[Node2D]) -> void:
 	for i in range(extras_list.size()):
 		extras_list[i].march_to(location[i])
 

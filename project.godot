@@ -92,6 +92,7 @@ pause_game={
 2d_physics/layer_5="OBSTACLE"
 2d_physics/layer_6="PATROLPOINT"
 2d_physics/layer_7="EXTRAS"
+2d_physics/layer_8="DESTINATIONPOINT"
 
 [rendering]
 

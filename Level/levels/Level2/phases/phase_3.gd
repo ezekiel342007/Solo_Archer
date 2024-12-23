@@ -39,4 +39,4 @@ func deploy_count_down() -> void:
 func make_knights_attack(target: Node2D) -> void:
 	for knight in extras.get_children():
 		knight.target = target;
-	deploy_count_down()
+	deploy_count_down();

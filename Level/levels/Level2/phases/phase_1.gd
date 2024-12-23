@@ -48,7 +48,7 @@ func enter() -> void:
 
 func move_knights_to_position(extras_list: Array[Node], knight_markers: Array[Node]) -> void:
 	for i in range(extras_list.size()):
-		extras_list[i].march_to(knight_markers[i].global_position);
+		extras_list[i].march_to(knight_markers[i]);
 
 
 func deploy_compass() -> Marker2D:

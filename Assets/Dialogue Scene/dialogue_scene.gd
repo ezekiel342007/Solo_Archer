@@ -1,4 +1,4 @@
-extends NodeState
+extends Node
 
 @onready var participants: Node = $Participants
 @onready var narration_banner: NarrationBanner = %NarrationBanner
