@@ -333,3 +333,204 @@ static var level1_dialogue_scene_lines: Array[Dictionary]= [
 		"Action_key": "Enter or Space"
 	}
 ]
+
+static var level2_dialogue_lines: Array[Dictionary] = [
+	{
+		"Speaker": "Captain",
+		"Message": "huff huff you really run around",
+		"Receivers": ["Player", "Knight1", "Knight2", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "and your puny arrows are really a nuisance",
+		"Receivers": ["Player", "Knight1", "Knight2", "Knight3", "Knight4"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Knight4",
+		"Message": "what are you talking about Captain, they can't even pierce lethally",
+		"Receivers": ["Player", "Knight1", "Knight2", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Knight2",
+		"Message": "but they sure hurt",
+		"Receivers": ["Player", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "you think we didn't try?",
+		"Receivers": ["Player", "Knight1", "Knight4", "Knight3", "Knight2"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "what do you think we trained all our lives for?",
+		"Receivers": ["Player", "Knight1", "Knight4", "Knight3", "Knight2"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "...",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "where were you all this while, hypocrite!",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Player"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "doing my job",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "don't blame me for your failure",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "though you shouldn't blame yourself to much either",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "no one was ready for this",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "...",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Player"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "but now we can be",
+		"Receivers": ["Knight2", "Knight1", "Knight3", "Knight4", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "what do you say, Captain",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "don't get cocky",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Player"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "well then let's move",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "to where?",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Player"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": GameManagement.village_name_slang1,
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "pipe down kid, you might have fought some here and there",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Player"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "but you've never seen war",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Player"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "we need an army",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Player"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "well we'll make due with what we have",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "I know where to find them",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Player"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "how long will it take?",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "about 3 days at best",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Player"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "heh, still works",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "see you in %s" % GameManagement.village_name_slang1,
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "you're not coming?",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Player"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "I've got other things to do",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "I wont miss it",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Player",
+		"Message": "trust me",
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	},
+	{
+		"Speaker": "Captain",
+		"Message": "See you on %s" % GameManagement.village_name_slang1,
+		"Receivers": ["Knight2", "Knight1", "Knight4", "Knight3", "Captain"],
+		"Action_key": "Enter or Space"
+	}
+]

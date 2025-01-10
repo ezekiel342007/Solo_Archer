@@ -1,20 +1,28 @@
 extends CharacterBody2D
 class_name Knight;
 
+@export var target: CharacterBody2D;
 @export var state_machine: NodeFiniteStateMachine;
 
-@onready var up_attack_area: Area2D = $UpAttackArea
-@onready var down_attack_area: Area2D = $DownAttackArea
-@onready var straight_attack_area: Area2D = $StraightAttackArea
+@onready var upward_view: Node2D = $UpwardView;
+@onready var damage_timer: Timer = $DamageTimer;
+@onready var forward_view: Node2D = $ForwardView;
+@onready var backward_view: Node2D = $BackwardView;
+@onready var downward_view: Node2D = $DownwardView;
+@onready var destination_finder: Area2D = $DestinationFinder;
 
 signal shot_by_player;
-# signal hit_target(body: CharacterBody2D);
+signal hit_target(body: CharacterBody2D, damage: int);
 
-var health: int = 10;
+var health: int = 10
 var destination: Node2D;
 var speed: float = 9930.0;
 var attacking: bool = false;
-var target: CharacterBody2D;
+var randm: RandomNumberGenerator = RandomNumberGenerator.new();
+
+
+func _ready() -> void:
+	randm.randomize();
 
 
 func march_to(new_position: Node2D) -> void:
@@ -22,12 +30,40 @@ func march_to(new_position: Node2D) -> void:
 	state_machine.transition_to("MoveState");
 
 
+func _physics_process(_delta: float) -> void:
+	if upward_view.sense_target:
+		state_machine.transition_to("UpAttackState");
+
+	if forward_view.sense_target:
+		state_machine.transition_to("StraightAttackRightState");
+
+	if downward_view.sense_target:
+		state_machine.transition_to("DownAttackState");
+
+	if backward_view.sense_target:
+		state_machine.transition_to("StraightAttackLeftState");
+
+	if target and (upward_view.sense_target == false) and (backward_view.sense_target == false) and (forward_view.sense_target == false) and (downward_view.sense_target == false):
+		march_to(target);
+
+
 func march_randomly_to(new_position: Node2D) -> void:
-	var distance: float = global_position.distance_to(new_position.global_position);
-	var travel_time: float = distance/speed;
-	get_tree().create_timer(
-			randf_range(travel_time - 0.9, travel_time + 0.9)
-		).timeout.connect(func (): state_machine.transition_to("IdleState"))
+	var new_point: Vector2 = Vector2(
+		randm.randfn(
+			randm.randf_range(new_position.global_position.x + randm.randfn(20.0), new_position.global_position.x - randm.randfn(20.0)),
+			12.23
+		),
+		randm.randfn(
+			randm.randf_range(
+				new_position.global_position.y + randm.randfn(20.0), new_position.global_position.y - randm.randfn(20.0)
+			),
+			10.23
+		)
+	);
+	var new_destination_marker: Area2D = DestinationMarker.new();
+	new_destination_marker.global_position = new_point;
+	get_node("../../").add_child(new_destination_marker);
+	march_to(new_destination_marker);
 
 
 func _on_hurt_box_body_entered(body: Arrow) -> void:
@@ -36,22 +72,9 @@ func _on_hurt_box_body_entered(body: Arrow) -> void:
 		body.queue_free();
 
 
-func _on_down_attack_area_body_entered(body: CharacterBody2D) -> void:
-	if body == target:
-		attacking = true;
-		state_machine.transition_to("DownAttackState");
-
-
-func _on_straight_attack_area_body_entered(body: CharacterBody2D) -> void:
-	if body == target:
-		attacking = true;
-		state_machine.transition_to("StraightAttackState");
-
-
-func _on_up_attack_area_body_entered(body: CharacterBody2D) -> void:
-	if body == target:
-		attacking = true;
-		state_machine.transition_to("UpAttackState");
+func _on_destination_finder_area_entered(area: Area2D) -> void:
+	if area == destination:
+		state_machine.transition_to("IdleState");
 
 
 func _on_destination_finder_body_entered(body: Node2D) -> void:

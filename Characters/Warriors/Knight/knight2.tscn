@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://d26waa64a633v"]
+[gd_scene load_steps=46 format=3 uid="uid://d26waa64a633v"]
 
 [ext_resource type="Texture2D" uid="uid://bl0bkj2ve14dw" path="res://Characters/Warriors/Knight/assets/Warrior_Blue.png" id="1_4tf8j"]
 [ext_resource type="Script" path="res://Characters/Warriors/Knight/Knight2.cs" id="1_hgkyv"]
@@ -202,7 +202,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move",
-"speed": 15.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -264,6 +264,10 @@ size = Vector2(130, 46)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j7lq0"]
 size = Vector2(46, 93)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_edtme"]
+radius = 30.0
+height = 92.0
+
 [node name="Knight2" type="CharacterBody2D" node_paths=PackedStringArray("hurtBox", "upAttackArea", "downAttackArea", "straightAttackArea", "stateMachine")]
 script = ExtResource("1_hgkyv")
 hurtBox = NodePath("Hurtbox")
@@ -277,8 +281,9 @@ shape = SubResource("CapsuleShape2D_hroam")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6tqj0")
-animation = &"straight_attack"
-frame_progress = 0.0837886
+animation = &"move"
+frame = 5
+frame_progress = 0.183672
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 0
@@ -314,6 +319,14 @@ collision_mask = 10
 position = Vector2(63, 0)
 shape = SubResource("RectangleShape2D_j7lq0")
 debug_color = Color(0.368627, 0, 0.568627, 0.419608)
+
+[node name="DestinationReachedArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestinationReachedArea"]
+shape = SubResource("CapsuleShape2D_edtme")
+debug_color = Color(0, 0.0196078, 0.701961, 0.419608)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initialNodeState")]
 script = ExtResource("2_bytmj")

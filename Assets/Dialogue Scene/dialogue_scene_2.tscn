@@ -1,16 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cffwg8r0uxnjt"]
+[gd_scene load_steps=6 format=3 uid="uid://cffwg8r0uxnjt"]
 
 [ext_resource type="PackedScene" uid="uid://b6fxpji7pbhn5" path="res://Assets/UI/NarrationBanner/narration_banner.tscn" id="1_g83qh"]
-[ext_resource type="Script" path="res://Assets/Dialogue Scene/DialogueScene2.cs" id="1_rftmg"]
+[ext_resource type="Script" path="res://Assets/Dialogue Scene/dialogue_scene_2.gd" id="1_xwiq4"]
+[ext_resource type="PackedScene" uid="uid://ypjavl7tjt1" path="res://Characters/Warriors/Knight/knight.tscn" id="2_u23ah"]
+[ext_resource type="PackedScene" uid="uid://bavmptulcy7br" path="res://Characters/Warriors/KnightCaptain/knight_captain.tscn" id="3_3okw2"]
+[ext_resource type="PackedScene" uid="uid://cxkugss8ju2qd" path="res://Characters/Players/Player/player.tscn" id="4_vjc8v"]
 
-[node name="DialogueScene2" type="Control"]
+[node name="DialogueScene2" type="Control" node_paths=PackedStringArray("participants_node", "narration_banner")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_rftmg")
+script = ExtResource("1_xwiq4")
+participants_node = NodePath("ColorRect/Participants")
+narration_banner = NodePath("ColorRect/NarrationBanner")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -23,5 +28,24 @@ color = Color(0, 0, 0, 1)
 
 [node name="Participants" type="Node" parent="ColorRect"]
 
+[node name="Knight4" parent="ColorRect/Participants" instance=ExtResource("2_u23ah")]
+position = Vector2(274, 503)
+
+[node name="Knight1" parent="ColorRect/Participants" instance=ExtResource("2_u23ah")]
+position = Vector2(696, 503)
+
+[node name="Knight2" parent="ColorRect/Participants" instance=ExtResource("2_u23ah")]
+position = Vector2(81, 503)
+
+[node name="Knight3" parent="ColorRect/Participants" instance=ExtResource("2_u23ah")]
+position = Vector2(416, 503)
+
+[node name="KnightCaptain" parent="ColorRect/Participants" instance=ExtResource("3_3okw2")]
+position = Vector2(166, 503)
+
+[node name="Player" parent="ColorRect/Participants" instance=ExtResource("4_vjc8v")]
+position = Vector2(536, 503)
+
 [node name="NarrationBanner" parent="ColorRect" instance=ExtResource("1_g83qh")]
+z_index = 1
 layout_mode = 1

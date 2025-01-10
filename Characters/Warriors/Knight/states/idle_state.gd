@@ -9,9 +9,9 @@ func enter() -> void:
 	animated_sprite_2d.play("idle")
 
 
-func on_physics_process(_delta: float) -> void:
-	if knight.target:
-		knight.march_randomly_to(knight.target);
+# func on_physics_process(_delta: float) -> void:
+# 	if knight.target:
+# 		knight.march_to(knight.target);
 
 
 func exit() -> void:

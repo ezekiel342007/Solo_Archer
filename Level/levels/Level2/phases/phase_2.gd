@@ -4,7 +4,8 @@ extends NodeState
 @onready var level2: BaseLevel = $"../.."
 @onready var extras: Node = $"../../Extras"
 @onready var camera: GameCamera = %Camera2D
-@onready var game_screen: CanvasLayer = %GameScreen
+@onready var game_screen: CanvasLayer = %GameScreen;
+@onready var knight_positions: Node = $"../../KnightPositions"
 @onready var compass_scene: PackedScene = preload("res://Assets/UI/Compass/compass.tscn")
 
 var compass_in_world: Marker2D
@@ -59,13 +60,14 @@ func enter() -> void:
 					# )
 					player, player, player, player, player
 				]
+				
 			);
 	);
 
 
-func move_knights_to_position(extras_list: Array[Node], location: Array[Node2D]) -> void:
+func move_knights_to_position(extras_list: Array[Node], location: Array[Node]) -> void:
 	for i in range(extras_list.size()):
-		extras_list[i].march_to(location[i])
+		extras_list[i].march_randomly_to(location[i])
 
 
 func deploy_marker() -> Vector2:

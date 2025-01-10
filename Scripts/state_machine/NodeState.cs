@@ -2,8 +2,7 @@ using Godot;
 
 public abstract partial class NodeState : Node
 {
-    [Signal]
-    public delegate void TransitionEventHandler(string newNodeName);
+    [Signal] public delegate void TransitionEventHandler(string newNodeName);
 
     public virtual void Enter()
     {

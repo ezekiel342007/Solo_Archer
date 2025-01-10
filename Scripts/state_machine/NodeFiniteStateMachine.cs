@@ -12,13 +12,11 @@ public partial class NodeFiniteStateMachine : Node
 
 	public override void _Ready()
 	{
-		
 		foreach (NodeState nodeState in GetChildren())
 		{
 			nodeStates[nodeState.Name.ToString().ToLower()] = nodeState;
-			nodeState.Connect(nameof(nodeState.Transition), new Callable(this, nameof(TransitionTo)));
+			/*nodeState.Connect(nameof(nodeState.Trasition), new Callable(this, nameof(TransitionTo)));*/
 		}
-
 
 		if (initialNodeState != null)
 			currentNodeState = initialNodeState;
@@ -38,7 +36,7 @@ public partial class NodeFiniteStateMachine : Node
 			currentNodeState.Input(@event);
 	}
 
-	public void TransitionTo(string nodeName)
+    public void TransitionTo(string nodeName)
 	{
 		if (nodeName.ToLower() == currentNodeStateName.ToLower())
 			return;

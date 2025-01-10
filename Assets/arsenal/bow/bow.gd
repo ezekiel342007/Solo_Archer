@@ -4,6 +4,7 @@ extends Area2D
 @onready var release_marker_2d = $AnimatedSprite2D/ReleaseMarker2D
 
 var arrow = preload("res://Assets/arsenal/arrow/arrow.tscn")
+var aiming: bool = true;
 var mouse_control: bool = true
 var target_direction: Vector2
 var stp_time: int
@@ -13,6 +14,7 @@ var combo: bool = false
 
 
 func _ready() -> void:
+	aiming = get_parent().aiming;
 	animated_sprite_2d.play("aim")
 
 
@@ -92,9 +94,10 @@ func _input(event):
 
 
 func rotate_to_target(target: Vector2, _delta: float) -> void:
-	target_direction = target - global_position 
-	var aim = transform.x.angle_to_point(target_direction)
-	rotation = aim
+	if aiming:
+		target_direction = target - global_position 
+		var aim = transform.x.angle_to_point(target_direction)
+		rotation = aim
 
 
 func shoot() -> void:

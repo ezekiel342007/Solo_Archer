@@ -1,4 +1,4 @@
-extends NodeState
+extends NodeState;
 
 @onready var player: Player = %Player;
 @onready var level2: BaseLevel = $"../..";
@@ -6,6 +6,7 @@ extends NodeState
 @onready var camera: GameCamera = %Camera2D;
 @onready var game_screen: CanvasLayer = %GameScreen;
 @onready var count_down = preload("res://Assets/UI/CountDown/count_down.tscn")
+@onready var player_health_bar_scene = preload("res://Assets/UI/PlayerHealthBar/player_health_bar.tscn");
 
 
 func enter() -> void:
@@ -24,11 +25,12 @@ func deploy_count_down() -> void:
 	count_down_instance.connect(
 		"CountDownReached",
 		func ():
+			stop_knights_attack();
 			game_screen.margin_container.add_child(
 				level2.deploy_narration_banner(
 					Message.Instruction.new("Level Complete", "Enter or Space", false),
 					{
-						&"have_shown_message": func (): print("complete");
+						&"have_shown_message": func (): get_tree().change_scene_to_file("res://Assets/Dialogue Scene/dialogue_scene_2.tscn");
 					}
 				)
 			)
@@ -37,6 +39,14 @@ func deploy_count_down() -> void:
 
 
 func make_knights_attack(target: Node2D) -> void:
+	player.add_child(player_health_bar_scene.instantiate());
 	for knight in extras.get_children():
 		knight.target = target;
 	deploy_count_down();
+
+
+func stop_knights_attack() -> void:
+	player.get_node("PlayerHealthBar").queue_free();
+	for knight in extras.get_children():
+		knight.target = null;
+		knight.destination = null;
