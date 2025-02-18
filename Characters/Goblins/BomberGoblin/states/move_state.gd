@@ -87,8 +87,8 @@ func flip_sprite() -> void:
 	# Flip the sprite if the current point is behind the goblin
 	if character_body_2d.global_position.x > current_point.x:
 		animated_sprite_2d.flip_h = true
-		character_body_2d.flip = true
+		release_point.position = -release_point.position;
 	# Do nothing if the current point is in front of the goblin
 	elif character_body_2d.global_position.x < current_point.x:
 		animated_sprite_2d.flip_h = false
-		character_body_2d.flip = false
+		release_point.position = release_point.position;

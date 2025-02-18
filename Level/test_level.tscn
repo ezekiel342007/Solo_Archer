@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://d13oa2ujg5u7j"]
+[gd_scene load_steps=19 format=4 uid="uid://d13oa2ujg5u7j"]
 
 [ext_resource type="Texture2D" uid="uid://b8ivx2mfsca33" path="res://Assets/environment/tilemaps/Bridge_All.png" id="1_kesoq"]
 [ext_resource type="Script" path="res://Level/test_level.gd" id="1_lfqb2"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://Assets/UI/Camera/camera2d.gd" id="9_vdofv"]
 [ext_resource type="PackedScene" uid="uid://brwgg7tc0awf7" path="res://Assets/UI/Compass/compass.tscn" id="10_j45ov"]
 [ext_resource type="PackedScene" uid="uid://bbjs1w7nnxjfe" path="res://Assets/UI/PlayerHealthBar/player_health_bar.tscn" id="10_xlia7"]
-[ext_resource type="PackedScene" uid="uid://bavmptulcy7br" path="res://Characters/Warriors/KnightCaptain/knight_captain.tscn" id="11_ruee1"]
 [ext_resource type="PackedScene" uid="uid://b6gqtiu4t7ln" path="res://Assets/UI/Game Screen/game_screen.tscn" id="13_kleq6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y68hr"]
@@ -1552,7 +1551,3 @@ position = Vector2(520, 8)
 position = Vector2(936, 208)
 
 [node name="GameScreen" parent="." instance=ExtResource("13_kleq6")]
-
-[node name="KnightCaptain" parent="." node_paths=PackedStringArray("target") instance=ExtResource("11_ruee1")]
-position = Vector2(344, 320)
-target = NodePath("../Player")

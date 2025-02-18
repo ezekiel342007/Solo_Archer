@@ -1,7 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://bv0kahgigffrt"]
+[gd_scene load_steps=14 format=3 uid="uid://bv0kahgigffrt"]
 
 [ext_resource type="Script" path="res://Assets/arsenal/dynamite/dynamite.gd" id="1_tfe7u"]
+[ext_resource type="Shader" path="res://Assets/arsenal/dynamite/dynamite.gdshader" id="2_cqp67"]
 [ext_resource type="Texture2D" uid="uid://dg6gru753nmvu" path="res://Assets/arsenal/dynamite/Dynamite.png" id="2_ihapw"]
+
+[sub_resource type="Curve2D" id="Curve2D_1vuby"]
+_data = {
+"points": PackedVector2Array(0, 0, 150, -300, 0, 0, 0, 0, 0, 0, 300, 0)
+}
+point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n1uck"]
+shader = ExtResource("2_cqp67")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nevg1"]
 atlas = ExtResource("2_ihapw")
@@ -53,25 +63,21 @@ animations = [{
 "speed": 14.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5r7o2"]
-height = 38.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gcrx4"]
 radius = 15.0
 height = 51.0
 
-[node name="Dynamite" type="CharacterBody2D"]
-collision_layer = 8
-collision_mask = 18
+[node name="Dynamite" type="Path2D"]
+curve = SubResource("Curve2D_1vuby")
 script = ExtResource("1_tfe7u")
+speed = 210
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_n1uck")
 sprite_frames = SubResource("SpriteFrames_ql2pg")
 autoplay = "default"
-frame_progress = 0.440912
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_5r7o2")
+frame = 2
+frame_progress = 0.969272
 
 [node name="Trigger" type="Area2D" parent="."]
 collision_layer = 8
@@ -80,5 +86,8 @@ collision_mask = 22
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
 shape = SubResource("CapsuleShape2D_gcrx4")
 debug_color = Color(0.308553, 0.61859, 0.299098, 0.42)
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotation = -1.10715
 
 [connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]

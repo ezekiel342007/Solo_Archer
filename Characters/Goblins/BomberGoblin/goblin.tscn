@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dc0w0dannprwp"]
+[gd_scene load_steps=34 format=3 uid="uid://dc0w0dannprwp"]
 
 [ext_resource type="Texture2D" uid="uid://b55od4jek8k57" path="res://Characters/Goblins/BomberGoblin/asstets/TNT_Blue.png" id="1_bpome"]
 [ext_resource type="Script" path="res://Characters/Goblins/BomberGoblin/goblin.gd" id="1_ilqxl"]
@@ -67,17 +67,33 @@ region = Rect2(960, 428, 192, 107)
 atlas = ExtResource("1_bpome")
 region = Rect2(1152, 428, 192, 107)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x6bxr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6sau"]
 atlas = ExtResource("1_bpome")
-region = Rect2(0, 432, 192, 108)
+region = Rect2(0, 384, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lv4h5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ton1o"]
 atlas = ExtResource("1_bpome")
-region = Rect2(192, 432, 192, 108)
+region = Rect2(192, 384, 192, 192)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4rdkw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk4qd"]
 atlas = ExtResource("1_bpome")
-region = Rect2(384, 432, 192, 108)
+region = Rect2(384, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlqi1"]
+atlas = ExtResource("1_bpome")
+region = Rect2(576, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8ygh"]
+atlas = ExtResource("1_bpome")
+region = Rect2(768, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqv0o"]
+atlas = ExtResource("1_bpome")
+region = Rect2(960, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fpqh"]
+atlas = ExtResource("1_bpome")
+region = Rect2(1152, 384, 192, 192)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l2iy8"]
 animations = [{
@@ -143,17 +159,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x6bxr")
+"texture": SubResource("AtlasTexture_b6sau")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lv4h5")
+"texture": SubResource("AtlasTexture_ton1o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4rdkw")
+"texture": SubResource("AtlasTexture_jk4qd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlqi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8ygh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqv0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fpqh")
 }],
 "loop": false,
 "name": &"throw",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kmeov"]
@@ -164,7 +192,7 @@ radius = 35.0
 height = 96.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4f2k"]
-size = Vector2(353.5, 20)
+size = Vector2(463, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l33dj"]
 radius = 50.0
@@ -178,9 +206,10 @@ state_machine = NodePath("StateMachine")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(5, -2)
 sprite_frames = SubResource("SpriteFrames_l2iy8")
-animation = &"idle"
+animation = &"throw"
 autoplay = "idle"
-frame_progress = 0.145635
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kmeov")
@@ -224,7 +253,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
-position = Vector2(-0.25, 0)
 shape = SubResource("RectangleShape2D_g4f2k")
 debug_color = Color(0, 0.647677, 0.204275, 0.42)
 
@@ -241,7 +269,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="ReleasePoint" type="Marker2D" parent="."]
-position = Vector2(67, -7)
+position = Vector2(38, -11)
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="StateMachine/AttackState/AttackTimer" to="StateMachine/AttackState" method="_on_attack_timer_timeout"]
