@@ -1,6 +1,6 @@
 extends Area2D
 
-var damage: int
+var damage: int;
 
 
 func _ready() -> void:

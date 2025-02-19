@@ -12,6 +12,7 @@ class_name BomberGoblin
 signal has_died
 
 var flip: bool
+var can_attack: bool = false
 var direction: Vector2
 
 
@@ -24,7 +25,7 @@ func _physics_process(_delta: float) -> void:
 # Detects a player and transition to the attack state
 func _on_player_detect_body_entered(body: CharacterBody2D):
 	# if the body is the player
-	if body.name == "Player":
+	if body.name == "Player" and can_attack:
 		state_machine.transition_to("AttackState")
 
 
