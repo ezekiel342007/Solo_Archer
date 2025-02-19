@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bj16pn2nb7mbm" path="res://Assets/environment/tree/tree.tscn" id="7_a80oa"]
 [ext_resource type="PackedScene" uid="uid://bdyam1g8b3uep" path="res://Characters/Goblins/TNTGoblin/tnt_goblin.tscn" id="8_1ryto"]
 [ext_resource type="PackedScene" uid="uid://cxkugss8ju2qd" path="res://Characters/Players/Player/player.tscn" id="9_q4i8g"]
-[ext_resource type="Script" path="res://Assets/UI/Camera/camera2d.gd" id="9_vdofv"]
 [ext_resource type="PackedScene" uid="uid://brwgg7tc0awf7" path="res://Assets/UI/Compass/compass.tscn" id="10_j45ov"]
 [ext_resource type="PackedScene" uid="uid://bbjs1w7nnxjfe" path="res://Assets/UI/PlayerHealthBar/player_health_bar.tscn" id="10_xlia7"]
 [ext_resource type="PackedScene" uid="uid://b6gqtiu4t7ln" path="res://Assets/UI/Game Screen/game_screen.tscn" id="13_kleq6"]
@@ -1490,6 +1489,8 @@ sources/1 = SubResource("TileSetAtlasSource_l8ici")
 sources/2 = SubResource("TileSetAtlasSource_yobjr")
 sources/3 = SubResource("TileSetAtlasSource_837u1")
 
+[sub_resource type="GDScript" id="GDScript_88sy4"]
+
 [node name="TestLevel" type="Node2D"]
 script = ExtResource("1_lfqb2")
 
@@ -1524,10 +1525,9 @@ position = Vector2(120, 136)
 [node name="TNTGoblin" parent="Enemies" instance=ExtResource("8_1ryto")]
 position = Vector2(112, 368)
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("focus")]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(472, 400)
-script = ExtResource("9_vdofv")
-focus = NodePath("../Player")
+script = SubResource("GDScript_88sy4")
 
 [node name="Player" parent="." instance=ExtResource("9_q4i8g")]
 unique_name_in_owner = true

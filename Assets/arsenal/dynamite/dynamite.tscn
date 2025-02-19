@@ -12,6 +12,7 @@ point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n1uck"]
 shader = ExtResource("2_cqp67")
+shader_parameter/direction = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nevg1"]
 atlas = ExtResource("2_ihapw")
@@ -72,22 +73,24 @@ curve = SubResource("Curve2D_1vuby")
 script = ExtResource("1_tfe7u")
 speed = 210
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotation = -1.10715
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PathFollow2D"]
 material = SubResource("ShaderMaterial_n1uck")
+rotation = 1.10715
 sprite_frames = SubResource("SpriteFrames_ql2pg")
 autoplay = "default"
 frame = 2
 frame_progress = 0.969272
 
-[node name="Trigger" type="Area2D" parent="."]
+[node name="Trigger" type="Area2D" parent="PathFollow2D"]
+rotation = 1.10715
 collision_layer = 8
 collision_mask = 22
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Trigger"]
 shape = SubResource("CapsuleShape2D_gcrx4")
 debug_color = Color(0.308553, 0.61859, 0.299098, 0.42)
 
-[node name="PathFollow2D" type="PathFollow2D" parent="."]
-rotation = -1.10715
-
-[connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]
+[connection signal="body_entered" from="PathFollow2D/Trigger" to="." method="_on_trigger_body_entered"]

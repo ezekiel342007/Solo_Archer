@@ -2,10 +2,10 @@ shader_type canvas_item;
 
 uniform float direction: hint_range(-1.0, 1.0, 0.1) = 1.0;
 
-g
+
 void vertex() {
     vec2 centered_pos = VERTEX - vec2(0.5);
-    float rotation_angle = TIME * 6.0 * direction;
+    float rotation_angle = TIME * 20.0 * direction;
     float cos_a = cos(rotation_angle);
     float sin_a = sin(rotation_angle);
 

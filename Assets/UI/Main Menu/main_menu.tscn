@@ -54,27 +54,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -124.0
-offset_top = -126.0
-offset_right = 124.0
-offset_bottom = 126.0
+offset_top = -55.0
+offset_right = 130.0
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlayButton" type="Button" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2
 text = "Play"
-
-[node name="LevelsButton" type="Button" parent="NinePatchRect/VBoxContainer"]
-layout_mode = 2
-text = "Levels"
-
-[node name="StoryLineButton" type="Button" parent="NinePatchRect/VBoxContainer"]
-layout_mode = 2
-text = "Story Line"
-
-[node name="OptionsButton" type="Button" parent="NinePatchRect/VBoxContainer"]
-layout_mode = 2
-text = "Options"
 
 [node name="ExitButton" type="Button" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2

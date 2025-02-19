@@ -1,4 +1,5 @@
 extends Sprite2D
+class_name Compass
 
 @export var target_node: Node2D
 

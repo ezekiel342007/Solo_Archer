@@ -51,7 +51,7 @@ static var phase1_level_messages: Message.Instruction = Message.Instruction.new(
 								"Enter or Space"
 							).add_instruction(
 								Message.Instruction.new(
-									"I mean, go to the man the arrow is pointing to quickly!",
+									"I mean, go to where the arrow is pointing to quickly!",
 									"Enter or Space"
 								)
 							)

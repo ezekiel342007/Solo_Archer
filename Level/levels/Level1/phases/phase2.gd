@@ -1,53 +1,60 @@
 extends NodeState
 
-@onready var player: CharacterBody2D = %Player
-@onready var commoner_spawn_position: Marker2D = $"../../CommonerSpawnPosition"
-@onready var compass = preload("res://Assets/UI/Compass/compass.tscn")
-@onready var surviving_commoner = preload("res://Characters/Commoner/commoner.tscn")
-@onready var target_highlighter = preload("res://Assets/UI/TargetHighlighter/target_highlighter.tscn")
 @onready var level1 = $"../.."
+@onready var game_screen = %GameScreen
+@onready var camera: GameCamera = %Camera2D
+@onready var player: CharacterBody2D = %Player
+@onready var compass = preload("res://Assets/UI/Compass/compass.tscn")
+@onready var goblin_spawn_position: Marker2D = $"../../GoblinSpawnPosition"
+@onready var goblin = preload("res://Characters/Goblins/BomberGoblin/goblin.tscn")
+@onready var enemy_health_bar = preload("res://Assets/HealthBar/enemy_health_bar.tscn")
 
-var commoner_player_detector: Area2D
+var i: int = 0;
+var is_player: bool;
+var battle: bool = false;
+var conversation: bool = true;
+var goblin_in_game: CharacterBody2D;
+
 
 func enter() -> void:
-	level1.phase2 = true
-	add_survivng_commoner(surviving_commoner)
-	highlight_commoner(target_highlighter)
-	
-	if get_node("../../Commoner"):
-		get_node("../../Commoner/PlayerDetectionArea2D").body_entered.connect(initiate_dialogue)
-	
+	spawn_goblin();
+	level1.phase3 = true;
 
-func give_direction_to(target: Vector2) -> void:
-	var compass_instance: Sprite2D = compass.instantiate() as Sprite2D
-	compass_instance.target_position = target
+func direct_to_goblin() -> void:
+	var compass_instance = compass.instantiate()
+	compass_instance.target_position = goblin_in_game.global_position
 	player.add_child(compass_instance)
 
 
-func initiate_dialogue(body: Node2D) -> void:
-	if body.name == "Player":
-		transition.emit("Phase3")
+func spawn_goblin() -> void:
+	var goblin_instance: CharacterBody2D = goblin.instantiate() as CharacterBody2D
+	goblin_instance.name = &"test_goblin"
+	goblin_instance.global_position = goblin_spawn_position.global_position
+	get_parent().get_parent().get_node("Enemies").add_child(goblin_instance)
+	# await get_tree().get_root().child_entered_tree
+	goblin_in_game = get_node("../../Enemies/test_goblin")
+	goblin_in_game.has_died.connect(emit_transition)
+	var enemy_health_bar_instance = enemy_health_bar.instantiate()
+	enemy_health_bar_instance.max_health = 10
+	goblin_in_game.add_child(enemy_health_bar_instance)
+	direct_to_goblin()
 
 
-func add_survivng_commoner(commoner_scene: PackedScene) -> void:
-	var commoner_scene_instance: CharacterBody2D = commoner_scene.instantiate() as CharacterBody2D
-	commoner_scene_instance.global_position = commoner_spawn_position.global_position
-	give_direction_to(commoner_spawn_position.global_position)
-	get_parent().get_parent().add_child(commoner_scene_instance)
-	# Parse commoner object for conversation in phase 3
-	level1.commoner = commoner_scene_instance
+func emit_transition() -> void:
+	player.get_node("Compass").queue_free()
+	emit_signal(&"transition", "Phase3")
 
 
-func highlight_commoner(highlighter: PackedScene) -> void:
-	var target_highlighter_instance: Sprite2D = highlighter.instantiate() as Sprite2D
-	target_highlighter_instance.target = get_node("../../Commoner")
-	get_parent().get_parent().add_child(target_highlighter_instance)
+func show_goblin_kill_instructions() -> void:
+	player.can_move = true
+	game_screen.margin_container.add_child(
+		level1.deploy_narration_banner(
+			level1.phase3_directions,
+		)
+	)
 
 
 func exit() -> void:
-	level1.phase2 = false
-	get_node("../../TargetHighlighter").queue_free()
-	get_node("../../Player/Compass").queue_free()
-	get_node("../../Commoner/PlayerDetectionArea2D").body_entered.disconnect(initiate_dialogue)
-	commoner_spawn_position.queue_free()
+	level1.phase3 = false
+	goblin_spawn_position.queue_free()
 	queue_free()

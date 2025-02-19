@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c6lv5edv045br" path="res://Assets/environment/rock/border_rock.tscn" id="5_4b22j"]
 [ext_resource type="PackedScene" uid="uid://cxkugss8ju2qd" path="res://Characters/Players/Player/player.tscn" id="6_1dcli"]
 [ext_resource type="PackedScene" uid="uid://67fg6guq4n2y" path="res://Assets/environment/rock/rock.tscn" id="7_y2lut"]
+[ext_resource type="Script" path="res://Level/levels/Level1/enemies.gd" id="8_co4gm"]
 [ext_resource type="PackedScene" uid="uid://djknk184so75x" path="res://Assets/environment/shrubs/big_shrub.tscn" id="8_i6wwv"]
 [ext_resource type="PackedScene" uid="uid://bj16pn2nb7mbm" path="res://Assets/environment/tree/tree.tscn" id="9_grstn"]
 [ext_resource type="PackedScene" uid="uid://ddojmco42k5es" path="res://Assets/environment/Houses/destroyed_house.tscn" id="10_ygmbc"]
@@ -18,7 +19,6 @@
 [ext_resource type="Script" path="res://Level/levels/Level1/phases/phase3.gd" id="16_tigf1"]
 [ext_resource type="PackedScene" uid="uid://bxtmgbkivrwv2" path="res://Assets/UI/Camera/camera_2d.tscn" id="18_exyw5"]
 [ext_resource type="Script" path="res://Level/levels/Level1/phases/phase4.gd" id="18_mpvxt"]
-[ext_resource type="Script" path="res://Level/levels/Level1/phases/phase5.gd" id="19_mpssy"]
 [ext_resource type="PackedScene" uid="uid://b6gqtiu4t7ln" path="res://Assets/UI/Game Screen/game_screen.tscn" id="19_onm4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cdmk6"]
@@ -578,8 +578,10 @@ tile_set = SubResource("TileSet_56f03")
 unique_name_in_owner = true
 position = Vector2(1462, 1653)
 
-[node name="Enemies" type="Node" parent="."]
+[node name="Enemies" type="Node" parent="." node_paths=PackedStringArray("state_machine")]
 unique_name_in_owner = true
+script = ExtResource("8_co4gm")
+state_machine = NodePath("../Phases")
 
 [node name="Environment" type="Node" parent="."]
 
@@ -798,9 +800,6 @@ script = ExtResource("16_tigf1")
 
 [node name="Phase4" type="Node" parent="Phases"]
 script = ExtResource("18_mpvxt")
-
-[node name="Phase5" type="Node" parent="Phases"]
-script = ExtResource("19_mpssy")
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("focus") instance=ExtResource("18_exyw5")]
 unique_name_in_owner = true

@@ -45,7 +45,7 @@ func throw_at(target: CharacterBody2D) -> void:
 	var dynamite_instance = dynamite.instantiate();
 	dynamite_instance.global_position = release_point.global_position;
 	dynamite_instance.direction = dynamite_direction;
-	dynamite_instance.target = target;
+	dynamite_instance.target_position = Vector2(target.global_position.x * 300, target.global_position.y) - character_body_2d.global_position;
 	get_tree().get_root().add_child(dynamite_instance);
 
 
